@@ -1,0 +1,49 @@
+<div class="LoginCadastrar">
+    <mat-tab-group mat-align-tabs="start">
+        <mat-tab label="login">
+            <mat-form-field appearance="outline" class="firstInput">
+                <mat-label>E-mail</mat-label>
+                <input [(ngModel)]="user.email" matInput type="text" >
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="otherInput">
+                <mat-label>Senha</mat-label>
+                <input [(ngModel)]="user.senha" matInput type="password" >
+            </mat-form-field>
+            <a href="http://www.google.com" class="forgetpassword">Esqueci minha senha</a>
+            <button class="buttonEntrar" mat-raised-button (click)="onSubmit()">Entrar</button>
+        </mat-tab>
+
+        <mat-tab label="Cadastrar">
+            <mat-form-field appearance="outline" class="firstInput">
+                <mat-label>Nome completo</mat-label>
+                <input matInput>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="otherInput">
+                <mat-label>E-mail</mat-label>
+                <input matInput>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="otherInput">
+                <mat-label>Nickname</mat-label>
+                <input matInput>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="otherInput">
+                <mat-label>Senha</mat-label>
+                <input matInput type="password">
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="otherInput">
+                <mat-label>Confirmar senha</mat-label>
+                <input matInput type="password">
+            </mat-form-field>
+            <div style="text-align: center;">
+                <mat-radio-group aria-label="Select an option">
+                    <mat-radio-button value="1">Aluno</mat-radio-button>
+                    <mat-radio-button value="2">Professor</mat-radio-button>
+                </mat-radio-group>
+            </div>
+
+            <button class="buttonCadastrar" mat-raised-button>Cadastrar</button>
+        </mat-tab>
+    </mat-tab-group>
+</div>
+
+<img src="assets/LoginLOGO.png" alt="" class="imgLogo">

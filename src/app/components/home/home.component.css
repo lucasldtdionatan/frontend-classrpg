@@ -1,0 +1,49 @@
+:host{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+mat-toolbar{
+    background-color: #000000;
+    position: relative;
+    z-index: 7;
+}
+
+mat-drawer-container{
+    height: 100%;
+    background-color: #ffffff;
+    
+}
+
+mat-drawer{
+    width: 300px;
+    background-color: #000000;
+    text-align: center;
+}
+
+.userImgData{
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.buttonClose{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    margin-bottom: 5%;
+    font-size: 1.3rem;
+}
+.buttonClose a {
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.buttonClose span, i{
+    vertical-align: middle;
+}
+.buttonClose mat-divider{
+    margin-bottom: 2%;
+}
