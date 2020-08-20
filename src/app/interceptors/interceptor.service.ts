@@ -5,7 +5,6 @@ import { AuthenticationService } from '../services/auth.service';
 import { environment } from 'src/environments/environment';
 
 
-
 @Injectable()
 export class Interceptor implements HttpInterceptor {
     constructor(private authenticationService: AuthenticationService){}

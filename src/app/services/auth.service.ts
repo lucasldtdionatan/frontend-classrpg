@@ -25,8 +25,8 @@ export class AuthenticationService {
     return this.currentUserSubject.value;
   }
 
-  login(loginUser: loginUser) {
-    return this.http.post<any>(`${environment.apiUrl}/login`, loginUser)
+  login(user: loginUser) {
+    return this.http.post<any>(`${environment.apiUrl}/login`, user)
       .pipe(map(user => {
         localStorage.setItem('currentUser', JSON.stringify(user));
         this.currentUserSubject.next(user);
@@ -37,7 +37,7 @@ export class AuthenticationService {
   logout() {
     localStorage.removeItem('currentUser');
     this.currentUserSubject.next(null);
-    this.router.navigate(['/login']);
+    this.router.navigate(['/']);
   }
 }
 

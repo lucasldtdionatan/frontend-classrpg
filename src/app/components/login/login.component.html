@@ -1,39 +1,92 @@
 <div class="LoginCadastrar">
     <mat-tab-group mat-align-tabs="start">
         <mat-tab label="login">
-            <mat-form-field appearance="outline" class="firstInput">
-                <mat-label>E-mail</mat-label>
-                <input [(ngModel)]="user.email" matInput type="text" >
-            </mat-form-field>
-            <mat-form-field appearance="outline" class="otherInput">
-                <mat-label>Senha</mat-label>
-                <input [(ngModel)]="user.senha" matInput type="password" >
-            </mat-form-field>
-            <a href="http://www.google.com" class="forgetpassword">Esqueci minha senha</a>
-            <button class="buttonEntrar" mat-raised-button (click)="onSubmit()">Entrar</button>
+
+            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+
+                <mat-form-field appearance="outline" class="firstInput">
+                    <mat-label>E-mail</mat-label>
+                    <input matInput formControlName="email" type="email">
+                    <mat-error
+                        *ngIf="loginForm.controls.email.hasError('email') && !loginForm.controls.email.hasError('required')">
+                        Por favor, insira um <strong>e-mail válido</strong>
+                    </mat-error>
+                    <mat-error *ngIf="loginForm.controls.email.hasError('required')">Favor informar o
+                        <strong>e-mail</strong>
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="otherInput">
+                    <mat-label>Senha</mat-label>
+                    <input matInput formControlName="senha" type="password">
+                    <mat-error *ngIf="loginForm.controls.senha.hasError('required')">Favor informar a
+                        <strong>senha</strong>
+                    </mat-error>
+                </mat-form-field>
+
+                <a href="http://www.google.com" class="forgetpassword">Esqueci minha senha</a>
+                <button class="buttonEntrar" mat-raised-button [disabled]="!loginForm.valid || isLoading">
+                    <div style="position: absolute;">
+                        <mat-spinner *ngIf="isLoading" diameter="29" style="bottom: 0;"></mat-spinner>
+                    </div>
+                    Entrar
+                </button>
+            </form>
+
         </mat-tab>
 
         <mat-tab label="Cadastrar">
-            <mat-form-field appearance="outline" class="firstInput">
-                <mat-label>Nome completo</mat-label>
-                <input matInput>
-            </mat-form-field>
-            <mat-form-field appearance="outline" class="otherInput">
-                <mat-label>E-mail</mat-label>
-                <input matInput>
-            </mat-form-field>
-            <mat-form-field appearance="outline" class="otherInput">
-                <mat-label>Nickname</mat-label>
-                <input matInput>
-            </mat-form-field>
-            <mat-form-field appearance="outline" class="otherInput">
-                <mat-label>Senha</mat-label>
-                <input matInput type="password">
-            </mat-form-field>
-            <mat-form-field appearance="outline" class="otherInput">
-                <mat-label>Confirmar senha</mat-label>
-                <input matInput type="password">
-            </mat-form-field>
+            <form [formGroup]="registerForm">
+
+                <mat-form-field appearance="outline" class="firstInput">
+                    <mat-label>Nome completo</mat-label>
+                    <input matInput formControlName="nome">
+                    <mat-error *ngIf="registerForm.controls.nome.hasError('required')">Favor informar seu
+                        <strong>nome completo</strong>
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="otherInput">
+                    <mat-label>E-mail</mat-label>
+                    <input matInput formControlName="email">
+                    <mat-error
+                        *ngIf="registerForm.controls.email.hasError('email') && !registerForm.controls.email.hasError('required')">
+                        Por favor, insira um <strong>e-mail válido</strong>
+                    </mat-error>
+                    <mat-error *ngIf="registerForm.controls.email.hasError('required')">Favor informar o
+                        <strong>e-mail</strong>
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="otherInput">
+                    <mat-label>Nickname</mat-label>
+                    <input matInput formControlName="nickname">
+                    <mat-error *ngIf="registerForm.controls.nickname.hasError('required')">
+                        Favor insirir um <strong>nickname</strong>
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="otherInput">
+                    <mat-label>Senha</mat-label>
+                    <input matInput formControlName="senha" type="password"
+                        placeholder="Insira uma senha com no mínimo 8 caracteres">
+                    <mat-error *ngIf="registerForm.controls.senha.hasError('required')">
+                        Favor inserir uma <strong>senha</strong>
+                    </mat-error>
+                    <mat-error *ngIf="registerForm.controls.senha.hasError('minlength')">
+                        Favor inserir uma senha com no <strong>minímo 8 caracteres</strong>
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="otherInput">
+                    <mat-label>Confirmar senha</mat-label>
+                    <input matInput formControlName="confirmarSenha" type="password" [errorStateMatcher]="matcher"
+                        placeholder="Confirme a senha digitada anteriormente">
+                    <mat-error *ngIf="registerForm.hasError('notSame')">
+                        Favor digitar a mesma senha inserida anteriormente
+                    </mat-error>
+                </mat-form-field>
+            </form>
             <div style="text-align: center;">
                 <mat-radio-group aria-label="Select an option">
                     <mat-radio-button value="1">Aluno</mat-radio-button>

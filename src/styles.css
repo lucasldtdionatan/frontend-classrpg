@@ -2,3 +2,15 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+/* SnackBar styles*/
+.msg-success {
+    background-color: #000000;
+    color: #ffffff;
+}
+
+.msg-error {
+    background-color: #FF0000;
+    color: #ffffff;
+}
