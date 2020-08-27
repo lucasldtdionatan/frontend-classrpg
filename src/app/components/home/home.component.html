@@ -5,13 +5,13 @@
     <span>ClassRPG</span>
 </mat-toolbar>
 
-<mat-drawer-container>
-    <mat-drawer mode="side" [opened]="sidenavOpen">
+<mat-drawer-container hasBackdrop="false">
+    <!-- mode="side" #drawer  -->
+    <mat-drawer #drawer [mode]="(screenWidth < 900) ? 'over' : 'side'" [opened]="sidenavOpen">
         <mat-nav-list>
-            <img class="userImgData"
-                src="https://scontent.fbfh4-1.fna.fbcdn.net/v/t1.0-9/91410913_580541722810368_7141558537594863616_o.jpg?_nc_cat=111&_nc_sid=09cbfe&_nc_eui2=AeHC_LT3WFa3bDa4GRuzdnRmsTKKYcve6lKxMophy97qUqhodUCcFFLKJcDunbCuzP3Wv7GBhrKQ3lrX3pmFtRfv&_nc_ohc=K7g2fwwlFKEAX-H1nrM&_nc_ht=scontent.fbfh4-1.fna&oh=1ad441e5c8dc1679d74bb8cf1a035fdf&oe=5F5C4607"
-                alt="">
-            <h2>Nome do usuário</h2>
+            <img class="userImgData" src="{{ user.imagem }}" alt="">
+            <h2>{{ user.nome }}</h2>
+            <h4> {{ user.nickname }}</h4>
             <h4>N° de turmas</h4>
         </mat-nav-list>
 
@@ -19,12 +19,12 @@
             <mat-divider></mat-divider>
             <a href="" (click)="onLogout()">
                 <i class="material-icons">exit_to_app</i>
-                <span>Sair</span> 
+                <span>Sair</span>
             </a>
         </div>
     </mat-drawer>
 
     <mat-drawer-content>
-        <router-outlet></router-outlet>
+        <app-turma-add *ngIf="isTeacher"></app-turma-add>
     </mat-drawer-content>
 </mat-drawer-container>

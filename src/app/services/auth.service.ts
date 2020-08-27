@@ -5,7 +5,7 @@ import { map } from 'rxjs/operators';
 
 import { environment } from 'src/environments/environment';
 
-import { User, loginUser } from './../models/user.model';
+import { User, loginUser, registerUser } from './../models/user.model';
 import { Router } from '@angular/router';
 
 @Injectable({
@@ -27,6 +27,16 @@ export class AuthenticationService {
 
   login(user: loginUser) {
     return this.http.post<any>(`${environment.apiUrl}/login`, user)
+      .pipe(map(user => {
+        console.log(user)
+        localStorage.setItem('currentUser', JSON.stringify(user));
+        this.currentUserSubject.next(user);
+        return user;
+      }))
+  }
+
+  register(user: registerUser) {
+    return this.http.post<any>(`${environment.apiUrl}/usuarios/registrar`, user)
       .pipe(map(user => {
         localStorage.setItem('currentUser', JSON.stringify(user));
         this.currentUserSubject.next(user);

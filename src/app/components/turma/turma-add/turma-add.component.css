@@ -1,0 +1,122 @@
+/*--------------------------------------input style----------------------------------------*/
+
+::ng-deep .mat-input-element {
+    caret-color: #000000;
+}
+
+::ng-deep .mat-form-field-label {
+    color: #000000;
+}
+
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+    color: #000000;
+}
+
+/* input focused*/
+
+::ng-deep .mat-form-field.mat-focused .mat-form-field-label {
+    color: #000000;
+}
+
+::ng-deep .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
+    color: #000000;
+}
+
+::ng-deep .mat-input-element::placeholder {
+    color: #808080;
+}
+
+h1 {
+    color: #000000;
+    font-size: 2.1rem;
+    margin-top: 2%;
+}
+
+.imagePreviewBox {
+    border: 1px solid #000000;
+    border-radius: 4px;
+    width: 230px;
+    height: 230px;
+}
+
+mat-form-field {
+    width: 70%;
+}
+
+button {
+    background-color: #000000;
+}
+
+.buttonImageSelect {
+    margin-left: 5px;
+    background-color: #000000;
+}
+
+.buttonSubmitCancel {
+    position: absolute;
+    margin-top: 4%;
+    margin-bottom: 2%;
+    right: 15%;
+}
+
+.imagePreview {
+    max-width: 230px;
+    max-height: 230px;
+    width: auto;
+    height: auto;
+}
+
+.imagePreviewBox:hover {
+    box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.8);
+}
+
+@media screen and (max-width: 320px) {
+    /* .imagePreviewBox {
+        border: 1px solid #000000;
+        border-radius: 4px;
+        width: 230px;
+        height: 230px;
+    }
+    .imagePreview {
+        max-width: 230px;
+        max-height: 230px;
+        width: auto;
+        height: auto;
+    } */
+    .buttonImageSelect {
+        margin-top: 5px;
+        background-color: #000000;
+    }
+    
+}
+
+@media screen and (min-width: 321px) and (max-width: 514px) {
+    /* .imagePreviewBox {
+        border: 1px solid #000000;
+        border-radius: 4px;
+        width: 250px;
+        height: 250px;
+    }
+    .imagePreview {
+        max-width: 250px;
+        max-height: 250px;
+        width: auto;
+        height: auto;
+    } */
+    .buttonImageSelect {
+        margin-top: 5px;
+        background-color: #000000;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    mat-form-field {
+        width: 90%;
+    }
+    .buttonSubmitCancel {
+        position: absolute;
+        margin-top: 8%;
+        margin-bottom: 2%;
+        right: 5%;
+    }
+}

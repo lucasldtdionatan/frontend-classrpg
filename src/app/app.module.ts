@@ -23,11 +23,14 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
 
 import { AuthenticationService } from './services/auth.service';
+import { TurmaListComponent } from './components/turma/turma-list/turma-list.component';
+import { TurmaAddComponent } from './components/turma/turma-add/turma-add.component';
 
 
 
@@ -35,13 +38,16 @@ import { AuthenticationService } from './services/auth.service';
   declarations: [
     AppComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    TurmaListComponent,
+    TurmaAddComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    FlexLayoutModule,
     FormsModule,
     ReactiveFormsModule,
     MatTabsModule,

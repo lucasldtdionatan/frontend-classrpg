@@ -4,7 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { Validators, FormControl, FormGroup, FormGroupDirective, NgForm, FormBuilder } from '@angular/forms';
 import { first } from 'rxjs/operators'
 
-import { loginUser } from '../../models/user.model';
+import { registerUser } from '../../models/user.model';
 import { AuthenticationService } from '../../services/auth.service';
 import { SnackBarService } from '../../services/snack-bar.service'
 
@@ -27,9 +27,12 @@ export class ErrorPasswordMatcher implements ErrorStateMatcher {
 })
 export class LoginComponent implements OnInit {
 
-  user: loginUser = new loginUser();
-  isLoading: boolean = false;
+
+  isLoginLoading: boolean = false;
+  isRegisterLoading: boolean = false;
   error = '';
+
+  user: registerUser = new registerUser();
   registerForm: FormGroup;
   matcher = new ErrorPasswordMatcher();
 
@@ -53,7 +56,7 @@ export class LoginComponent implements OnInit {
       senha: ['', [Validators.required, Validators.minLength(8)]],
       confirmarSenha: ['', [Validators.required]],
       tipoUsuario: this.formBuilder.group({
-        id: ['', [Validators.required]],
+        id: ['1', [Validators.required]],
       })
     }, { validator: this.checkPasswords })
   }
@@ -63,7 +66,7 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
-    this.isLoading = true;
+    this.isLoginLoading = true;
     this.authenticationService.login(this.loginForm.value)
       .pipe(first())
       .subscribe(
@@ -71,12 +74,34 @@ export class LoginComponent implements OnInit {
           this.router.navigate(['/home']);
         },
         error => {
-          this.error = error;
-          this.isLoading = false;
+          this.isLoginLoading = false;
           this.snackBarService.openSnackBar('E-mail ou senha inválidos!', 'X', true);
         }
       )
 
+  }
+
+  onRegisterSubimit() {
+    this.isRegisterLoading = true;
+
+    this.user.nome = this.registerForm.get("nome").value;
+    this.user.senha = this.registerForm.get("senha").value;
+    this.user.email = this.registerForm.get("email").value;
+    this.user.nickname = this.registerForm.get("nickname").value;
+    this.user.tipoUsuario = this.registerForm.get("tipoUsuario").value;
+
+    this.authenticationService.register(this.user)
+      .pipe(first())
+      .subscribe(
+        data => {
+          this.router.navigate(['/home']);
+        },
+        error => {
+          this.isRegisterLoading = false;
+          this.snackBarService.openSnackBar('E-mail ou nickname já cadastrados', 'X', true);
+        }
+
+      )
   }
 
   checkPasswords(group: FormGroup) { // here we have the 'passwords' group
