@@ -1,3 +1,4 @@
+import { HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { Component, OnInit } from '@angular/core';
@@ -68,9 +69,9 @@ export class LoginComponent implements OnInit {
   onSubmit() {
     this.isLoginLoading = true;
     this.authenticationService.login(this.loginForm.value)
-      .pipe(first())
       .subscribe(
         data => {
+          this.isLoginLoading = false;
           this.router.navigate(['/home']);
         },
         error => {

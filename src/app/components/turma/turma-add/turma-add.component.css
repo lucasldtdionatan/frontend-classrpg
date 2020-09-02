@@ -12,6 +12,10 @@
     color: #000000;
 }
 
+::ng-deep .mat-drawer-container {
+    color: #000;
+}
+
 /* input focused*/
 
 ::ng-deep .mat-form-field.mat-focused .mat-form-field-label {
@@ -24,6 +28,12 @@
 
 ::ng-deep .mat-input-element::placeholder {
     color: #808080;
+}
+
+/* progress spinner */
+
+::ng-deep .mat-progress-spinner circle, .mat-spinner circle {
+    stroke: rgb(255, 255, 255, .3);
 }
 
 h1 {
@@ -87,7 +97,6 @@ button {
         margin-top: 5px;
         background-color: #000000;
     }
-    
 }
 
 @media screen and (min-width: 321px) and (max-width: 514px) {

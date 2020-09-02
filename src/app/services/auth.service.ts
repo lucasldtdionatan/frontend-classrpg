@@ -1,7 +1,7 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, BehaviorSubject } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 
 import { environment } from 'src/environments/environment';
 
@@ -15,7 +15,12 @@ export class AuthenticationService {
 
   private currentUserSubject: BehaviorSubject<User>;
   private currentUser: Observable<User>;
+  private token: string;
 
+  httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+    observe: 'response' as 'response'
+  };
   constructor(private http: HttpClient, private router: Router) {
     this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
     this.currentUser = this.currentUserSubject.asObservable();
@@ -24,28 +29,39 @@ export class AuthenticationService {
   public get currentUserValue(): User {
     return this.currentUserSubject.value;
   }
+  public get getToken() {
+    return this.token;
+  }
 
   login(user: loginUser) {
-    return this.http.post<any>(`${environment.apiUrl}/login`, user)
-      .pipe(map(user => {
-        console.log(user)
-        localStorage.setItem('currentUser', JSON.stringify(user));
-        this.currentUserSubject.next(user);
-        return user;
-      }))
+    // return this.http.post<any>(`${environment.apiUrl}/login`, user)
+    //   .pipe(map(user => {
+    //     localStorage.setItem('currentUser', JSON.stringify(user));
+    //     this.currentUserSubject.next(user);
+    //     console.log(user)
+    //     console.log(user.headers.get('Authorization'));
+    //     return user;
+    //   }))
+    return this.http.post<any>(`${environment.apiUrl}/login`, user, { observe: 'response' })
+      .pipe(map(
+        resp => {
+          this.currentUserSubject.next(resp.body);
+          this.token = resp.headers.get('Authorization');
+          localStorage.setItem('Authorization', this.token);
+        }));
   }
 
   register(user: registerUser) {
-    return this.http.post<any>(`${environment.apiUrl}/usuarios/registrar`, user)
-      .pipe(map(user => {
-        localStorage.setItem('currentUser', JSON.stringify(user));
-        this.currentUserSubject.next(user);
-        return user;
+    return this.http.post<any>(`${environment.apiUrl}/usuarios/registrar`, user, { observe: 'response' })
+      .pipe(map(resp => {
+        this.currentUserSubject.next(resp.body);
+        this.token = resp.headers.get('Authorization');
+        localStorage.setItem('Authorization', this.token);
       }))
   }
 
   logout() {
-    localStorage.removeItem('currentUser');
+    localStorage.removeItem('Authorization');
     this.currentUserSubject.next(null);
     this.router.navigate(['/']);
   }
