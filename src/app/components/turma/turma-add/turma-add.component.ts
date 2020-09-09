@@ -30,7 +30,7 @@ export class TurmaAddComponent implements OnInit {
   ) {
     this.formTurma = this.formBuilder.group({
       titulo: ['', Validators.required],
-      descricao: [''],
+      descricao: ['', Validators.maxLength(250)],
       imagem: ['']
     })
   }
@@ -73,7 +73,7 @@ export class TurmaAddComponent implements OnInit {
   }
 
   onCancel() {
-    this.router.navigate(['/home'])
+    this.router.navigate(['/turmas'])
   }
 
   sendTurma() {

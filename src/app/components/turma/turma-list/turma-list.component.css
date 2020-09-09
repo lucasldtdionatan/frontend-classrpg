@@ -1,0 +1,43 @@
+mat-card {
+    margin: 0.5%;
+    width: 180px;
+    background-color: #000000;
+}
+
+.cardContent {
+    text-align: center;
+}
+
+.cardContent img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.buttonNovaTurma {
+    position: absolute;
+    background-color: #000000;
+    left: 8.5%;
+    right: 0;
+    margin-top: 10px;
+}
+
+.divCardList {
+    position: absolute;
+    left: 8%;
+    top: 60px;
+}
+
+@media (max-width: 500px) {
+    mat-card {
+        margin: 0.5%;
+        width: 80%;
+        background-color: #000000;
+    }
+    .divCardList {
+        position: absolute;
+        left: 8%;
+        top: 60px;
+    }
+}

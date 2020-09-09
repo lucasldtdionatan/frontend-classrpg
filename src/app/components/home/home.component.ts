@@ -1,3 +1,5 @@
+import { TurmaService } from './../turma/turma.service';
+import { Router } from '@angular/router';
 import { User } from './../../models/user.model';
 import { AuthenticationService } from './../../services/auth.service';
 import { Component, OnInit } from '@angular/core';
@@ -12,13 +14,18 @@ export class HomeComponent implements OnInit {
 
   sidenavOpen = true;
   isTeacher: boolean = false;
+
   user: User;
   screenWidth: number = screen.width;
 
   resizeObservable$: Observable<Event>
 
+  qtdTurmas: number;
+
   constructor(
-    private authenticationService: AuthenticationService
+    private router: Router,
+    private authenticationService: AuthenticationService,
+    private turmaService: TurmaService
   ) {
   }
 
@@ -43,6 +50,10 @@ export class HomeComponent implements OnInit {
     if (this.user.tipoUsuario.id === 2) { //check if is teacher
       this.isTeacher = true;
     }
+
+    this.turmaService.getQtdTurmas().subscribe(resp => {
+      this.qtdTurmas = resp.quantidade;
+    })
   }
 
   toggleSideBar() {

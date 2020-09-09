@@ -1,1 +1,25 @@
-<p>turma-list works!</p>
+<div>
+    <button *ngIf="isTeacher" [routerLink]="['/novaturma']" mat-raised-button class="buttonNovaTurma">
+        Nova turma</button>
+
+    <button *ngIf="!isTeacher" mat-raised-button class="buttonNovaTurma">
+        Buscar turma</button>
+</div>
+
+<div fxLayout="row wrap" fxLayoutAlign="flex-start" class="divCardList">
+    <mat-card class="mat-elevation-z6" *ngFor="let turma of turmas">
+        <mat-card-content class="cardContent">
+            <div class="imgTurma">
+                <img src="{{turma.imagem}}" alt="">
+            </div>
+            <h2>{{ turma.titulo }}</h2>
+            <h3>{{ turma.codigoAcesso }}</h3>
+            <h3 style="margin-top: -20px;">{{ turma.quantidade }} alunos</h3>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-icon-button (click)="onDelete(turma.id)">
+                <i class="material-icons">delete_forever</i>
+            </button>
+        </mat-card-actions>
+    </mat-card>
+</div>

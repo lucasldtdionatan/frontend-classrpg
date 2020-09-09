@@ -72,7 +72,7 @@ export class LoginComponent implements OnInit {
       .subscribe(
         data => {
           this.isLoginLoading = false;
-          this.router.navigate(['/home']);
+          this.router.navigate(['/turmas']);
         },
         error => {
           this.isLoginLoading = false;
@@ -95,7 +95,7 @@ export class LoginComponent implements OnInit {
       .pipe(first())
       .subscribe(
         data => {
-          this.router.navigate(['/home']);
+          this.router.navigate(['/turmas']);
         },
         error => {
           this.isRegisterLoading = false;

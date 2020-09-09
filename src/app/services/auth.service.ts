@@ -15,7 +15,7 @@ export class AuthenticationService {
 
   private currentUserSubject: BehaviorSubject<User>;
   private currentUser: Observable<User>;
-  private token: string;
+  private token: BehaviorSubject<any>;
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
@@ -23,12 +23,14 @@ export class AuthenticationService {
   };
   constructor(private http: HttpClient, private router: Router) {
     this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
+    this.token = new BehaviorSubject<any>(localStorage.getItem('Authorization'));
     this.currentUser = this.currentUserSubject.asObservable();
   }
 
   public get currentUserValue(): User {
-    return this.currentUserSubject.value;
+    return JSON.parse(localStorage.getItem('currentUser'));
   }
+
   public get getToken() {
     return this.token;
   }
@@ -46,8 +48,9 @@ export class AuthenticationService {
       .pipe(map(
         resp => {
           this.currentUserSubject.next(resp.body);
-          this.token = resp.headers.get('Authorization');
-          localStorage.setItem('Authorization', this.token);
+          // this.token = resp.headers.get('Authorization');
+          localStorage.setItem('Authorization', resp.headers.get('Authorization'));
+          localStorage.setItem('currentUser', JSON.stringify(resp.body));
         }));
   }
 
@@ -55,15 +58,24 @@ export class AuthenticationService {
     return this.http.post<any>(`${environment.apiUrl}/usuarios/registrar`, user, { observe: 'response' })
       .pipe(map(resp => {
         this.currentUserSubject.next(resp.body);
-        this.token = resp.headers.get('Authorization');
-        localStorage.setItem('Authorization', this.token);
+        // this.token = resp.headers.get('Authorization');
+        localStorage.setItem('Authorization', resp.headers.get('Authorization'));
       }))
   }
 
   logout() {
+    localStorage.removeItem('currentUser');
     localStorage.removeItem('Authorization');
     this.currentUserSubject.next(null);
-    this.router.navigate(['/']);
+    this.router.navigate(['/login']);
+  }
+
+  isTeacher() {
+    if (this.currentUserSubject.value.tipoUsuario.id === 2) {
+      return true;
+    } else {
+      return false;
+    }
   }
 }
 

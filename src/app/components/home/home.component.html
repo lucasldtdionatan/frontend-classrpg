@@ -12,7 +12,7 @@
             <img class="userImgData" src="{{ user.imagem }}" alt="">
             <h2>{{ user.nome }}</h2>
             <h4> {{ user.nickname }}</h4>
-            <h4>N° de turmas</h4>
+            <h4>{{ qtdTurmas }} turmas</h4>
         </mat-nav-list>
 
         <div class="buttonClose">
@@ -23,8 +23,7 @@
             </a>
         </div>
     </mat-drawer>
-
     <mat-drawer-content>
-        <app-turma-add *ngIf="isTeacher"></app-turma-add>
+        <router-outlet></router-outlet>
     </mat-drawer-content>
 </mat-drawer-container>
