@@ -4,7 +4,7 @@ export class Turma {
     imagem?: string;
 }
 
-export class TurmaList {
+export interface TurmaList {
     id: number;
     titulo: string;
     imagem: string;

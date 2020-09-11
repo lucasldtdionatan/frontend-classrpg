@@ -6,8 +6,11 @@
         Buscar turma</button>
 </div>
 
-<div fxLayout="row wrap" fxLayoutAlign="flex-start" class="divCardList">
-    <mat-card class="mat-elevation-z6" *ngFor="let turma of turmas">
+<div class="divCardList" fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutAlign="flex-start" fxLayoutGap="10px">
+
+    <mat-card class="mat-elevation-z6" *ngFor="let turma of turmas" fxFlex="200px" fxFlex.lt-md="200px"
+        fxFlex.lt-sm="80">
+
         <mat-card-content class="cardContent">
             <div class="imgTurma">
                 <img src="{{turma.imagem}}" alt="">
@@ -16,10 +19,12 @@
             <h3>{{ turma.codigoAcesso }}</h3>
             <h3 style="margin-top: -20px;">{{ turma.quantidade }} alunos</h3>
         </mat-card-content>
+
         <mat-card-actions>
             <button mat-icon-button (click)="onDelete(turma.id)">
                 <i class="material-icons">delete_forever</i>
             </button>
         </mat-card-actions>
+
     </mat-card>
 </div>

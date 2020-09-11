@@ -1,7 +1,7 @@
 mat-card {
-    margin: 0.5%;
-    width: 180px;
     background-color: #000000;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .cardContent {
@@ -18,8 +18,7 @@ mat-card {
 .buttonNovaTurma {
     position: absolute;
     background-color: #000000;
-    left: 8.5%;
-    right: 0;
+    left: 8%;
     margin-top: 10px;
 }
 
@@ -29,15 +28,11 @@ mat-card {
     top: 60px;
 }
 
-@media (max-width: 500px) {
-    mat-card {
-        margin: 0.5%;
-        width: 80%;
-        background-color: #000000;
-    }
+@media (max-width: 599px) {
     .divCardList {
         position: absolute;
         left: 8%;
         top: 60px;
+        width: 80%;
     }
 }
