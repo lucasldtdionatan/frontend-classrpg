@@ -1,0 +1,6 @@
+<h3 mat-dialog-title>{{ data.message }}</h3>
+
+<mat-dialog-actions align="end">
+    <button mat-button [mat-dialog-close]=false>Cancelar</button>
+    <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Deletar</button>
+</mat-dialog-actions>

@@ -1,3 +1,4 @@
+import { DialogMassageComponent } from './../../dialog-massage/dialog-massage.component';
 import { AuthenticationService } from './../../../services/auth.service';
 import { User } from './../../../models/user.model';
 import { Router } from '@angular/router';
@@ -6,6 +7,7 @@ import { TurmaService } from './../turma.service';
 import { Component, OnInit } from '@angular/core';
 import { SnackBarService } from 'src/app/services/snack-bar.service';
 import { take } from 'rxjs/operators';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-turma-list',
@@ -23,6 +25,7 @@ export class TurmaListComponent implements OnInit {
     private turmaService: TurmaService,
     private authService: AuthenticationService,
     private snackBarService: SnackBarService,
+    private dialog: MatDialog
 
   ) { }
 
@@ -33,16 +36,29 @@ export class TurmaListComponent implements OnInit {
   }
 
   onDelete(id: string) {
-    this.turmaService.deleteTurma(id).pipe(
-      take(1)
-    ).subscribe(
-      resp => {
-        this.snackBarService.openSnackBar('Turma excluída com sucesso!', 'X', false);
-        this.getTurmas();
-      },
-      error => {
-        this.snackBarService.openSnackBar('Não foi possível excluir a turma', 'X', true);
-      })
+    let confirmationDelete: boolean;
+
+    const dialogRef = this.dialog.open(DialogMassageComponent, {
+      data: { message: 'Tem certeza que quer deletar a turma?' }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      
+      confirmationDelete = result;
+      
+      if (confirmationDelete) {
+        this.turmaService.deleteTurma(id).pipe(
+          take(1)
+        ).subscribe(
+          resp => {
+            this.snackBarService.openSnackBar('Turma excluída com sucesso!', 'X', false);
+            this.getTurmas();
+          },
+          error => {
+            this.snackBarService.openSnackBar('Não foi possível excluir a turma', 'X', true);
+          })
+      }
+    })
   }
 
   getTurmas() {

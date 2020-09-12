@@ -34,6 +34,8 @@ import { HomeComponent } from './components/home/home.component';
 import { AuthenticationService } from './services/auth.service';
 import { TurmaListComponent } from './components/turma/turma-list/turma-list.component';
 import { TurmaAddComponent } from './components/turma/turma-add/turma-add.component';
+import { DialogMassageComponent } from './components/dialog-massage/dialog-massage.component';
+
 
 
 
@@ -43,8 +45,10 @@ import { TurmaAddComponent } from './components/turma/turma-add/turma-add.compon
     LoginComponent,
     HomeComponent,
     TurmaListComponent,
-    TurmaAddComponent
+    TurmaAddComponent,
+    DialogMassageComponent,
   ],
+  
   imports: [
     BrowserModule,
     AppRoutingModule,
