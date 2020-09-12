@@ -14,3 +14,6 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     background-color: #FF0000;
     color: #ffffff;
 }
+.tooltip{
+    background-color: #000000;
+}

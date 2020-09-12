@@ -1,8 +1,9 @@
 <div>
-    <button *ngIf="isTeacher" [routerLink]="['/novaturma']" mat-raised-button class="buttonNovaTurma">
+    <button *ngIf="isTeacher" [routerLink]="['/novaturma']" mat-raised-button class="buttonNovaTurma"
+        matTooltip="Criar um nova turma">
         Nova turma</button>
 
-    <button *ngIf="!isTeacher" mat-raised-button class="buttonNovaTurma">
+    <button *ngIf="!isTeacher" mat-raised-button class="buttonNovaTurma" matTooltip="Buscar turma">
         Buscar turma</button>
 </div>
 
@@ -15,13 +16,13 @@
             <div class="imgTurma">
                 <img src="{{turma.imagem}}" alt="">
             </div>
-            <h2>{{ turma.titulo }}</h2>
-            <h3>{{ turma.codigoAcesso }}</h3>
+            <h2 matTooltip="Título da turma: {{ turma.titulo }}">{{ turma.titulo }}</h2>
+            <h3 matTooltip="Código da turma">{{ turma.codigoAcesso }}</h3>
             <h3 style="margin-top: -20px;">{{ turma.quantidade }} alunos</h3>
         </mat-card-content>
 
         <mat-card-actions>
-            <button mat-icon-button (click)="onDelete(turma.id)">
+            <button mat-icon-button (click)="onDelete(turma.id)" matTooltip="Deletar turma">
                 <i class="material-icons">delete_forever</i>
             </button>
         </mat-card-actions>

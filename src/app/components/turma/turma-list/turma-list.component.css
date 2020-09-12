@@ -3,7 +3,6 @@ mat-card {
     margin-top: 10px;
     margin-bottom: 10px;
 }
-
 .cardContent {
     text-align: center;
 }
@@ -13,6 +12,11 @@ mat-card {
     height: 100px;
     border-radius: 50%;
     object-fit: cover;
+}
+.cardContent h2{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .buttonNovaTurma {
@@ -34,5 +38,10 @@ mat-card {
         left: 8%;
         top: 60px;
         width: 80%;
+    }
+    .cardContent h2{
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
     }
 }

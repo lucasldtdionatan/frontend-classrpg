@@ -1,11 +1,12 @@
 import { environment } from './../../../environments/environment';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { ImageUploadService } from './../../services/image-upload.service';
 import { FormGroup } from '@angular/forms';
 import { Turma, TurmaList } from './turma.model';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { catchError } from 'rxjs/operators';
 
 
 @Injectable({

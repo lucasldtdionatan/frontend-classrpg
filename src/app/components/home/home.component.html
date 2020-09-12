@@ -10,9 +10,9 @@
     <mat-drawer #drawer [mode]="(screenWidth < 900) ? 'over' : 'side'" [opened]="sidenavOpen">
         <mat-nav-list>
             <img class="userImgData" src="{{ user.imagem }}" alt="">
-            <h2>{{ user.nome }}</h2>
-            <h4> {{ user.nickname }}</h4>
-            <h4>{{ qtdTurmas }} turmas</h4>
+            <h2 matTooltip="Nome de usuário">{{ user.nome }}</h2>
+            <h4 matTooltip="Nickname: {{ user.nickname }}"> {{ user.nickname }}</h4>
+            <h4 matTooltip="Quantidade de turmas criadas">{{ qtdTurmas }} turmas</h4>
         </mat-nav-list>
 
         <div class="buttonClose">

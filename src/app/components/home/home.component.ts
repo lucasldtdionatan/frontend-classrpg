@@ -20,7 +20,7 @@ export class HomeComponent implements OnInit {
 
   resizeObservable$: Observable<Event>
 
-  qtdTurmas: number;
+  qtdTurmas: number = 0;
 
   constructor(
     private router: Router,

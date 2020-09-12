@@ -26,6 +26,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatDialogModule } from '@angular/material/dialog';;
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
@@ -65,7 +66,8 @@ import { TurmaAddComponent } from './components/turma/turma-add/turma-add.compon
     MatListModule,
     MatSnackBarModule,
     MatProgressSpinnerModule,
-    MatDialogModule
+    MatDialogModule,
+    MatTooltipModule
 
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true }, AuthenticationService, AuthGuard],

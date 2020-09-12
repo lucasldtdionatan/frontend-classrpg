@@ -5,6 +5,7 @@ import { TurmaList } from './../turma.model';
 import { TurmaService } from './../turma.service';
 import { Component, OnInit } from '@angular/core';
 import { SnackBarService } from 'src/app/services/snack-bar.service';
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-turma-list',
@@ -13,7 +14,7 @@ import { SnackBarService } from 'src/app/services/snack-bar.service';
 })
 export class TurmaListComponent implements OnInit {
 
-  turmas: TurmaList[];
+  turmas: TurmaList[] = [];
   user: User;
   isTeacher: boolean;
 
@@ -32,7 +33,9 @@ export class TurmaListComponent implements OnInit {
   }
 
   onDelete(id: string) {
-    this.turmaService.deleteTurma(id).subscribe(
+    this.turmaService.deleteTurma(id).pipe(
+      take(1)
+    ).subscribe(
       resp => {
         this.snackBarService.openSnackBar('Turma excluída com sucesso!', 'X', false);
         this.getTurmas();
@@ -43,14 +46,16 @@ export class TurmaListComponent implements OnInit {
   }
 
   getTurmas() {
-    this.turmaService.getTurmas().subscribe(
+    this.turmaService.getTurmas().pipe(
+      take(1)
+    ).subscribe(
       resp => {
         this.turmas = resp;
       },
-      error =>{
-        console.log(error)
+      error => {
+        this.turmas = [];
       }
-      )
+    )
   }
 
 }
