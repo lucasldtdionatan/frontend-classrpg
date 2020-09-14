@@ -1,16 +1,19 @@
-import { TurmaListComponent } from './components/turma/turma-list/turma-list.component';
-import { TurmaAddComponent } from './components/turma/turma-add/turma-add.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+
 import { LoginComponent } from './components/login/login.component';
-import { HomeComponent } from './components/home/home.component';
+import { TurmaAddComponent } from './components/turma-home/turma-home-component/turma-add/turma-add.component';
+import { SidenavTurmaComponent } from './components/turma-home/sidenav-turma/sidenav-turma.component';
+import { TurmaListComponent } from './components/turma-home/turma-home-component/turma-list/turma-list.component';
+
+
 import { AuthGuard } from './guards/auth-guard';
 
 
 const routes: Routes = [
   {
     path: '',
-    component: HomeComponent,
+    component: SidenavTurmaComponent,
     canActivate: [AuthGuard],
     children: [
       {

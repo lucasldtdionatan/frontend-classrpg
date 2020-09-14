@@ -1,16 +1,19 @@
-import { TurmaService } from './../turma/turma.service';
 import { Router } from '@angular/router';
-import { User } from './../../models/user.model';
-import { AuthenticationService } from './../../services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { Observable, fromEvent } from 'rxjs';
 
+import { AuthenticationService } from './../../../services/auth.service';
+import { TurmaService } from './../turma-home.service';
+
+import { User } from './../../../models/user.model';
+
+
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  selector: 'app-sidenav-turma',
+  templateUrl: './sidenav-turma.component.html',
+  styleUrls: ['./sidenav-turma.component.css']
 })
-export class HomeComponent implements OnInit {
+export class SidenavTurmaComponent implements OnInit {
 
   sidenavOpen = true;
   isTeacher: boolean = false;
@@ -62,10 +65,6 @@ export class HomeComponent implements OnInit {
 
   onLogout() {
     this.authenticationService.logout();
-  }
-
-  qtdTurmasEvent(event){
-    console.log("entrou aqui", event)
   }
 
 }

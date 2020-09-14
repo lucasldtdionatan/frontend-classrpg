@@ -1,15 +1,13 @@
-import { HttpHeaders } from '@angular/common/http';
+import { Validators, FormControl, FormGroup, FormGroupDirective, NgForm, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { Component, OnInit } from '@angular/core';
-import { Validators, FormControl, FormGroup, FormGroupDirective, NgForm, FormBuilder } from '@angular/forms';
 import { first } from 'rxjs/operators'
 
-import { registerUser } from '../../models/user.model';
 import { AuthenticationService } from '../../services/auth.service';
 import { SnackBarService } from '../../services/snack-bar.service'
 
-
+import { registerUser } from '../../models/user.model';
 
 export class ErrorPasswordMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {

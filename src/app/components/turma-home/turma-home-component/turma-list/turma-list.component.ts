@@ -1,13 +1,16 @@
-import { DialogMassageComponent } from './../../dialog-massage/dialog-massage.component';
-import { AuthenticationService } from './../../../services/auth.service';
-import { User } from './../../../models/user.model';
-import { Router } from '@angular/router';
-import { TurmaList } from './../turma.model';
-import { TurmaService } from './../turma.service';
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { SnackBarService } from 'src/app/services/snack-bar.service';
-import { take } from 'rxjs/operators';
+import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
+import { take } from 'rxjs/operators';
+
+import { AuthenticationService } from './../../../../services/auth.service';
+import { SnackBarService } from 'src/app/services/snack-bar.service';
+import { TurmaService } from './../../turma-home.service';
+
+import { TurmaList } from './../../turma-home.model';
+import { User } from './../../../../models/user.model';
+
+import { DialogMassageComponent } from './../../../template/dialog-massage/dialog-massage.component';
 
 @Component({
   selector: 'app-turma-list',
@@ -20,7 +23,6 @@ export class TurmaListComponent implements OnInit {
   user: User;
   isTeacher: boolean;
 
-  @Output() qtdTurmaEvent= new EventEmitter();
 
   constructor(
     private router: Router,
@@ -33,9 +35,9 @@ export class TurmaListComponent implements OnInit {
 
   ngOnInit(): void {
     this.isTeacher = this.authService.isTeacher();
-    this.qtdTurmaEvent.emit(this.turmas.length)
+
     this.getTurmas();
-   
+
 
   }
 
@@ -71,7 +73,6 @@ export class TurmaListComponent implements OnInit {
     ).subscribe(
       resp => {
         this.turmas = resp;
-        this.qtdTurmaEvent.emit(this.turmas.length)
       },
       error => {
         this.turmas = [];

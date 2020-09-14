@@ -1,6 +1,3 @@
-import { Interceptor } from './interceptors/interceptor.service';
-
-import { AuthGuard } from './guards/auth-guard';
 
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -28,22 +25,24 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatDialogModule } from '@angular/material/dialog';;
 import { MatTooltipModule } from '@angular/material/tooltip';
 
-import { LoginComponent } from './components/login/login.component';
-import { HomeComponent } from './components/home/home.component';
 
 import { AuthenticationService } from './services/auth.service';
-import { TurmaListComponent } from './components/turma/turma-list/turma-list.component';
-import { TurmaAddComponent } from './components/turma/turma-add/turma-add.component';
-import { DialogMassageComponent } from './components/dialog-massage/dialog-massage.component';
+import { Interceptor } from './interceptors/interceptor.service';
+
+import { LoginComponent } from './components/login/login.component';
+import { SidenavTurmaComponent } from './components/turma-home/sidenav-turma/sidenav-turma.component';
+import { TurmaAddComponent } from './components/turma-home/turma-home-component/turma-add/turma-add.component';
+import { TurmaListComponent } from './components/turma-home/turma-home-component/turma-list/turma-list.component';
+import { DialogMassageComponent } from './components/template/dialog-massage/dialog-massage.component';
 
 
-
+import { AuthGuard } from './guards/auth-guard';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    HomeComponent,
+    SidenavTurmaComponent,
     TurmaListComponent,
     TurmaAddComponent,
     DialogMassageComponent,

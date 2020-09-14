@@ -1,11 +1,13 @@
-import { ImageUploadService } from './../../../services/image-upload.service';
-import { AuthenticationService } from './../../../services/auth.service';
-import { SnackBarService } from './../../../services/snack-bar.service';
-import { TurmaService } from './../turma.service';
-import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
-import { Turma } from './../turma.model';
+import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+
+
+import { ImageUploadService } from './../../../../services/image-upload.service';
+import { SnackBarService } from './../../../../services/snack-bar.service';
+import { TurmaService } from './../../turma-home.service';
+
+import { Turma } from './../../turma-home.model';
 
 @Component({
   selector: 'app-turma-add',
@@ -81,7 +83,7 @@ export class TurmaAddComponent implements OnInit {
       .subscribe(
         resp => {
           this.snackBarService.openSnackBar('Turma cadastrada com sucesso!', 'X', false);
-          this.router.navigate(['/home']);
+          this.router.navigate(['/turmas']);
           this.isLoading = false;
         },
         error => {
