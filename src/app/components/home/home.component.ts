@@ -64,4 +64,8 @@ export class HomeComponent implements OnInit {
     this.authenticationService.logout();
   }
 
+  qtdTurmasEvent(event){
+    console.log("entrou aqui", event)
+  }
+
 }

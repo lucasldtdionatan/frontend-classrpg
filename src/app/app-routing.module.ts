@@ -12,28 +12,24 @@ const routes: Routes = [
     path: '',
     component: HomeComponent,
     canActivate: [AuthGuard],
-    
     children: [
       {
         path: 'turmas',
         canActivate: [AuthGuard],
-        pathMatch: 'full',
         component: TurmaListComponent
       },
       {
         path: 'novaturma',
         canActivate: [AuthGuard],
         component: TurmaAddComponent
-      }
+      },
+      { path: '', redirectTo: '/turmas', pathMatch: 'full' },
     ]
   },
   {
     path: 'login',
     component: LoginComponent
   },
-  { path: '**', redirectTo: 'turmas' }
-
-
 ];
 
 @NgModule({
