@@ -41,22 +41,17 @@ export class SidenavTurmaComponent implements OnInit {
       const w = event.target as Window;
       this.screenWidth = w.innerWidth;
     })
-    // this.resizeSubscription$ = this.resizeObservable$.subscribe(evt => {
-    //   this.screenWidth = screen.width;
-    //   console.log(' olo' + this.screenWidth);
-    //   this.screenWidth = evt.target.innerWidth;
-    //   console.log(this.screenWidth);
-    // })
-
 
     this.user = this.authenticationService.currentUserValue;
     if (this.user.tipoUsuario.id === 2) { //check if is teacher
       this.isTeacher = true;
     }
 
-    this.turmaService.getQtdTurmas().subscribe(resp => {
-      this.qtdTurmas = resp.quantidade;
-    })
+    this.turmaService.emitQtdTurmas.subscribe(
+      resp => {
+        this.qtdTurmas = resp;
+      }
+    )
   }
 
   toggleSideBar() {

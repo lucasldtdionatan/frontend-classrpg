@@ -8,7 +8,6 @@ import { SnackBarService } from 'src/app/services/snack-bar.service';
 import { TurmaService } from './../../turma-home.service';
 
 import { TurmaList } from './../../turma-home.model';
-import { User } from './../../../../models/user.model';
 
 import { DialogMassageComponent } from './../../../template/dialog-massage/dialog-massage.component';
 
@@ -20,7 +19,6 @@ import { DialogMassageComponent } from './../../../template/dialog-massage/dialo
 export class TurmaListComponent implements OnInit {
 
   turmas: TurmaList[] = [];
-  user: User;
   isTeacher: boolean;
 
 
@@ -36,9 +34,13 @@ export class TurmaListComponent implements OnInit {
   ngOnInit(): void {
     this.isTeacher = this.authService.isTeacher();
 
-    this.getTurmas();
+    this.turmaService.emitTurmas.subscribe(
+      resp => {
+        this.turmas = resp;
+      }
+    )
 
-
+    this.turmaService.getTurmas();
   }
 
   onDelete(id: string) {
@@ -49,7 +51,6 @@ export class TurmaListComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-
       confirmationDelete = result;
 
       if (confirmationDelete) {
@@ -58,7 +59,7 @@ export class TurmaListComponent implements OnInit {
         ).subscribe(
           resp => {
             this.snackBarService.openSnackBar('Turma excluída com sucesso!', 'X', false);
-            this.getTurmas();
+            this.turmaService.getTurmas();
           },
           error => {
             this.snackBarService.openSnackBar('Não foi possível excluir a turma', 'X', true);
@@ -66,18 +67,4 @@ export class TurmaListComponent implements OnInit {
       }
     })
   }
-
-  getTurmas() {
-    this.turmaService.getTurmas().pipe(
-      take(1)
-    ).subscribe(
-      resp => {
-        this.turmas = resp;
-      },
-      error => {
-        this.turmas = [];
-      }
-    )
-  }
-
 }
