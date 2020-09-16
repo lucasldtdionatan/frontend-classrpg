@@ -38,6 +38,10 @@ export class TurmaService {
     );
   }
 
+  getTurmaById(codigo: string) {
+    return this.http.get<TurmaList>(`${environment.apiUrl}/turmas/codigo/${codigo}`);
+  }
+
   getQtdTurmas() {
     return this.http.get<any>(`${environment.apiUrl}/turmas/usuario/qtd`);
   }

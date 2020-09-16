@@ -1,0 +1,92 @@
+/*--------------------------------------input style----------------------------------------*/
+
+::ng-deep .mat-input-element {
+    caret-color: #000000;
+}
+
+::ng-deep .mat-form-field-label {
+    color: #000000;
+}
+
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+    color: #000000;
+}
+
+::ng-deep .mat-drawer-container {
+    color: #000;
+}
+
+/* input focused*/
+
+::ng-deep .mat-form-field.mat-focused .mat-form-field-label {
+    color: #000000;
+}
+
+::ng-deep .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
+    color: #000000;
+}
+
+::ng-deep .mat-input-element::placeholder {
+    color: #808080;
+}
+
+/* progress spinner */
+
+::ng-deep .mat-progress-spinner circle, .mat-spinner circle {
+    stroke: rgb(255, 255, 255, .3);
+}
+
+/*button styles*/
+
+::ng-deep .mat-raised-button.mat-button-disabled.mat-button-disabled {
+    background-color: #000000;
+}
+
+h1 {
+    color: #000000;
+    font-size: 2.1rem;
+    margin-top: 2%;
+}
+
+mat-form-field {
+    width: 70%;
+}
+
+button {
+    background-color: #000000;
+}
+
+.cardContent img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.imgTurma {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.buttonSubmitCancel {
+    position: absolute;
+    margin-bottom: 2%;
+    right: 15%;
+}
+
+mat-card {
+    background-color: #1C1C1C;
+}
+
+@media screen and (max-width: 1000px) {
+    mat-form-field {
+        width: 90%;
+    }
+    .buttonSubmitCancel {
+        position: absolute;
+        margin-bottom: 2%;
+        right: 5%;
+    }
+}

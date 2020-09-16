@@ -1,5 +1,6 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { TurmaSearchComponent } from './components/turma-home/turma-home-component/turma-search/turma-search.component';
+import { NgModule, Component } from '@angular/core';
+import { Routes, RouterModule, CanActivate } from '@angular/router';
 
 import { LoginComponent } from './components/login/login.component';
 import { TurmaAddComponent } from './components/turma-home/turma-home-component/turma-add/turma-add.component';
@@ -25,6 +26,11 @@ const routes: Routes = [
         path: 'novaturma',
         canActivate: [AuthGuard],
         component: TurmaAddComponent
+      },
+      {
+        path: 'buscarturma',
+        canActivate: [AuthGuard],
+        component: TurmaSearchComponent
       },
       { path: '', redirectTo: '/turmas', pathMatch: 'full' },
     ]

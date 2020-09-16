@@ -37,6 +37,7 @@ import { DialogMassageComponent } from './components/template/dialog-massage/dia
 
 
 import { AuthGuard } from './guards/auth-guard';
+import { TurmaSearchComponent } from './components/turma-home/turma-home-component/turma-search/turma-search.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { AuthGuard } from './guards/auth-guard';
     TurmaListComponent,
     TurmaAddComponent,
     DialogMassageComponent,
+    TurmaSearchComponent,
   ],
   
   imports: [

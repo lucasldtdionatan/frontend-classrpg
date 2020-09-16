@@ -3,7 +3,8 @@
         matTooltip="Criar um nova turma">
         Nova turma</button>
 
-    <button *ngIf="!isTeacher" mat-raised-button class="buttonNovaTurma" matTooltip="Buscar turma">
+    <button *ngIf="!isTeacher" [routerLink]="['/buscarturma']" mat-raised-button class="buttonNovaTurma"
+        matTooltip="Buscar turma">
         Buscar turma</button>
 </div>
 
@@ -22,7 +23,7 @@
         </mat-card-content>
 
         <mat-card-actions>
-            <button mat-icon-button (click)="onDelete(turma.id)" matTooltip="Deletar turma">
+            <button *ngIf="isTeacher" mat-icon-button (click)="onDelete(turma.id)" matTooltip="Deletar turma">
                 <i class="material-icons">delete_forever</i>
             </button>
         </mat-card-actions>
