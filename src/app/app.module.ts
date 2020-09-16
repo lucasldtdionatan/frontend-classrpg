@@ -30,7 +30,7 @@ import { AuthenticationService } from './services/auth.service';
 import { Interceptor } from './interceptors/interceptor.service';
 
 import { LoginComponent } from './components/login/login.component';
-import { SidenavTurmaComponent } from './components/turma-home/sidenav-turma/sidenav-turma.component';
+import { SidenavTurmaHomeComponent } from './components/turma-home/sidenav-turma-home/sidenav-turma-home.component';
 import { TurmaAddComponent } from './components/turma-home/turma-home-component/turma-add/turma-add.component';
 import { TurmaListComponent } from './components/turma-home/turma-home-component/turma-list/turma-list.component';
 import { DialogMassageComponent } from './components/template/dialog-massage/dialog-massage.component';
@@ -43,7 +43,7 @@ import { TurmaSearchComponent } from './components/turma-home/turma-home-compone
   declarations: [
     AppComponent,
     LoginComponent,
-    SidenavTurmaComponent,
+    SidenavTurmaHomeComponent,
     TurmaListComponent,
     TurmaAddComponent,
     DialogMassageComponent,

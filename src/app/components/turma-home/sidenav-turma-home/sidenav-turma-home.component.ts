@@ -2,18 +2,18 @@ import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { Observable, fromEvent } from 'rxjs';
 
-import { AuthenticationService } from './../../../services/auth.service';
-import { TurmaService } from './../turma-home.service';
+import { AuthenticationService } from '../../../services/auth.service';
+import { TurmaService } from '../turma-home.service';
 
-import { User } from './../../../models/user.model';
+import { User } from '../../../models/user.model';
 
 
 @Component({
-  selector: 'app-sidenav-turma',
-  templateUrl: './sidenav-turma.component.html',
-  styleUrls: ['./sidenav-turma.component.css']
+  selector: 'app-sidenav-turma-home',
+  templateUrl: './sidenav-turma-home.component.html',
+  styleUrls: ['./sidenav-turma-home.component.css']
 })
-export class SidenavTurmaComponent implements OnInit {
+export class SidenavTurmaHomeComponent implements OnInit {
 
   sidenavOpen = true;
   isTeacher: boolean = false;

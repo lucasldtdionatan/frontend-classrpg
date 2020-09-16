@@ -4,7 +4,7 @@ import { Routes, RouterModule, CanActivate } from '@angular/router';
 
 import { LoginComponent } from './components/login/login.component';
 import { TurmaAddComponent } from './components/turma-home/turma-home-component/turma-add/turma-add.component';
-import { SidenavTurmaComponent } from './components/turma-home/sidenav-turma/sidenav-turma.component';
+import { SidenavTurmaHomeComponent } from './components/turma-home/sidenav-turma-home/sidenav-turma-home.component';
 import { TurmaListComponent } from './components/turma-home/turma-home-component/turma-list/turma-list.component';
 
 
@@ -14,7 +14,7 @@ import { AuthGuard } from './guards/auth-guard';
 const routes: Routes = [
   {
     path: '',
-    component: SidenavTurmaComponent,
+    component: SidenavTurmaHomeComponent,
     canActivate: [AuthGuard],
     children: [
       {
