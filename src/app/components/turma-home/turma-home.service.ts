@@ -38,7 +38,11 @@ export class TurmaService {
     );
   }
 
-  getTurmaById(codigo: string) {
+  getTurmaById(id: string){
+    return this.http.get<TurmaList>(`${environment.apiUrl}/turmas/${id}`);;
+  }
+
+  getTurmaByToken(codigo: string) {
     return this.http.get<TurmaList>(`${environment.apiUrl}/turmas/codigo/${codigo}`);
   }
 

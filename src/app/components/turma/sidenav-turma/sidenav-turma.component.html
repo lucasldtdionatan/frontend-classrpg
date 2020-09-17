@@ -1,0 +1,66 @@
+<mat-toolbar class="mat-elevation-z6">
+    <button mat-icon-button (click)="toggleSideBar()">
+        <mat-icon>menu</mat-icon>
+    </button>
+    <span>ClassRPG</span>
+</mat-toolbar>
+
+<mat-drawer-container hasBackdrop="false">
+
+    <mat-drawer #drawer [mode]="(screenWidth < 900) ? 'over' : 'side'" [opened]="sidenavOpen">
+        <!-- teacher -->
+        <div class="information" *ngIf="isTeacher">
+            <img class="userImgData" src="{{ turma.imagem }}" alt="" matTooltip="Imagem da turma">
+
+            <h1 matTooltip="Código da turma: {{ turma.codigoAcesso}}"> {{ turma.codigoAcesso }}</h1>
+            <h3 matTooltip="Título da turma: {{ turma.titulo }}">{{ turma.titulo }}</h3>
+            <h3 matTooltip="Quantidade de alunos na turma: {{ turma.quantidade }}">{{ turma.quantidade }} alunos</h3>
+            <mat-divider></mat-divider>
+        </div>
+        <!-- student -->
+        <div class="information" *ngIf="!isTeacher">
+            <img class="userImgData" src="{{ user.imagem }}" alt="" matTooltip="Imagem avatar">
+
+            <h2 matTooltip="Experiência do personagem: {{personagem.experiencia}}xp">{{ personagem.experiencia }} xp
+            </h2>
+            <h1 matTooltip="Nome do estudante: {{ user.nome }}">{{ user.nome }}</h1>
+            <h3 matTooltip="Classe do personagem: {{ personagem.nivel.nome}}"> {{ personagem.nivel.nome }}</h3>
+            <h3 matTooltip="Nome da turma: {{ turma.titulo }}">{{ turma.titulo }}</h3>
+            <h3 matTooltip="Quantidade de alunos na turma: {{ turma.quantidade}}">{{ turma.quantidade }} alunos</h3>
+            <mat-divider></mat-divider>
+        </div>
+        <mat-nav-list>
+            <a mat-list-item *ngIf="isTeacher">
+                <span matLine>Alunos</span>
+            </a>
+            <a mat-list-item *ngIf="!isTeacher">
+                <span matLine>Ranking</span>
+            </a>
+
+            <a mat-list-item>
+                <span matLine>Atividades</span>
+            </a>
+            <a mat-list-item>
+                <span matLine>Recompensas</span>
+            </a>
+            <a mat-list-item>
+                <span matLine>Níveis</span>
+            </a>
+            <a mat-list-item>
+                <span matLine>Configuração</span>
+            </a>
+        </mat-nav-list>
+
+        <div class="buttonBack">
+            <mat-divider></mat-divider>
+            <a href="" (click)="onBack()" matTooltip="Voltar para lista de turmas">
+                <i class="material-icons">arrow_back</i>
+                <span>Voltar</span>
+            </a>
+        </div>
+
+    </mat-drawer>
+    <mat-drawer-content>
+        <router-outlet></router-outlet>
+    </mat-drawer-content>
+</mat-drawer-container>

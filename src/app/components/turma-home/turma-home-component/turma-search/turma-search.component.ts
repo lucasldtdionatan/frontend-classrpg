@@ -39,7 +39,7 @@ export class TurmaSearchComponent implements OnInit {
 
   onSubmit() {
     this.isLoading = true;
-    this.turmaService.getTurmaById(this.formCodigo.get("codigoTurma").value).subscribe(
+    this.turmaService.getTurmaByToken(this.formCodigo.get("codigoTurma").value).subscribe(
       resp => {
         this.turma = resp;
         this.isLoading = false;

@@ -15,4 +15,8 @@ export class PersonagemService {
   createPersonagem(turma: any) {
     return this.http.post<any>(`${environment.apiUrl}/personagens/cadastrar`, turma);
   }
+
+  getUsuarioAndTurmaById(id: number){
+    return this.http.get<any>(`${environment.apiUrl}/personagens/usuario/turma/${id}`);
+  }
 }

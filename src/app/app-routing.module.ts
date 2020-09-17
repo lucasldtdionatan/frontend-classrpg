@@ -1,3 +1,4 @@
+import { SidenavTurmaComponent } from './components/turma/sidenav-turma/sidenav-turma.component';
 import { TurmaSearchComponent } from './components/turma-home/turma-home-component/turma-search/turma-search.component';
 import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule, CanActivate } from '@angular/router';
@@ -34,6 +35,11 @@ const routes: Routes = [
       },
       { path: '', redirectTo: '/turmas', pathMatch: 'full' },
     ]
+  },
+  {
+    path: 'turma/:id',
+    component: SidenavTurmaComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'login',

@@ -1,0 +1,60 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+mat-toolbar {
+    background-color: #000000;
+    position: relative;
+    z-index: 7;
+}
+
+mat-drawer {
+    width: 300px;
+    background-color: #000000;
+    text-align: center;
+}
+
+mat-drawer-container {
+    height: 100%;
+    background-color: #ffffff;
+}
+
+.information h3 {
+    margin-top: -15px;
+}
+
+.userImgData {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.buttonBack {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    margin-bottom: 5%;
+    font-size: 1.3rem;
+}
+
+.buttonBack mat-divider {
+    margin-bottom: 2%;
+}
+
+.buttonBack span, i {
+    vertical-align: middle;
+}
+
+.buttonBack a {
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.information h1, h2, h3 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}

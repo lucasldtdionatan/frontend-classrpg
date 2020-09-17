@@ -11,7 +11,7 @@
 <div class="divCardList" fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutAlign="flex-start" fxLayoutGap="10px">
 
     <mat-card class="mat-elevation-z6" *ngFor="let turma of turmas" fxFlex="200px" fxFlex.lt-md="200px"
-        fxFlex.lt-sm="80">
+        fxFlex.lt-sm="80" (click)="openTurma(turma.id)">
 
         <mat-card-content class="cardContent">
             <div class="imgTurma">

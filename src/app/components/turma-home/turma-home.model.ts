@@ -1,4 +1,4 @@
-export class Turma {
+export interface Turma {
     titulo: string;
     descricao?: string;
     imagem?: string;
@@ -8,7 +8,7 @@ export interface TurmaList {
     id: number;
     titulo: string;
     imagem: string;
-    professor: {
+    professor?: {
         id: number;
         nome: string;
         senha?: string;

@@ -43,6 +43,10 @@ export class TurmaListComponent implements OnInit {
     this.turmaService.getTurmas();
   }
 
+  openTurma(id: any) {
+    this.router.navigate([`turma/${id}`]);
+  }
+
   onDelete(id: string) {
     let confirmationDelete: boolean;
 

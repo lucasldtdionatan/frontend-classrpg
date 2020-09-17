@@ -38,6 +38,7 @@ import { DialogMassageComponent } from './components/template/dialog-massage/dia
 
 import { AuthGuard } from './guards/auth-guard';
 import { TurmaSearchComponent } from './components/turma-home/turma-home-component/turma-search/turma-search.component';
+import { SidenavTurmaComponent } from './components/turma/sidenav-turma/sidenav-turma.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { TurmaSearchComponent } from './components/turma-home/turma-home-compone
     TurmaAddComponent,
     DialogMassageComponent,
     TurmaSearchComponent,
+    SidenavTurmaComponent,
   ],
   
   imports: [
