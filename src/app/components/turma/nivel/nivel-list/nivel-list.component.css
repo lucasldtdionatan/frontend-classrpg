@@ -1,0 +1,35 @@
+/* Table style*/
+
+.mat-table {
+    background: #000000;
+}
+
+/*=============================================*/
+
+
+h1 {
+    color: #000000;
+    font-size: 2.1rem;
+    margin-top: 2%;
+}
+
+.buttonNovoNivel {
+    position: absolute;
+    background-color: #000000;
+    left: 2%;
+    margin-top: 10px;
+}
+
+mat-table {
+    width: 95%;
+    position: relative;
+    top: 60px;
+    left: 2%;
+    right: 2%;
+}
+
+mat-cell {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}

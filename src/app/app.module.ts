@@ -24,6 +24,11 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatDialogModule } from '@angular/material/dialog';;
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatSelectModule } from '@angular/material/select';
+import { MatTableModule } from '@angular/material/table';
+import { MatSortModule } from '@angular/material/sort';
+import { MatPaginatorModule } from '@angular/material/paginator'
+import { MatDatepickerModule } from '@angular/material/datepicker';
 
 
 import { AuthenticationService } from './services/auth.service';
@@ -39,6 +44,14 @@ import { DialogMassageComponent } from './components/template/dialog-massage/dia
 import { AuthGuard } from './guards/auth-guard';
 import { TurmaSearchComponent } from './components/turma-home/turma-home-component/turma-search/turma-search.component';
 import { SidenavTurmaComponent } from './components/turma/sidenav-turma/sidenav-turma.component';
+import { AlunosListComponent } from './components/turma/alunos/alunos-list/alunos-list.component';
+import { NivelListComponent } from './components/turma/nivel/nivel-list/nivel-list.component';
+import { NivelAddComponent } from './components/turma/nivel/nivel-add/nivel-add.component';
+import { NivelEditComponent } from './components/turma/nivel/nivel-edit/nivel-edit.component';
+import { AtividadeListComponent } from './components/turma/atividades/atividade-list/atividade-list.component';
+import { AtividadeAddComponent } from './components/turma/atividades/atividade-add/atividade-add.component';
+import { MatNativeDateModule } from '@angular/material/core';
+
 
 @NgModule({
   declarations: [
@@ -50,8 +63,14 @@ import { SidenavTurmaComponent } from './components/turma/sidenav-turma/sidenav-
     DialogMassageComponent,
     TurmaSearchComponent,
     SidenavTurmaComponent,
+    AlunosListComponent,
+    NivelListComponent,
+    NivelAddComponent,
+    NivelEditComponent,
+    AtividadeListComponent,
+    AtividadeAddComponent
   ],
-  
+
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -74,8 +93,13 @@ import { SidenavTurmaComponent } from './components/turma/sidenav-turma/sidenav-
     MatSnackBarModule,
     MatProgressSpinnerModule,
     MatDialogModule,
-    MatTooltipModule
-
+    MatTooltipModule,
+    MatSelectModule,
+    MatTableModule,
+    MatSortModule,
+    MatPaginatorModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true }, AuthenticationService, AuthGuard],
   bootstrap: [AppComponent]

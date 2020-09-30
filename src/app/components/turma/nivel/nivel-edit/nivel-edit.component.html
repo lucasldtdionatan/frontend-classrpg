@@ -1,0 +1,62 @@
+<div style="text-align: center;">
+    <h1 style="color: black; font-size: 2.1rem; margin-top: 2%;">Editar nível</h1>
+
+    <form [formGroup]="nivelForm" style="margin-top: 2%;" (ngSubmit)="onSubmit()">
+
+        <div fxLayout="row wrap" fxLayoutAlign="center center">
+            <div class="imagePreviewBox" fxFlexOrder="1">
+                <img class="imagePreview" [src]="imgURL" *ngIf="imgURL">
+            </div>
+            <input #file style="display: none;" id="inputFile" type="file" accept="image/*"
+                (change)="imagePreview(file.files)">
+            <label for="inputFile" class="mat-raised-button buttonImageSelect" fxFlexOrder="2">Selecionar imagem</label>
+        </div>
+
+        <mat-form-field appearance="outline" class="InputTitle">
+            <mat-label>Título do nível</mat-label>
+            <input matInput type="text" autocomplete="off" formControlName="titulo">
+            <mat-error *ngIf="nivelForm.controls.titulo.hasError('required')">Favor informar o
+                <strong>título do nível</strong>
+            </mat-error>
+        </mat-form-field>
+
+        <div fxLayout="row wrap" fxLayoutAlign="center" fxLayoutGap="5px">
+
+            <mat-form-field appearance="outline" class="InputNivel">
+                <mat-label>Nível</mat-label>
+                <input matInput type="number" autocomplete="off" formControlName="nivel">
+                <mat-error *ngIf="nivelForm.controls.nivel.hasError('required')">Favor informar o
+                    <strong>nível</strong>
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="InputStyle">
+                <mat-label>Pontação miníma</mat-label>
+                <input matInput type="number" autocomplete="off" formControlName="nivelMinimo">
+                <mat-error *ngIf="nivelForm.controls.titulo.hasError('required')">Favor informar a
+                    <strong>pontuação mínima</strong>
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="InputStyle">
+                <mat-label>Pontuação máxima</mat-label>
+                <input matInput type="number" autocomplete="off" formControlName="nivelMaximo">
+                <mat-error *ngIf="nivelForm.controls.titulo.hasError('required')">Favor informar a
+                    <strong>pontuação máxima</strong>
+                </mat-error>
+            </mat-form-field>
+        </div>
+
+        <div fxLayout="row" fxLayoutAlign="center" fxLayoutGap="5px" class="buttonSubmitCancel">
+
+            <button mat-raised-button fxFlexOrder="1" type="button" (click)="onCancel()">Cancelar</button>
+
+            <button mat-raised-button fxFlexOrder="2" type="submit" [disabled]="!nivelForm.valid || isLoading">
+                <div style="position: absolute; width: 100%; height: 100%; align-content: center;">
+                    <mat-spinner *ngIf="isLoading" diameter="30" style="position: absolute; left: 11%"></mat-spinner>
+                </div>
+                Cadastrar
+            </button>
+        </div>
+    </form>
+</div>

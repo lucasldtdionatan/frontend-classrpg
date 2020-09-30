@@ -1,0 +1,42 @@
+<div style="text-align: center;">
+    <h1>Configuração de níveis</h1>
+</div>
+
+<div>
+    <button mat-raised-button matTooltip="Criar um novo nível" class="buttonNovoNivel" routerLink="../criarnivel">Criar
+        novo nível</button>
+</div>
+
+<mat-table [dataSource]="dataSource" class="mat-elevation-z8" style="margin-bottom: 2%;" matSort
+    matSortActive="nivel.nivel" matSortDirection="asc">
+
+    <ng-container matColumnDef="Título">
+        <mat-header-cell *matHeaderCellDef>Título</mat-header-cell>
+        <mat-cell *matCellDef="let nivel">{{ nivel.nome }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="nivel.nivel">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Nível</mat-header-cell>
+        <mat-cell *matCellDef="let nivel">{{ nivel.nivel }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="Pontuação mínima-máxima">
+        <mat-header-cell *matHeaderCellDef>Pontuação mínima-máxima</mat-header-cell>
+        <mat-cell *matCellDef="let nivel">{{ nivel.experienciaMinima }} - {{ nivel.experienciaMaxima }} XP</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="Action">
+        <mat-header-cell *matHeaderCellDef></mat-header-cell>
+        <mat-cell *matCellDef="let nivel">
+            <button mat-icon-button matTooltip="Editar nível" routerLink="../editarnivel/{{ nivel.id }}">
+                <i class="material-icons edit">edit</i>
+            </button>
+            <button mat-icon-button (click)="onDelete(nivel.id)" matTooltip="Deletar nível">
+                <i class="material-icons delete">delete</i>
+            </button>
+        </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+</mat-table>

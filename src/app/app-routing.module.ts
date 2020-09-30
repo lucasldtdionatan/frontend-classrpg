@@ -1,5 +1,7 @@
-import { SidenavTurmaComponent } from './components/turma/sidenav-turma/sidenav-turma.component';
-import { TurmaSearchComponent } from './components/turma-home/turma-home-component/turma-search/turma-search.component';
+import { AtividadeAddComponent } from './components/turma/atividades/atividade-add/atividade-add.component';
+import { AtividadeListComponent } from './components/turma/atividades/atividade-list/atividade-list.component';
+import { NivelEditComponent } from './components/turma/nivel/nivel-edit/nivel-edit.component';
+
 import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule, CanActivate } from '@angular/router';
 
@@ -7,7 +9,11 @@ import { LoginComponent } from './components/login/login.component';
 import { TurmaAddComponent } from './components/turma-home/turma-home-component/turma-add/turma-add.component';
 import { SidenavTurmaHomeComponent } from './components/turma-home/sidenav-turma-home/sidenav-turma-home.component';
 import { TurmaListComponent } from './components/turma-home/turma-home-component/turma-list/turma-list.component';
-
+import { NivelListComponent } from './components/turma/nivel/nivel-list/nivel-list.component';
+import { AlunosListComponent } from './components/turma/alunos/alunos-list/alunos-list.component';
+import { SidenavTurmaComponent } from './components/turma/sidenav-turma/sidenav-turma.component';
+import { TurmaSearchComponent } from './components/turma-home/turma-home-component/turma-search/turma-search.component';
+import { NivelAddComponent } from './components/turma/nivel/nivel-add/nivel-add.component';
 
 import { AuthGuard } from './guards/auth-guard';
 
@@ -39,7 +45,39 @@ const routes: Routes = [
   {
     path: 'turma/:id',
     component: SidenavTurmaComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard],
+    children: [
+      {
+        path: 'alunos',
+        canActivate: [AuthGuard],
+        component: AlunosListComponent
+      },
+      {
+        path: 'atividades',
+        canActivate: [AuthGuard],
+        component: AtividadeListComponent
+      },
+      {
+        path: 'criaratividade',
+        canActivate: [AuthGuard],
+        component: AtividadeAddComponent
+      },
+      {
+        path: 'niveis',
+        canActivate: [AuthGuard],
+        component: NivelListComponent,
+      },
+      {
+        path: 'criarnivel',
+        canActivate: [AuthGuard],
+        component: NivelAddComponent
+      },
+      {
+        path: 'editarnivel/:id',
+        canActivate: [AuthGuard],
+        component: NivelEditComponent
+      }
+    ]
   },
   {
     path: 'login',

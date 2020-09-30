@@ -63,12 +63,15 @@ export class SidenavTurmaComponent implements OnInit {
     this.turmaHomeService.getTurmaById(id).pipe(take(1)).subscribe(
       resp => {
         this.turma = resp;
-        this.personagemService.getUsuarioAndTurmaById(this.turma.id).pipe(take(1)).subscribe(
-          resp => {
-            this.personagem = resp;
-            console.log(this.personagem)
-          }
-        )
+
+        if (!this.isTeacher) {
+          this.personagemService.getUsuarioAndTurmaById(this.turma.id).pipe(take(1)).subscribe(
+            resp => {
+              this.personagem = resp;
+              console.log(this.personagem)
+            }
+          )
+        }
       }
     );
 

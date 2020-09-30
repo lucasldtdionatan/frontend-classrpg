@@ -15,6 +15,8 @@ export class TurmaService {
   emitQtdTurmas = new EventEmitter<number>()
   turmas: TurmaList[];
 
+  idTurma: any;
+
   constructor(
     private http: HttpClient,
   ) { }
@@ -38,8 +40,12 @@ export class TurmaService {
     );
   }
 
-  getTurmaById(id: string){
+  getTurmaById(id: string) {
+    this.idTurma = id;
     return this.http.get<TurmaList>(`${environment.apiUrl}/turmas/${id}`);;
+  }
+  returnIdTurma() {
+    return this.idTurma;
   }
 
   getTurmaByToken(codigo: string) {

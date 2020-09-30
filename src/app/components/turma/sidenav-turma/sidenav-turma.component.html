@@ -12,8 +12,8 @@
         <div class="information" *ngIf="isTeacher">
             <img class="userImgData" src="{{ turma.imagem }}" alt="" matTooltip="Imagem da turma">
 
-            <h1 matTooltip="Código da turma: {{ turma.codigoAcesso}}"> {{ turma.codigoAcesso }}</h1>
-            <h3 matTooltip="Título da turma: {{ turma.titulo }}">{{ turma.titulo }}</h3>
+            <h1 matTooltip="Título da turma: {{ turma.titulo }}">{{ turma.titulo }}</h1>
+            <h3 matTooltip="Código da turma: {{ turma.codigoAcesso}}"> {{ turma.codigoAcesso }}</h3>
             <h3 matTooltip="Quantidade de alunos na turma: {{ turma.quantidade }}">{{ turma.quantidade }} alunos</h3>
             <mat-divider></mat-divider>
         </div>
@@ -30,7 +30,7 @@
             <mat-divider></mat-divider>
         </div>
         <mat-nav-list>
-            <a mat-list-item *ngIf="isTeacher">
+            <a mat-list-item *ngIf="isTeacher" [routerLink]="['alunos']">
                 <span matLine>Alunos</span>
             </a>
             <a mat-list-item *ngIf="!isTeacher">
@@ -38,12 +38,12 @@
             </a>
 
             <a mat-list-item>
-                <span matLine>Atividades</span>
+                <span matLine [routerLink]="['atividades']">Atividades</span>
             </a>
             <a mat-list-item>
                 <span matLine>Recompensas</span>
             </a>
-            <a mat-list-item>
+            <a mat-list-item [routerLink]="['niveis']">
                 <span matLine>Níveis</span>
             </a>
             <a mat-list-item>

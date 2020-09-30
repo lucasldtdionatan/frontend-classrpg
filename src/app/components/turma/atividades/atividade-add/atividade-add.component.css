@@ -1,0 +1,71 @@
+/*--------------------------------------input style----------------------------------------*/
+
+::ng-deep .mat-input-element {
+    caret-color: #000000;
+}
+
+::ng-deep .mat-form-field-label {
+    color: #000000;
+}
+
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+    color: #000000;
+}
+
+::ng-deep .mat-drawer-container {
+    color: #000;
+}
+
+/* input focused*/
+
+::ng-deep .mat-form-field.mat-focused .mat-form-field-label {
+    color: #000000;
+}
+
+::ng-deep .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
+    color: #000000;
+}
+
+::ng-deep .mat-input-element::placeholder {
+    color: #808080;
+}
+
+/* Input Date*/
+
+.mat-datepicker-toggle, .mat-datepicker-content .mat-calendar-next-button, .mat-datepicker-content .mat-calendar-previous-button {
+    color: #000000;
+}
+
+::ng-deep .mat-form-field-appearance-outline.mat-focused.mat-accent .mat-form-field-outline-thick {
+    color: #000000;
+}
+
+.mat-form-field.mat-accent .mat-input-element {
+    caret-color: #000000;
+}
+
+::ng-deep .mat-form-field.mat-focused .mat-form-field-label.mat-accent {
+    color: #000000;
+}
+
+.mat-datepicker-toggle-active.mat-accent {
+    color: #000000;
+}
+
+/*============================================================================================*/
+
+h1 {
+    color: #000000;
+    font-size: 2.1rem;
+    margin-top: 2%;
+}
+
+.input {
+    width: 64%;
+}
+
+@media screen and (max-width: 1000px) {
+    .input {
+        width: 90%;
+    }
+}

@@ -46,7 +46,6 @@ export class TurmaAddComponent implements OnInit {
     this.turma = {
       titulo: this.formTurma.get("titulo").value,
       descricao: this.formTurma.get("descricao").value,
-
     }
 
     if (this.imgSelected) {

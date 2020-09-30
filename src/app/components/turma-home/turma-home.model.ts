@@ -5,9 +5,9 @@ export interface Turma {
 }
 
 export interface TurmaList {
-    id: number;
-    titulo: string;
-    imagem: string;
+    id?: number;
+    titulo?: string;
+    imagem?: string;
     professor?: {
         id: number;
         nome: string;
@@ -21,6 +21,6 @@ export interface TurmaList {
         imagem: string;
         token?: string;
     }
-    codigoAcesso: string;
-    quantidade: number;
+    codigoAcesso?: string;
+    quantidade?: number;
 }

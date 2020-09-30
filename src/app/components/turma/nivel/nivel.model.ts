@@ -1,10 +1,10 @@
 import { TurmaList } from './../../turma-home/turma-home.model';
 export class Nivel {
-    id: number;
+    id?: number;
     experienciaMinima: number;
     experienciaMaxima: number;
     nome: string;
     nivel: number;
-    turma: TurmaList;
-
+    turma?: TurmaList;
+    imagem?: string;
 }
