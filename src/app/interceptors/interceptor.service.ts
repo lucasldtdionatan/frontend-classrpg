@@ -4,23 +4,37 @@ import { HttpEvent, HttpInterceptor, HttpHandler, HttpRequest } from '@angular/c
 import { AuthenticationService } from '../services/auth.service';
 import { environment } from 'src/environments/environment';
 
-
+export const InterceptorSkipHeader = 'X-Skip-Interceptor';
 @Injectable()
 export class Interceptor implements HttpInterceptor {
-    constructor(private authenticationService: AuthenticationService) { }
 
+    constructor(private authenticationService: AuthenticationService) { }
 
     intercept(
         request: HttpRequest<any>,
         next: HttpHandler
     ): Observable<HttpEvent<any>> {
+
+        // if (request.headers.has(InterceptorSkipHeader)) {
+        //     const headers = request.headers.delete(InterceptorSkipHeader);
+        //     return next.handle(request.clone({ headers }));
+        // }
+
+
         const token = localStorage.getItem('Authorization');
+        console.log(token);
+
+        if (token != null) {
+            request = request.clone({
+                setHeaders: {
+                    Authorization: `Bearer ${token}`
+                }
+            })
+
+        }
+        return next.handle(request);
         // const token = this.authenticationService.getToken;
-        request = request.clone({
-            setHeaders: {
-                Authorization: `Bearer ${token}`
-            }
-        })
+
 
         // const currentUser = this.authenticationService.currentUserValue;
         // const isLoggedIn = currentUser && currentUser.token;
@@ -33,6 +47,6 @@ export class Interceptor implements HttpInterceptor {
         //     });
         // }
 
-        return next.handle(request);
+
     }
 }

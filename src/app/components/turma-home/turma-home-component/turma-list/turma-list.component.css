@@ -3,8 +3,13 @@ mat-card {
     margin-top: 10px;
     margin-bottom: 10px;
 }
+
 .cardContent {
     text-align: center;
+}
+
+mat-card-content:hover {
+    cursor: pointer;
 }
 
 .cardContent img {
@@ -13,7 +18,8 @@ mat-card {
     border-radius: 50%;
     object-fit: cover;
 }
-.cardContent h2{
+
+.cardContent h2 {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -39,7 +45,7 @@ mat-card {
         top: 60px;
         width: 80%;
     }
-    .cardContent h2{
+    .cardContent h2 {
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;

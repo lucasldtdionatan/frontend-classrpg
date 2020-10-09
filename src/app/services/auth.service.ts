@@ -1,7 +1,9 @@
+import { SnackBarService } from './snack-bar.service';
+import { Interceptor, InterceptorSkipHeader } from './../interceptors/interceptor.service';
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, BehaviorSubject } from 'rxjs';
-import { map, tap } from 'rxjs/operators';
+import { map, tap, take } from 'rxjs/operators';
 
 import { environment } from 'src/environments/environment';
 
@@ -21,7 +23,8 @@ export class AuthenticationService {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
     observe: 'response' as 'response'
   };
-  constructor(private http: HttpClient, private router: Router) {
+
+  constructor(private http: HttpClient, private router: Router, private snackBarService: SnackBarService) {
     this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
     this.token = new BehaviorSubject<any>(localStorage.getItem('Authorization'));
     this.currentUser = this.currentUserSubject.asObservable();
@@ -55,12 +58,10 @@ export class AuthenticationService {
   }
 
   register(user: registerUser) {
-    return this.http.post<any>(`${environment.apiUrl}/usuarios/registrar`, user, { observe: 'response' })
-      .pipe(map(resp => {
-        this.currentUserSubject.next(resp.body);
-        // this.token = resp.headers.get('Authorization');
-        localStorage.setItem('Authorization', resp.headers.get('Authorization'));
-      }))
+    // const headers = new HttpHeaders().set(InterceptorSkipHeader, '');
+
+    return this.http.post<any>(`${environment.apiUrl}/usuarios/registrar`, user);
+
   }
 
   logout() {
@@ -78,40 +79,3 @@ export class AuthenticationService {
     }
   }
 }
-
-
-
-
-
-// login(usuario: Usuario) {
-
-  //   // return this.http.post<{access_token: string}>(this.basaUrl, usuario).pipe(tap(res => {
-  //   //   localStorage.setItem('access_token', res.access_token)
-  //   // }))
-
-  //   return this.http.post(this.basaUrl, usuario, { observe: 'response' }).subscribe(data => {
-  //     this.teste();
-  //   });
-
-  //   // if (usuario.email == 'teste.com.br' && usuario.password == '123') {
-
-  //   //   this.userAuth = true;
-  //   //   this.router.navigate(['/']);
-
-  //   // } else {
-
-  //   //   this.userAuth = false;
-
-  //   // }
-  // }
-  // teste() {
-    //   let titulo = 'teste';
-    //   let imagem = '';
-
-    //   this.http.post('http://localhost:8080/api/turmas/cadastrar', { titulo, imagem }).subscribe(res => {
-    //     console.log(res)
-    //   })
-    // }
-    // authenticatedUser() {
-    //   return this.userAuth;
-    // }

@@ -2,7 +2,7 @@ import { Validators, FormControl, FormGroup, FormGroupDirective, NgForm, FormBui
 import { Router } from '@angular/router';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { Component, OnInit } from '@angular/core';
-import { first } from 'rxjs/operators'
+import { first, take } from 'rxjs/operators'
 
 import { AuthenticationService } from '../../services/auth.service';
 import { SnackBarService } from '../../services/snack-bar.service'
@@ -89,18 +89,25 @@ export class LoginComponent implements OnInit {
     this.user.nickname = this.registerForm.get("nickname").value;
     this.user.tipoUsuario = this.registerForm.get("tipoUsuario").value;
 
-    this.authenticationService.register(this.user)
-      .pipe(first())
-      .subscribe(
-        data => {
-          this.router.navigate(['/turmas']);
-        },
-        error => {
-          this.isRegisterLoading = false;
-          this.snackBarService.openSnackBar('E-mail ou nickname já cadastrados', 'X', true);
+    this.authenticationService.register(this.user).pipe(take(1)).subscribe(
+      resp => {
+        let userLogin = {
+          email: this.user.email,
+          senha: this.user.senha
         }
+        this.snackBarService.openSnackBar('Usuário cadastrado com sucesso!', 'X', false);
 
-      )
+        this.authenticationService.login(userLogin).pipe(take(1)).subscribe(
+          resp => {
+            this.router.navigate(['/turmas']);
+          }
+        )
+      },
+      error => {
+        this.isRegisterLoading = false;
+        this.snackBarService.openSnackBar(error.error.message, 'X', true);
+      }
+    )
   }
 
   checkPasswords(group: FormGroup) { // here we have the 'passwords' group

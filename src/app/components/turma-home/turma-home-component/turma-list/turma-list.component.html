@@ -11,10 +11,10 @@
 <div class="divCardList" fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutAlign="flex-start" fxLayoutGap="10px">
 
     <mat-card class="mat-elevation-z6" *ngFor="let turma of turmas" fxFlex="200px" fxFlex.lt-md="200px"
-        fxFlex.lt-sm="80" (click)="openTurma(turma.id)">
-
-        <mat-card-content class="cardContent">
-            <div class="imgTurma">
+        fxFlex.lt-sm="80">
+        <!-- (click)="openTurma(turma.id)" -->
+        <mat-card-content class="cardContent" (click)="openTurma(turma.id)">
+            <div class=" imgTurma">
                 <img src="{{turma.imagem}}" alt="">
             </div>
             <h2 matTooltip="Título da turma: {{ turma.titulo }}">{{ turma.titulo }}</h2>
