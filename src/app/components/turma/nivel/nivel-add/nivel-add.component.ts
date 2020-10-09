@@ -82,7 +82,7 @@ export class NivelAddComponent implements OnInit {
 
   onCancel() {
     // this.router.navigate(['../niveis'])
-    this.Location.back()
+    this.Location.back();
   }
 
   sendNivel() {

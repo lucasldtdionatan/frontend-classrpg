@@ -50,7 +50,7 @@ import { NivelAddComponent } from './components/turma/nivel/nivel-add/nivel-add.
 import { NivelEditComponent } from './components/turma/nivel/nivel-edit/nivel-edit.component';
 import { AtividadeListComponent } from './components/turma/atividades/atividade-list/atividade-list.component';
 import { AtividadeAddComponent } from './components/turma/atividades/atividade-add/atividade-add.component';
-import { MatNativeDateModule } from '@angular/material/core';
+import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
 
 
 @NgModule({
@@ -101,7 +101,10 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatDatepickerModule,
     MatNativeDateModule
   ],
-  providers: [{ provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true }, AuthenticationService, AuthGuard],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true },
+    { provide: MAT_DATE_LOCALE, useValue: 'en-GB' },
+    AuthenticationService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
