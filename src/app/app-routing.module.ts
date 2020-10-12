@@ -1,3 +1,4 @@
+import { AtividadeEditComponent } from './components/turma/atividades/atividade-edit/atividade-edit.component';
 import { AtividadeAddComponent } from './components/turma/atividades/atividade-add/atividade-add.component';
 import { AtividadeListComponent } from './components/turma/atividades/atividade-list/atividade-list.component';
 import { NivelEditComponent } from './components/turma/nivel/nivel-edit/nivel-edit.component';
@@ -61,6 +62,12 @@ const routes: Routes = [
         path: 'criaratividade',
         canActivate: [AuthGuard],
         component: AtividadeAddComponent
+      },
+      {
+        path: 'editaratividade/:id',
+        canActivate: [AuthGuard],
+        component: AtividadeEditComponent,
+
       },
       {
         path: 'niveis',

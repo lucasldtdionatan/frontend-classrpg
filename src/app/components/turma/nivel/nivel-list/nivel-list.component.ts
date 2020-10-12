@@ -45,7 +45,6 @@ export class NivelListComponent implements OnInit {
             default: return item[property];
           }
         };
-        console.log(this.dataSource.data)
       }
     );
   }

@@ -18,6 +18,10 @@ export class AtividadeService {
     return this.http.get<Atividade[]>(`${environment.apiUrl}/atividades/turma/${id}`);
   }
 
+  getAtividadeById(id: string) {
+    return this.http.get<Atividade>(`${environment.apiUrl}/atividades/${id}`);
+  }
+
   deteleAtividade(id: string) {
     return this.http.delete(`${environment.apiUrl}/atividades/${id}`);
   }

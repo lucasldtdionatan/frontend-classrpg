@@ -1,6 +1,6 @@
 import { TurmaList } from './../../turma-home/turma-home.model';
 export interface Atividade {
-    id?: number;
+    id?: string;
     titulo: string;
     descricao: string;
     experiencia: number;
