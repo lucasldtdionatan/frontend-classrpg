@@ -72,6 +72,10 @@
     background-color: #000000;
 }
 
+::ng-deep .mat-progress-spinner circle, .mat-spinner circle {
+    stroke: rgb(255, 255, 255, .3);
+}
+
 /*============================================================================================*/
 
 h1 {

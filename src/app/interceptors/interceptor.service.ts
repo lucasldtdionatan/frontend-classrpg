@@ -22,7 +22,6 @@ export class Interceptor implements HttpInterceptor {
 
 
         const token = localStorage.getItem('Authorization');
-        console.log(token);
 
         if (token != null) {
             request = request.clone({

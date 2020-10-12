@@ -16,7 +16,7 @@
 
             <mat-form-field appearance="outline" class="InputXP">
                 <mat-label>Pontuação</mat-label>
-                <input matInput type="text" autocomplete="off" formControlName="pontuacao">
+                <input matInput type="number" autocomplete="off" formControlName="pontuacao">
                 <mat-error *ngIf="atividadeForm.controls.pontuacao.hasError('required')">Favor informar a
                     <strong> pontuação da atividade</strong>
                 </mat-error>
@@ -36,9 +36,13 @@
 
             <mat-form-field color="accent" appearance="outline" class="InputDate">
                 <mat-label>Data de início</mat-label>
-                <input matInput [matDatepicker]="picker1" autocomplete="off" formControlName="dataInicio">
+                <input matInput [min]="minDate" [matDatepicker]="picker1" autocomplete="off"
+                    formControlName="dataInicio">
                 <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
                 <mat-datepicker touchUi #picker1 disabled="false"></mat-datepicker>
+                <mat-error *ngIf="atividadeForm.controls.dataInicio.hasError('required')">Favor informar uma
+                    <strong> data de início da atividade</strong>
+                </mat-error>
             </mat-form-field>
 
             <mat-form-field appearance="outline" class="InputTime">
@@ -52,9 +56,13 @@
 
             <mat-form-field color="accent" appearance="outline" class="InputDate">
                 <mat-label>Data final</mat-label>
-                <input matInput [matDatepicker]="picker2" autocomplete="off" formControlName="dataFinal">
+                <input matInput [min]="minDate" [matDatepicker]="picker2" autocomplete="off"
+                    formControlName="dataFinal">
                 <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
                 <mat-datepicker touchUi #picker2 disabled="false"></mat-datepicker>
+                <mat-error *ngIf="atividadeForm.controls.dataInicio.hasError('required')">Favor informar uma
+                    <strong> data limite da atividade</strong>
+                </mat-error>
             </mat-form-field>
 
             <mat-form-field appearance="outline" class="InputTime">
@@ -71,10 +79,10 @@
 
             <button mat-raised-button fxFlexOrder="1" type="button" (click)="onCancel()">Cancelar</button>
 
-            <button mat-raised-button fxFlexOrder="2" type="submit" [disabled]="!atividadeForm.valid">
-                <!-- <div style="position: absolute; width: 100%; height: 100%; align-content: center;">
-            <mat-spinner *ngIf="isLoading" diameter="30" style="position: absolute; left: 11%"></mat-spinner>
-        </div> -->
+            <button mat-raised-button fxFlexOrder="2" type="submit" [disabled]="!atividadeForm.valid||isLoading">
+                <div style="position: absolute; width: 100%; height: 100%; align-content: center;">
+                    <mat-spinner *ngIf="isLoading" diameter="30" style="position: absolute; left: 11%"></mat-spinner>
+                </div>
                 Cadastrar
             </button>
 
