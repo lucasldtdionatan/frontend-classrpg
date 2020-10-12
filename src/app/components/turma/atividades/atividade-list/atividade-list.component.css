@@ -4,3 +4,15 @@
     left: 2%;
     margin-top: 10px;
 }
+
+.mat-table {
+    background: #000000;
+}
+
+mat-table {
+    width: 95%;
+    position: relative;
+    top: 60px;
+    left: 2%;
+    right: 2%;
+}

@@ -15,7 +15,7 @@ export class TurmaService {
   emitQtdTurmas = new EventEmitter<number>()
   turmas: TurmaList[];
 
-  idTurma: any;
+  idTurma: string;
 
   constructor(
     private http: HttpClient,

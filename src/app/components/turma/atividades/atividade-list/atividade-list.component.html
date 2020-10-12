@@ -6,3 +6,41 @@
     <button mat-raised-button matTooltip="Criar um novo nível" class="buttonNovoNivel"
         routerLink="../criaratividade">Criar atividade</button>
 </div>
+
+<mat-table [dataSource]="dataSource" class="mat-elevation-z8" style="margin-bottom: 2%;">
+
+    <ng-container matColumnDef="Título">
+        <mat-header-cell *matHeaderCellDef>Título da atividade</mat-header-cell>
+        <mat-cell *matCellDef="let atividade">{{ atividade.titulo }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="Pontuacao">
+        <mat-header-cell *matHeaderCellDef>Pontuação</mat-header-cell>
+        <mat-cell *matCellDef="let atividade">{{ atividade.experiencia }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="DataInicio">
+        <mat-header-cell *matHeaderCellDef>Data de início</mat-header-cell>
+        <mat-cell *matCellDef="let atividade">{{ atividade.inicioAtividade }} hrs</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="DataFinal">
+        <mat-header-cell *matHeaderCellDef>Data final</mat-header-cell>
+        <mat-cell *matCellDef="let atividade">{{ atividade.fimAtividade }} hrs</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="Action">
+        <mat-header-cell *matHeaderCellDef></mat-header-cell>
+        <mat-cell *matCellDef="let atividade">
+            <button mat-icon-button matTooltip="Editar atividade">
+                <i class="material-icons edit">edit</i>
+            </button>
+            <button mat-icon-button (click)="onDelete(atividade.id)" matTooltip="Deletar atividade">
+                <i class="material-icons delete">delete</i>
+            </button>
+        </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+</mat-table>

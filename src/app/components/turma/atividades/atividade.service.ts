@@ -13,4 +13,12 @@ export class AtividadeService {
   createAtividade(atividade: Atividade) {
     return this.http.post<any>(`${environment.apiUrl}/atividades/cadastrar`, atividade);
   }
+
+  getAtividades(id: string) {
+    return this.http.get<Atividade[]>(`${environment.apiUrl}/atividades/turma/${id}`);
+  }
+
+  deteleAtividade(id: string) {
+    return this.http.delete(`${environment.apiUrl}/atividades/${id}`);
+  }
 }
