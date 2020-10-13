@@ -22,6 +22,10 @@ export class AtividadeService {
     return this.http.get<Atividade>(`${environment.apiUrl}/atividades/${id}`);
   }
 
+  updateAtividade(atividade: Atividade){
+    return this.http.put(`${environment.apiUrl}/atividades/${atividade.id}`, atividade);
+  }
+
   deteleAtividade(id: string) {
     return this.http.delete(`${environment.apiUrl}/atividades/${id}`);
   }

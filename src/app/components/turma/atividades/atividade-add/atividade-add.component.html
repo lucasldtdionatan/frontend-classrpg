@@ -39,7 +39,7 @@
                 <input matInput [min]="minDate" [matDatepicker]="picker1" autocomplete="off"
                     formControlName="dataInicio">
                 <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
-                <mat-datepicker touchUi #picker1 disabled="false"></mat-datepicker>
+                <mat-datepicker #picker1></mat-datepicker>
                 <mat-error *ngIf="atividadeForm.controls.dataInicio.hasError('required')">Favor informar uma
                     <strong> data de início da atividade</strong>
                 </mat-error>
@@ -59,7 +59,7 @@
                 <input matInput [min]="minDate" [matDatepicker]="picker2" autocomplete="off"
                     formControlName="dataFinal">
                 <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
-                <mat-datepicker touchUi #picker2 disabled="false"></mat-datepicker>
+                <mat-datepicker #picker2></mat-datepicker>
                 <mat-error *ngIf="atividadeForm.controls.dataInicio.hasError('required')">Favor informar uma
                     <strong> data limite da atividade</strong>
                 </mat-error>
