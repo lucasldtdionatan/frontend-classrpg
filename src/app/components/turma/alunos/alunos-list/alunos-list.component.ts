@@ -1,3 +1,4 @@
+import { TurmaService } from './../../../turma-home/turma-home.service';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Personagem } from 'src/app/components/personagem/personagem.model';
@@ -45,7 +46,8 @@ export class AlunosListComponent implements OnInit, AfterViewInit {
   @ViewChild(MatSort, { static: true }) sort: MatSort;
 
   constructor(
-    private personagemService: PersonagemService
+    private personagemService: PersonagemService,
+    private turmaService: TurmaService
   ) { }
 
   ngOnInit() {
@@ -64,8 +66,8 @@ export class AlunosListComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-
-    this.personagemService.getPersonagensByTurma('99').subscribe(
+    let idTurma = this.turmaService.returnIdTurma();
+    this.personagemService.getPersonagensByTurma(idTurma).subscribe(
       resp => {
         this.dataSource = new MatTableDataSource(resp);
         console.log(resp)
