@@ -1,3 +1,4 @@
+import { AtividadeDistribuicaoXPComponent } from './components/turma/atividades/atividade-distribuicao-xp/atividade-distribuicao-xp.component';
 import { AtividadeEditComponent } from './components/turma/atividades/atividade-edit/atividade-edit.component';
 import { AtividadeAddComponent } from './components/turma/atividades/atividade-add/atividade-add.component';
 import { AtividadeListComponent } from './components/turma/atividades/atividade-list/atividade-list.component';
@@ -67,6 +68,12 @@ const routes: Routes = [
         path: 'editaratividade/:id',
         canActivate: [AuthGuard],
         component: AtividadeEditComponent,
+
+      },
+      {
+        path: 'distribuirxp/:id',
+        canActivate: [AuthGuard],
+        component: AtividadeDistribuicaoXPComponent,
 
       },
       {

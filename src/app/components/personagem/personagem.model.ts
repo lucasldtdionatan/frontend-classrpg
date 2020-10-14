@@ -12,3 +12,17 @@ export class Personagem {
     quantidade: number;
     usuario: User;
 }
+
+export interface PersonagemAtividade {
+    conclusaoAtividade?: {
+        id: number;
+        experiencia: number;
+    };
+    experiencia: number;
+    id: number;
+    nivel: Nivel;
+    quantidade: number;
+    turma: TurmaList;
+    usuario: User;
+    experienciaAtividadeAlterado?: boolean;
+}

@@ -35,6 +35,9 @@
             <button mat-icon-button matTooltip="Editar atividade" routerLink="../editaratividade/{{ atividade.id }}">
                 <i class="material-icons edit">edit</i>
             </button>
+            <button mat-icon-button matTooltip="Distribuir pontuação para os alunos" routerLink="../distribuirxp/{{ atividade.id}}">
+                <i class="material-icons edit">emoji_events</i>
+            </button>
             <button mat-icon-button (click)="onDelete(atividade.id)" matTooltip="Deletar atividade">
                 <i class="material-icons delete">delete</i>
             </button>

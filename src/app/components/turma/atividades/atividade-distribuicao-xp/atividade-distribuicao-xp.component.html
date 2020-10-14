@@ -1,0 +1,38 @@
+<div style="text-align: center;">
+    <h1>Atividade: {{atividade.titulo}}</h1>
+</div>
+
+<div style="margin-left: 2%;">
+    <p>Pontuação: {{atividade.experiencia}}XP</p>
+    <p>Data de início: {{atividade.inicioAtividade}}</p>
+    <p>Data limite: {{atividade.fimAtividade}}</p>
+    <p>Descrição: {{atividade.descricao}}</p>
+</div>
+
+<mat-table [dataSource]="dataSource" class="mat-elevation-z8" style="margin-bottom: 2%;">
+
+    <ng-container matColumnDef="Nome do aluno">
+        <mat-header-cell *matHeaderCellDef fxFlex="50%">Nome do aluno</mat-header-cell>
+        <mat-cell *matCellDef="let personagem" fxFlex="50%">{{ personagem.usuario.nome }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="Pontuacao">
+        <mat-header-cell *matHeaderCellDef fxFlex="30%">Pontuação</mat-header-cell>
+        <mat-cell *matCellDef="let personagem" fxFlex="30%">
+
+            <mat-form-field appearance="standard" color="primary" style="width: 90%;">
+                <input matInput type="number" autocomplete="off" [(ngModel)]="personagem.conclusaoAtividade.experiencia"
+                    (keyup)="personagem.experienciaAtividadeAlterado = true">
+            </mat-form-field>
+
+            <button mat-icon-button matTooltip="Editar atividade" *ngIf="personagem.experienciaAtividadeAlterado"
+                (click)="personagem.experienciaAtividadeAlterado = false; onSubmit(personagem)">
+                <i class="material-icons edit">done</i>
+            </button>
+
+        </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+</mat-table>

@@ -33,13 +33,15 @@
             <a mat-list-item *ngIf="isTeacher" [routerLink]="['alunos']">
                 <span matLine>Alunos</span>
             </a>
+
             <a mat-list-item *ngIf="!isTeacher">
                 <span matLine>Ranking</span>
             </a>
 
-            <a mat-list-item>
-                <span matLine [routerLink]="['atividades']">Atividades</span>
+            <a mat-list-item [routerLink]="['atividades']">
+                <span matLine>Atividades</span>
             </a>
+
             <a mat-list-item>
                 <span matLine>Recompensas</span>
             </a>

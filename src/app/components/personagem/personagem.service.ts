@@ -1,3 +1,4 @@
+import { PersonagemAtividade } from './personagem.model';
 import { Personagem } from 'src/app/components/personagem/personagem.model';
 import { TurmaList } from './../turma-home/turma-home.model';
 import { environment } from './../../../environments/environment';
@@ -37,6 +38,10 @@ export class PersonagemService {
   //       }
   //     )
   // }
+
+  getPersonagemByTurmaAndAtividade(idTurma, idAtividade: string) {
+    return this.http.get<PersonagemAtividade[]>(`${environment.apiUrl}/personagens/turma/${idTurma}/atividade/${idAtividade}`);
+  }
 
   returnPersonagensTurma() {
     return this.personagensTurma;

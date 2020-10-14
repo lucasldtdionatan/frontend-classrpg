@@ -1,0 +1,36 @@
+h1 {
+    color: #000000;
+    font-size: 2.1rem;
+    margin-top: 2%;
+}
+
+p {
+    color: #000000;
+}
+
+mat-table {
+    width: 95%;
+    position: relative;
+    top: 30px;
+    left: 2%;
+    right: 2%;
+}
+
+.mat-table {
+    background: #000000;
+}
+
+/* remove arrows/spinners input=number*/
+
+/* Chrome, Safari, Edge, Opera */
+
+input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+
+input[type=number] {
+    -moz-appearance: textfield;
+}
