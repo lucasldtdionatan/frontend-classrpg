@@ -1,3 +1,8 @@
+::ng-depp .mat-input-element {
+    caret-color: #c2185b;
+}
+
+
 h1 {
     color: #000000;
     font-size: 2.1rem;

@@ -52,18 +52,9 @@ export class AtividadeDistribuicaoXPComponent implements OnInit {
     this.atividadeService.getAtividadeById(this.idAtividade).pipe(take(1)).subscribe(
       resp => {
         this.atividade = resp;
-        console.log(this.atividade)
       }
     )
-
-    this.personagemService.getPersonagemByTurmaAndAtividade(this.idTurma, this.idAtividade).pipe(take(1)).subscribe(
-      resp => {
-        this.personagens = resp;
-        this.dataSource = new MatTableDataSource(this.personagens);
-        console.log(this.personagens)
-      }
-    )
-
+    this.getPersonagens();
   }
 
   onSubmit(personagem: PersonagemAtividade) {
@@ -83,10 +74,10 @@ export class AtividadeDistribuicaoXPComponent implements OnInit {
       }
       this.conclusaoAtividadeService.save(this.conclusaoAtividade).pipe(take(1)).subscribe(
         resp => {
+          this.getPersonagens();
           this.snackBarService.openSnackBar('Salvo com sucesso!', 'X', false);
         },
         error => {
-          console.log(error)
           this.snackBarService.openSnackBar(error.error.mensagem, 'X', true);
         }
       )
@@ -94,14 +85,23 @@ export class AtividadeDistribuicaoXPComponent implements OnInit {
       this.conclusaoAtividadeService.update(personagem.conclusaoAtividade.id, personagem.conclusaoAtividade.experiencia)
         .pipe(take(1)).subscribe(
           resp => {
+            this.getPersonagens();
             this.snackBarService.openSnackBar('Salvo com sucesso!', 'X', false);
           },
           error => {
-            console.log(error)
             this.snackBarService.openSnackBar(error.error.mensagem, 'X', true);
           }
         )
     }
+  }
+
+  getPersonagens() {
+    this.personagemService.getPersonagemByTurmaAndAtividade(this.idTurma, this.idAtividade).pipe(take(1)).subscribe(
+      resp => {
+        this.personagens = resp;
+        this.dataSource = new MatTableDataSource(this.personagens);
+      }
+    )
   }
 
 }
