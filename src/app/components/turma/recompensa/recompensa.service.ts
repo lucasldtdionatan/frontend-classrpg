@@ -15,6 +15,14 @@ export class RecompensaService {
     return this.http.get<Recompensa[]>(`${environment.apiUrl}/recompensas/turma/${id_turma}`);
   }
 
+  getById(id_recompensa: string) {
+    return this.http.get<Recompensa>(`${environment.apiUrl}/recompensas/${id_recompensa}`);
+  }
+
+  update(id_recompensa, recompensa: Recompensa) {
+    return this.http.put(`${environment.apiUrl}/recompensas/${id_recompensa}`, recompensa);
+  }
+
   createRecompensa(recompensa: Recompensa) {
     return this.http.post(`${environment.apiUrl}/recompensas/cadastrar`, recompensa);
   }

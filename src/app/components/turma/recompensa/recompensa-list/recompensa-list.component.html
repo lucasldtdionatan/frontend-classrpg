@@ -9,6 +9,13 @@
 
 <mat-table [dataSource]="dataSource" class="mat-elevation-z8" style="margin-bottom: 2%;">
 
+    <ng-container matColumnDef="imagem">
+        <mat-header-cell *matHeaderCellDef>Imagem</mat-header-cell>
+        <mat-cell *matCellDef="let recompensa">
+            <img class="userImgData" src="{{ recompensa.imagem }}">
+        </mat-cell>
+    </ng-container>
+
     <ng-container matColumnDef="titulo">
         <mat-header-cell *matHeaderCellDef>Título</mat-header-cell>
         <mat-cell *matCellDef="let recompensa">{{ recompensa.nome }}</mat-cell>
@@ -23,10 +30,10 @@
     <ng-container matColumnDef="action">
         <mat-header-cell *matHeaderCellDef></mat-header-cell>
         <mat-cell *matCellDef="let recompensa">
-            <button mat-icon-button matTooltip="Editar nível" routerLink="../editarrecompensa/{{ recompensa.id }}">
+            <button mat-icon-button matTooltip="Editar recompensa" routerLink="../editarrecompensa/{{ recompensa.id }}">
                 <i class="material-icons edit">edit</i>
             </button>
-            <button mat-icon-button (click)="onDelete(recompensa.id)" matTooltip="Deletar nível">
+            <button mat-icon-button (click)="onDelete(recompensa.id)" matTooltip="Deletar recompensa">
                 <i class="material-icons delete">delete</i>
             </button>
         </mat-cell>

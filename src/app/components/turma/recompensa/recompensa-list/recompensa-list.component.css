@@ -5,6 +5,13 @@
     margin-top: 10px;
 }
 
+.userImgData {
+    width: 42px;
+    height: 42px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
 /* Table style*/
 
 .mat-table {

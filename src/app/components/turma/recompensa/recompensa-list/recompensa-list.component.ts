@@ -16,7 +16,7 @@ import { MatDialog } from '@angular/material/dialog';
 export class RecompensaListComponent implements OnInit {
 
   dataSource: MatTableDataSource<Recompensa>;
-  displayedColumns: string[] = ['titulo', 'nivel', 'action'];
+  displayedColumns: string[] = ['imagem', 'titulo', 'nivel', 'action'];
 
   id_turma: string;
   constructor(
@@ -34,7 +34,6 @@ export class RecompensaListComponent implements OnInit {
   getRecompensas() {
     this.recompensaService.getRecompensaByTurma(this.id_turma).pipe(take(1)).subscribe(
       resp => {
-        console.log(resp)
         this.dataSource = new MatTableDataSource(resp);
       }
     )
