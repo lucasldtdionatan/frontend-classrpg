@@ -1,7 +1,10 @@
+/*Input Style*/
+
 ::ng-depp .mat-input-element {
     caret-color: #c2185b;
 }
 
+/*======================================================================*/
 
 h1 {
     color: #000000;
@@ -16,7 +19,7 @@ p {
 mat-table {
     width: 95%;
     position: relative;
-    top: 30px;
+    top: 50px;
     left: 2%;
     right: 2%;
 }
@@ -24,6 +27,15 @@ mat-table {
 .mat-table {
     background: #000000;
 }
+
+.buttonBack {
+    position: absolute;
+    background-color: #000000;
+    left: 2%;
+    margin-top: 10px;
+}
+
+/*======================================================================*/
 
 /* remove arrows/spinners input=number*/
 
@@ -39,3 +51,5 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 input[type=number] {
     -moz-appearance: textfield;
 }
+
+/*======================================================================*/

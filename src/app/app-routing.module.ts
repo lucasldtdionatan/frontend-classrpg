@@ -1,3 +1,5 @@
+import { RecompensaAddComponent } from './components/turma/recompensa/recompensa-add/recompensa-add.component';
+import { RecompensaListComponent } from './components/turma/recompensa/recompensa-list/recompensa-list.component';
 import { AtividadeDistribuicaoXPComponent } from './components/turma/atividades/atividade-distribuicao-xp/atividade-distribuicao-xp.component';
 import { AtividadeEditComponent } from './components/turma/atividades/atividade-edit/atividade-edit.component';
 import { AtividadeAddComponent } from './components/turma/atividades/atividade-add/atividade-add.component';
@@ -18,6 +20,7 @@ import { TurmaSearchComponent } from './components/turma-home/turma-home-compone
 import { NivelAddComponent } from './components/turma/nivel/nivel-add/nivel-add.component';
 
 import { AuthGuard } from './guards/auth-guard';
+import { RecompensaEditComponent } from './components/turma/recompensa/recompensa-edit/recompensa-edit.component';
 
 
 const routes: Routes = [
@@ -75,6 +78,21 @@ const routes: Routes = [
         canActivate: [AuthGuard],
         component: AtividadeDistribuicaoXPComponent,
 
+      },
+      {
+        path: 'recompensas',
+        canActivate: [AuthGuard],
+        component: RecompensaListComponent
+      },
+      {
+        path: 'criarrecompensa',
+        canActivate: [AuthGuard],
+        component: RecompensaAddComponent
+      },
+      {
+        path: 'editarrecompensa/:id',
+        canActivate: [AuthGuard],
+        component: RecompensaEditComponent
       },
       {
         path: 'niveis',

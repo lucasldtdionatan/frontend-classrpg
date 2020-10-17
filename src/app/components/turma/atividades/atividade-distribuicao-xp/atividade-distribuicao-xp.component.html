@@ -3,10 +3,15 @@
 </div>
 
 <div style="margin-left: 2%;">
-    <p>Pontuação: {{atividade.experiencia}}XP</p>
-    <p>Data de início: {{atividade.inicioAtividade}}</p>
-    <p>Data limite: {{atividade.fimAtividade}}</p>
-    <p>Descrição: {{atividade.descricao}}</p>
+    <p><strong>Pontuação:</strong> {{atividade.experiencia}}XP</p>
+    <p><strong>Data de início:</strong> {{atividade.inicioAtividade}}</p>
+    <p><strong>Data limite:</strong> {{atividade.fimAtividade}}</p>
+    <p style="white-space:pre-wrap;"><strong>Descrição:</strong> {{atividade.descricao}}</p>
+</div>
+
+<div>
+    <button mat-raised-button matTooltip="Voltar para página anterior" class="buttonBack"
+        (click)="back()">Voltar</button>
 </div>
 
 <mat-table [dataSource]="dataSource" class="mat-elevation-z8" style="margin-bottom: 2%;">

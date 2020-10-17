@@ -61,7 +61,7 @@ export class NivelAddComponent implements OnInit {
     }
 
     if (this.imgSelected) {
-      let imgUrl: any;;
+      let imgUrl: any;
       const formData = new FormData();
       formData.append('file', this.nivelForm.get('imagem').value);
 

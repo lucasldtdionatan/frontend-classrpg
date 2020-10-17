@@ -54,6 +54,9 @@ import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
 
 import { AtividadeEditComponent } from './components/turma/atividades/atividade-edit/atividade-edit.component';
 import { AtividadeDistribuicaoXPComponent } from './components/turma/atividades/atividade-distribuicao-xp/atividade-distribuicao-xp.component';
+import { RecompensaListComponent } from './components/turma/recompensa/recompensa-list/recompensa-list.component';
+import { RecompensaAddComponent } from './components/turma/recompensa/recompensa-add/recompensa-add.component';
+import { RecompensaEditComponent } from './components/turma/recompensa/recompensa-edit/recompensa-edit.component';
 
 
 
@@ -74,7 +77,10 @@ import { AtividadeDistribuicaoXPComponent } from './components/turma/atividades/
     AtividadeListComponent,
     AtividadeAddComponent,
     AtividadeEditComponent,
-    AtividadeDistribuicaoXPComponent
+    AtividadeDistribuicaoXPComponent,
+    RecompensaListComponent,
+    RecompensaAddComponent,
+    RecompensaEditComponent
   ],
 
   imports: [

@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { SnackBarService } from './../../../../services/snack-bar.service';
 import { ConclusaoAtividade } from './../../../../models/conclusao-atividade';
 import { ConclusaoAtividadeService } from './../conclusao-atividade.service';
@@ -34,7 +35,8 @@ export class AtividadeDistribuicaoXPComponent implements OnInit {
     private personagemService: PersonagemService,
     private route: ActivatedRoute,
     private conclusaoAtividadeService: ConclusaoAtividadeService,
-    private snackBarService: SnackBarService
+    private snackBarService: SnackBarService,
+    private Location: Location,
   ) {
     this.atividade = {
       titulo: null,
@@ -102,6 +104,10 @@ export class AtividadeDistribuicaoXPComponent implements OnInit {
         this.dataSource = new MatTableDataSource(this.personagens);
       }
     )
+  }
+
+  back(){
+    this.Location.back();
   }
 
 }
