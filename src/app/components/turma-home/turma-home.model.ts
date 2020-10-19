@@ -8,6 +8,7 @@ export interface TurmaList {
     id?: number;
     titulo?: string;
     imagem?: string;
+    descricao?: string;
     professor?: {
         id: number;
         nome: string;

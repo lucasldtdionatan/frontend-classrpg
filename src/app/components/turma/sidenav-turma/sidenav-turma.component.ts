@@ -79,6 +79,11 @@ export class SidenavTurmaComponent implements OnInit {
     this.isTeacher = this.authService.isTeacher();
     this.user = this.authService.currentUserValue;
 
+    this.turmaHomeService.emitTurma.subscribe(
+      resp => {
+        this.turma = resp;
+      }
+    )
   }
 
   toggleSideBar() {

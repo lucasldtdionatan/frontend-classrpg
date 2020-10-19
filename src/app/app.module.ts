@@ -58,6 +58,7 @@ import { RecompensaListComponent } from './components/turma/recompensa/recompens
 import { RecompensaAddComponent } from './components/turma/recompensa/recompensa-add/recompensa-add.component';
 import { RecompensaEditComponent } from './components/turma/recompensa/recompensa-edit/recompensa-edit.component';
 import { DialogDataComponent } from './components/template/dialog-data/dialog-data.component';
+import { ConfiguracaoTurmaComponent } from './components/turma/configuracao-turma/configuracao-turma.component';
 
 
 
@@ -82,7 +83,8 @@ import { DialogDataComponent } from './components/template/dialog-data/dialog-da
     RecompensaListComponent,
     RecompensaAddComponent,
     RecompensaEditComponent,
-    DialogDataComponent
+    DialogDataComponent,
+    ConfiguracaoTurmaComponent
   ],
 
   imports: [

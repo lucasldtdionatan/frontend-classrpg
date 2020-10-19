@@ -1,0 +1,43 @@
+<div style="text-align: center;">
+
+    <h1>Alterar dados da turma</h1>
+
+    <form [formGroup]="form_turma" (ngSubmit)="onSubmit()">
+
+        <div fxLayout="row wrap" fxLayoutAlign="center center">
+
+            <div class="imagePreviewBox" fxFlexOrder="1">
+                <img class="imagePreview" [src]="imgURL" *ngIf="imgURL">
+            </div>
+            <input #file style="display: none;" id="inputFile" type="file" accept="image/*"
+                (change)="imagePreview(file.files)">
+            <label for="inputFile" class="mat-raised-button buttonImageSelect" fxFlexOrder="2">Selecionar imagem</label>
+
+        </div>
+
+        <mat-form-field appearance="outline" style="margin-top: 2%;">
+            <mat-label>Nome da turma</mat-label>
+            <input matInput type="text" formControlName="titulo">
+            <mat-error *ngIf="form_turma.controls.titulo.hasError('required')">Favor informar o
+                <strong>título da turma</strong>
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Descrição da turma(opicional)</mat-label>
+            <textarea matInput type="text" rows="3" formControlName="descricao" maxlength="250"></textarea>
+        </mat-form-field>
+
+        <div fxLayout="row" fxLayoutAlign="center" fxLayoutGap="5px" class="buttonSubmitCancel">
+
+            <button mat-raised-button fxFlexOrder="1" type="button" (click)="onCancel()">Cancelar</button>
+
+            <button mat-raised-button fxFlexOrder="2" type="submit" [disabled]="!form_turma.valid || isLoading">
+                <div style="position: absolute; width: 100%; height: 100%; align-content: center;">
+                    <mat-spinner diameter="30" *ngIf="isLoading" style="position: absolute; left: 11%"></mat-spinner>
+                </div>
+                Salvar
+            </button>
+        </div>
+    </form>
+</div>

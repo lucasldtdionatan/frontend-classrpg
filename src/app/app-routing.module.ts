@@ -1,3 +1,4 @@
+import { ConfiguracaoTurmaComponent } from './components/turma/configuracao-turma/configuracao-turma.component';
 import { RecompensaAddComponent } from './components/turma/recompensa/recompensa-add/recompensa-add.component';
 import { RecompensaListComponent } from './components/turma/recompensa/recompensa-list/recompensa-list.component';
 import { AtividadeDistribuicaoXPComponent } from './components/turma/atividades/atividade-distribuicao-xp/atividade-distribuicao-xp.component';
@@ -108,6 +109,11 @@ const routes: Routes = [
         path: 'editarnivel/:id',
         canActivate: [AuthGuard],
         component: NivelEditComponent
+      },
+      {
+        path: 'configuracaoturma',
+        canActivate: [AuthGuard],
+        component: ConfiguracaoTurmaComponent
       }
     ]
   },

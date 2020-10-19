@@ -13,8 +13,10 @@ export class TurmaService {
 
   emitTurmas = new EventEmitter<TurmaList[]>()
   emitQtdTurmas = new EventEmitter<number>()
+  emitTurma = new EventEmitter<TurmaList>()
   turmas: TurmaList[];
 
+  turma: TurmaList;
   idTurma: any;
 
   constructor(
@@ -26,6 +28,8 @@ export class TurmaService {
   }
 
   updateTurma(turma: TurmaList) {
+    this.turma = turma;
+    this.emitTurma.emit(this.turma);
     return this.http.put(`${environment.apiUrl}/turmas/${turma.id}`, turma);
   }
 
