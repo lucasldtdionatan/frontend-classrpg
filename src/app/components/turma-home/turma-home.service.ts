@@ -25,6 +25,10 @@ export class TurmaService {
     return this.http.post<any>(`${environment.apiUrl}/turmas/cadastrar`, turma);
   }
 
+  updateTurma(turma: TurmaList) {
+    return this.http.put(`${environment.apiUrl}/turmas/${turma.id}`, turma);
+  }
+
   getTurmas() {
     this.http.get<TurmaList[]>(`${environment.apiUrl}/turmas/usuario`).pipe(take(1)).subscribe(
       resp => {

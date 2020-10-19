@@ -1,3 +1,5 @@
+import { TurmaList } from './../../../turma-home/turma-home.model';
+import { DialogDataComponent } from './../../../template/dialog-data/dialog-data.component';
 import { DialogMassageComponent } from './../../../template/dialog-massage/dialog-massage.component';
 import { SnackBarService } from './../../../../services/snack-bar.service';
 import { take } from 'rxjs/operators';
@@ -7,6 +9,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Component, OnInit } from '@angular/core';
 import { Recompensa } from '../recompensa.model';
 import { MatDialog } from '@angular/material/dialog';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-recompensa-list',
@@ -18,7 +21,11 @@ export class RecompensaListComponent implements OnInit {
   dataSource: MatTableDataSource<Recompensa>;
   displayedColumns: string[] = ['imagem', 'titulo', 'nivel', 'action'];
 
+  dataLimiteInicio: any;
+  dataLimiteFim: any;
+
   id_turma: string;
+  turma: TurmaList;
   constructor(
     private turmaService: TurmaService,
     private recompensaService: RecompensaService,
@@ -28,6 +35,11 @@ export class RecompensaListComponent implements OnInit {
 
   ngOnInit(): void {
     this.id_turma = this.turmaService.returnIdTurma();
+    this.turmaService.getTurmaById(this.id_turma).pipe(take(1)).subscribe(
+      resp => {
+        this.turma = resp;
+      }
+    )
     this.getRecompensas();
   }
 
@@ -60,6 +72,26 @@ export class RecompensaListComponent implements OnInit {
           }
         );
       }
+    });
+  }
+
+  openDialog() {
+    let data_inicial = moment(this.turma.inicioRecompensa, "DD/MM/YYYY HH:mm");
+    let data_final = moment(this.turma.fimRecompensa, "DD/MM/YYYY HH:mm");
+
+    const dialogRef = this.dialog.open(DialogDataComponent, {
+      data: {
+        // data_inicio: data_inicial.format("YYYY/MM/DD"),
+        // data_fim: data_final.format("YYYY/MM/DD"),
+        // hora_inicio: data_inicial.format("HH:mm"),
+        // hora_fim: data_final.format("HH:mm")
+        turma: this.turma
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(result)
+      console.log(this.dataLimiteInicio + ' ' + this.dataLimiteFim);
     });
   }
 }

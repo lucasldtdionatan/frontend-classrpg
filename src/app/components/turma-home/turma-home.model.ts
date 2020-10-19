@@ -21,6 +21,8 @@ export interface TurmaList {
         imagem: string;
         token?: string;
     }
+    inicioRecompensa?: string;
+    fimRecompensa?: string;
     codigoAcesso?: string;
     quantidade?: number;
 }
