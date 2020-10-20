@@ -1,0 +1,35 @@
+/*--------------------------------------input style----------------------------------------*/
+
+::ng-deep .mat-input-element {
+    caret-color: #000000;
+}
+
+::ng-deep .mat-form-field-label {
+    color: #000000;
+}
+
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+    color: #000000;
+}
+
+::ng-deep .mat-drawer-container {
+    color: #000000;
+}
+
+/* input focused*/
+
+::ng-deep .mat-form-field.mat-focused .mat-form-field-label {
+    color: #000000;
+}
+
+::ng-deep .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
+    color: #000000;
+}
+
+::ng-deep .mat-input-element::placeholder {
+    color: #000000;
+}
+
+/* ::ng-deep .mat-input-element::placeholder {
+    color: #b0bec5;
+} */

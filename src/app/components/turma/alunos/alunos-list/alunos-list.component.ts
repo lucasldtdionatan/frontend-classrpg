@@ -1,3 +1,6 @@
+import { DialogMassageComponent } from './../../../template/dialog-massage/dialog-massage.component';
+import { SnackBarService } from './../../../../services/snack-bar.service';
+import { take } from 'rxjs/operators';
 import { TurmaService } from './../../../turma-home/turma-home.service';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
@@ -7,29 +10,8 @@ import { PersonagemService } from './../../../personagem/personagem.service';
 
 import { AfterViewInit } from '@angular/core';
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 
-
-
-export interface PeriodicElement {
-  id: number;
-  email: string;
-  experiencia: number;
-  nome: string;
-  nickname: string;
-}
-
-// const ELEMENT_DATA: PeriodicElement[] = [
-//   { position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H' },
-//   { position: 2, name: 'Helium', weight: 4.0026, symbol: 'He' },
-//   { position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li' },
-//   { position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be' },
-//   { position: 5, name: 'Boron', weight: 10.811, symbol: 'B' },
-//   { position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C' },
-//   { position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N' },
-//   { position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O' },
-//   { position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F' },
-//   { position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne' },
-// ];
 
 @Component({
   selector: 'app-alunos-list',
@@ -42,22 +24,17 @@ export class AlunosListComponent implements OnInit, AfterViewInit {
   displayedColumns: string[] = ['usuario.nome', 'usuario.nickname', 'usuario.email', 'experiencia', 'action']
   personagens: Personagem[] = [];
   dataSource: MatTableDataSource<Personagem>;
-  teste: PeriodicElement[]
+  qtd_registros: number
   @ViewChild(MatSort, { static: true }) sort: MatSort;
 
   constructor(
     private personagemService: PersonagemService,
-    private turmaService: TurmaService
+    private turmaService: TurmaService,
+    private snackBarService: SnackBarService,
+    private dialog: MatDialog,
   ) { }
 
   ngOnInit() {
-    // this.personagemService.getPersonagensByTurma('99').subscribe(
-    //   resp => {
-    //     this.dataSource = new MatTableDataSource(resp);
-    //     console.log(resp)
-    //     this.dataSource.sort = this.sort;
-    //   }
-    // )
   }
 
   applyFilter(event: Event) {
@@ -66,11 +43,17 @@ export class AlunosListComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
+    this.getPersonagens();
+  }
+
+  getPersonagens() {
     let idTurma = this.turmaService.returnIdTurma();
     this.personagemService.getPersonagensByTurma(idTurma).subscribe(
       resp => {
+        this.personagemService.getQtdPersonagemByTurma(idTurma);
+
         this.dataSource = new MatTableDataSource(resp);
-        console.log(resp)
+        this.qtd_registros = this.dataSource.data.length;
         this.dataSource.sortingDataAccessor = (item, property) => {
           switch (property) {
             case 'usuario.nome': return item.usuario.nome;
@@ -84,16 +67,36 @@ export class AlunosListComponent implements OnInit, AfterViewInit {
           return data.usuario.nome.toLowerCase().includes(filter) || data.usuario.nickname.toLowerCase().includes(filter);
         };
 
-        // this.dataSource.filterPredicate = function (data, filter): boolean {
-        //   return data.usuario.email.toLowerCase().includes(filter);
-        // };
-        // this.dataSource.filterPredicate = function (data, filter): boolean {
-        //   return data.usuario.nickname.toLowerCase().includes(filter);
-        // };
-
         this.dataSource.sort = this.sort;
       }
     )
   }
+
+  onDelete(id_personagem: string) {
+    let confirmationDelete: boolean;
+
+    const dialogRef = this.dialog.open(DialogMassageComponent, {
+      data: { message: 'Tem certeza que deseja excluir este personagem da turma?' }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      confirmationDelete = result;
+
+      if (confirmationDelete) {
+        this.personagemService.deletePersonagem(id_personagem).pipe(take(1)).subscribe(
+          resp => {
+            this.snackBarService.openSnackBar("O personagem foi excluído com sucesso!", "X", false);
+            this.getPersonagens();
+          },
+          error => {
+            this.snackBarService.openSnackBar(error.error.mensagem, "X", true);
+          }
+        )
+      }
+    });
+
+
+  }
+
 }
 

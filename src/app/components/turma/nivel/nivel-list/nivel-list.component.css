@@ -6,7 +6,6 @@
 
 /*=============================================*/
 
-
 h1 {
     color: #000000;
     font-size: 2.1rem;
@@ -32,4 +31,12 @@ mat-cell {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+   
+}
+
+.nivelIMG {
+    width: 42px;
+    height: 42px;
+    object-fit: cover;
+    border-radius: 50%;
 }

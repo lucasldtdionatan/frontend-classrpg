@@ -18,6 +18,7 @@ export class AtividadeListComponent implements OnInit {
   dataSource: MatTableDataSource<Atividade>;
   displayedColumns: string[] = ['Título', 'Pontuacao', 'DataInicio', 'DataFinal', 'Action'];
   idTurma: string;
+  qtd_registro: number;
 
   constructor(
     private atividadeService: AtividadeService,
@@ -35,6 +36,7 @@ export class AtividadeListComponent implements OnInit {
     this.atividadeService.getAtividades(this.idTurma).subscribe(
       resp => {
         this.dataSource = new MatTableDataSource(resp);
+        this.qtd_registro = this.dataSource.data.length;
       },
       error => {
 

@@ -7,7 +7,7 @@
         routerLink="../criaratividade">Criar atividade</button>
 </div>
 
-<mat-table [dataSource]="dataSource" class="mat-elevation-z8" style="margin-bottom: 2%;">
+<mat-table [dataSource]="dataSource" class="mat-elevation-z8" style="margin-bottom: 2%;" *ngIf="qtd_registro > 0">
 
     <ng-container matColumnDef="Título">
         <mat-header-cell *matHeaderCellDef>Título da atividade</mat-header-cell>
@@ -35,7 +35,8 @@
             <button mat-icon-button matTooltip="Editar atividade" routerLink="../editaratividade/{{ atividade.id }}">
                 <i class="material-icons edit">edit</i>
             </button>
-            <button mat-icon-button matTooltip="Distribuir pontuação para os alunos" routerLink="../distribuirxp/{{ atividade.id}}">
+            <button mat-icon-button matTooltip="Distribuir pontuação para os alunos"
+                routerLink="../distribuirxp/{{ atividade.id}}">
                 <i class="material-icons edit">emoji_events</i>
             </button>
             <button mat-icon-button (click)="onDelete(atividade.id)" matTooltip="Deletar atividade">
@@ -46,4 +47,17 @@
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+
+    <!-- <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" colspan="4">
+            Não há nenhum dado nesta tabela
+            <i class="material-icons">sentiment_very_dissatisfied</i>
+        </td>
+    </tr> -->
 </mat-table>
+
+<div *ngIf="qtd_registro === 0" style="color: #696969; text-align: center; position: relative; top: 10%">
+    <i class="material-icons" style="font-size: 20em;">sentiment_very_dissatisfied</i>
+    <br>
+    <p style="font-style: italic;">Não há atividades cadastradas</p>
+</div>

@@ -5,16 +5,15 @@
 
 <form [formGroup]="data_limite_form" (ngSubmit)="onSubmit()">
 
-
     <div fxLayout="row wrap" fxLayoutAlign="center" fxLayoutGap="5px">
-        <mat-form-field color="accent" appearance="outline">
+        <mat-form-field appearance="outline">
             <mat-label>Data inicial</mat-label>
             <input matInput [matDatepicker]="picker1" autocomplete="off" [min]="minDate" formControlName="data_inicial">
             <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
             <mat-datepicker #picker1></mat-datepicker>
         </mat-form-field>
 
-        <mat-form-field appearance="outline" color="accent" style="width: 100px;">
+        <mat-form-field appearance="outline" style="width: 100px;">
             <mat-label>Horário inicial</mat-label>
             <input matInput type="time" name="horarioInicial" autocomplete="off" formControlName="hora_inicial">
         </mat-form-field>
@@ -23,14 +22,14 @@
 
     <div fxLayout="row wrap" fxLayoutAlign="center" fxLayoutGap="5px">
 
-        <mat-form-field color="accent" appearance="outline">
+        <mat-form-field appearance="outline">
             <mat-label>Data final</mat-label>
             <input matInput [matDatepicker]="picker2" autocomplete="off" [min]="minDate" formControlName="data_final">
             <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
             <mat-datepicker #picker2></mat-datepicker>
         </mat-form-field>
 
-        <mat-form-field appearance="outline" color="accent" style="width: 100px;">
+        <mat-form-field appearance="outline" style="width: 100px;">
             <mat-label>Horário final</mat-label>
             <input matInput type="time" name="horarioInicial" autocomplete="off" formControlName="hora_final" required>
         </mat-form-field>

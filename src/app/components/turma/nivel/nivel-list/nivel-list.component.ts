@@ -16,10 +16,10 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class NivelListComponent implements OnInit {
 
-
   dataSource: MatTableDataSource<Nivel>;
-  displayedColumns: string[] = ['Título', 'nivel.nivel', 'Pontuação mínima-máxima', 'Action'];
+  displayedColumns: string[] = ['Imagem', 'Título', 'nivel.nivel', 'Pontuação mínima-máxima', 'Action'];
 
+  qtd_registros: number;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
 
   constructor(
@@ -38,7 +38,7 @@ export class NivelListComponent implements OnInit {
       resp => {
         this.dataSource = new MatTableDataSource(resp);
         this.dataSource.sort = this.sort;
-
+        this.qtd_registros = this.dataSource.data.length;
         this.dataSource.sortingDataAccessor = (item, property) => {
           switch (property) {
             case 'nivel.nivel': return item.nivel;

@@ -11,7 +11,7 @@
         matTooltip="Definir intervalo de datas para que os alunos possam coletar uma recompensa">Data limite</button>
 </div>
 
-<mat-table [dataSource]="dataSource" class="mat-elevation-z8" style="margin-bottom: 2%;">
+<mat-table [dataSource]="dataSource" class="mat-elevation-z8" style="margin-bottom: 2%;" *ngIf="qtd_registros > 0">
 
     <ng-container matColumnDef="imagem">
         <mat-header-cell *matHeaderCellDef>Imagem</mat-header-cell>
@@ -46,3 +46,9 @@
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
 </mat-table>
+
+<div *ngIf="qtd_registros === 0" style="color: #696969; text-align: center; position: relative; top: 10%">
+    <i class="material-icons" style="font-size: 20em;">sentiment_very_dissatisfied</i>
+    <br>
+    <p style="font-style: italic;">Não há recompensas cadastradas</p>
+</div>

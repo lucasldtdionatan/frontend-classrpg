@@ -21,7 +21,8 @@
         <div class="information" *ngIf="!isTeacher">
             <img class="userImgData" src="{{ user.imagem }}" alt="" matTooltip="Imagem avatar">
 
-            <h2 matTooltip="Experiência do personagem: {{personagem.experiencia}}xp">{{ personagem.experiencia }} xp
+            <h2 matTooltip="Experiência do personagem: {{personagem.experiencia}}xp">
+                {{ personagem.experiencia }} xp
             </h2>
             <h1 matTooltip="Nome do estudante: {{ user.nome }}">{{ user.nome }}</h1>
             <h3 matTooltip="Classe do personagem: {{ personagem.nivel.nome}}"> {{ personagem.nivel.nome }}</h3>
@@ -48,7 +49,7 @@
             <a mat-list-item [routerLink]="['niveis']">
                 <span matLine>Níveis</span>
             </a>
-            <a mat-list-item [routerLink]="['configuracaoturma']">
+            <a mat-list-item *ngIf="isTeacher" [routerLink]="['configuracaoturma']">
                 <span matLine>Configuração</span>
             </a>
         </mat-nav-list>

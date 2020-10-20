@@ -26,6 +26,7 @@ export class RecompensaListComponent implements OnInit {
 
   id_turma: string;
   turma: TurmaList;
+  qtd_registros: number;
   constructor(
     private turmaService: TurmaService,
     private recompensaService: RecompensaService,
@@ -47,6 +48,7 @@ export class RecompensaListComponent implements OnInit {
     this.recompensaService.getRecompensaByTurma(this.id_turma).pipe(take(1)).subscribe(
       resp => {
         this.dataSource = new MatTableDataSource(resp);
+        this.qtd_registros = this.dataSource.data.length;
       }
     )
   }
@@ -89,9 +91,9 @@ export class RecompensaListComponent implements OnInit {
       }
     });
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(result)
-      console.log(this.dataLimiteInicio + ' ' + this.dataLimiteFim);
-    });
+    // dialogRef.afterClosed().subscribe(result => {
+    //   console.log(result)
+    //   console.log(this.dataLimiteInicio + ' ' + this.dataLimiteFim);
+    // });
   }
 }

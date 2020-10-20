@@ -58,26 +58,31 @@ export class SidenavTurmaComponent implements OnInit {
       const w = event.target as Window;
       this.screenWidth = w.innerWidth;
     })
+    this.isTeacher = this.authService.isTeacher();
+    this.user = this.authService.currentUserValue;
 
-    const id = this.route.snapshot.paramMap.get('id')
-    this.turmaHomeService.getTurmaById(id).pipe(take(1)).subscribe(
+    const id_turma = this.route.snapshot.paramMap.get('id')
+    this.turmaHomeService.getTurmaById(id_turma).pipe(take(1)).subscribe(
       resp => {
         this.turma = resp;
 
         if (!this.isTeacher) {
+          console.log("Entrou")
           this.personagemService.getUsuarioAndTurmaById(this.turma.id).pipe(take(1)).subscribe(
             resp => {
               this.personagem = resp;
-              console.log(this.personagem)
             }
           )
         }
       }
     );
 
-
-    this.isTeacher = this.authService.isTeacher();
-    this.user = this.authService.currentUserValue;
+    this.personagemService.getQtdPersonagemByTurma(id_turma);
+    this.personagemService.emitQtdPersonagemByTurma.subscribe(
+      resp => {
+        this.turma.quantidade = resp;
+      }
+    )
 
     this.turmaHomeService.emitTurma.subscribe(
       resp => {

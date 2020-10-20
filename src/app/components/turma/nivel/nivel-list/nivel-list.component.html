@@ -8,7 +8,14 @@
 </div>
 
 <mat-table [dataSource]="dataSource" class="mat-elevation-z8" style="margin-bottom: 2%;" matSort
-    matSortActive="nivel.nivel" matSortDirection="asc">
+    matSortActive="nivel.nivel" matSortDirection="asc" *ngIf="qtd_registros > 0">
+
+    <ng-container matColumnDef="Imagem">
+        <mat-header-cell *matHeaderCellDef>Imagem</mat-header-cell>
+        <mat-cell *matCellDef="let nivel">
+            <img src="{{ nivel.imagem }}" class="nivelIMG">
+        </mat-cell>
+    </ng-container>
 
     <ng-container matColumnDef="Título">
         <mat-header-cell *matHeaderCellDef>Título</mat-header-cell>
@@ -40,3 +47,9 @@
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
 </mat-table>
+
+<div *ngIf="qtd_registros === 0" style="color: #696969; text-align: center; position: relative; top: 10%">
+    <i class="material-icons" style="font-size: 20em;">sentiment_very_dissatisfied</i>
+    <br>
+    <p style="font-style: italic;">Não há nenhum nível cadastrado</p>
+</div>

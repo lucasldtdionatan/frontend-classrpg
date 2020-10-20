@@ -2,13 +2,13 @@
     <h1 style="font-size: 2.1rem; margin-top: 2%;">Alunos</h1>
 </div>
 
-<mat-form-field style="position: absolute; left: 2%; width: 40%;">
+<mat-form-field style="position: absolute; left: 2%; width: 40%;" *ngIf="qtd_registros > 0">
     <mat-label>Filtrar aluno</mat-label>
     <input matInput (keyup)="applyFilter($event)" #input autocomplete="off">
 </mat-form-field>
 
 <mat-table [dataSource]="dataSource" matSort matSortActive="usuario.nome" matSortDirection="asc"
-    class="mat-elevation-z8">
+    class="mat-elevation-z8" *ngIf="qtd_registros > 0">
 
     <ng-container matColumnDef="usuario.nome">
         <mat-header-cell *matHeaderCellDef mat-sort-header>Nome do aluno</mat-header-cell>
@@ -33,9 +33,9 @@
     <ng-container matColumnDef="action">
         <mat-header-cell *matHeaderCellDef></mat-header-cell>
         <mat-cell *matCellDef="let user">
-            <a routerLink="" class="delete">
+            <button mat-icon-button (click)="onDelete(user.id)" matTooltip="Deletar atividade">
                 <i class="material-icons">delete</i>
-            </a>
+            </button>
         </mat-cell>
     </ng-container>
 
@@ -47,7 +47,11 @@
     </tr>
 </mat-table>
 
-
+<div *ngIf="qtd_registros === 0" style="color: #696969; text-align: center; position: relative; top: 10%">
+    <i class="material-icons" style="font-size: 20em;">sentiment_very_dissatisfied</i>
+    <br>
+    <p style="font-style: italic;">Não há personagens cadastrados nesta turma</p>
+</div>
 
 
 
