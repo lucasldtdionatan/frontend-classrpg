@@ -2,9 +2,10 @@
     <h1>Configuração de níveis</h1>
 </div>
 
-<div>
-    <button mat-raised-button matTooltip="Criar um novo nível" class="buttonNovoNivel" routerLink="../criarnivel">Criar
-        novo nível</button>
+<div *ngIf="isTeacher" class="divButton">
+    <button mat-raised-button matTooltip="Criar um novo nível" routerLink="../criarnivel">
+        Criar novo nível
+    </button>
 </div>
 
 <mat-table [dataSource]="dataSource" class="mat-elevation-z8" style="margin-bottom: 2%;" matSort
@@ -35,10 +36,11 @@
     <ng-container matColumnDef="Action">
         <mat-header-cell *matHeaderCellDef></mat-header-cell>
         <mat-cell *matCellDef="let nivel">
-            <button mat-icon-button matTooltip="Editar nível" routerLink="../editarnivel/{{ nivel.id }}">
+            <button *ngIf="isTeacher" mat-icon-button matTooltip="Editar nível"
+                routerLink="../editarnivel/{{ nivel.id }}">
                 <i class="material-icons edit">edit</i>
             </button>
-            <button mat-icon-button (click)="onDelete(nivel.id)" matTooltip="Deletar nível">
+            <button *ngIf="isTeacher" mat-icon-button (click)="onDelete(nivel.id)" matTooltip="Deletar nível">
                 <i class="material-icons delete">delete</i>
             </button>
         </mat-cell>

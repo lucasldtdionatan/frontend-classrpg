@@ -60,7 +60,6 @@ export class TurmaSearchComponent implements OnInit {
       },
       error => {
         this.isLoading = false;
-        console.log(error)
         this.snackBarService.openSnackBar(error.error.mensagem, 'X', true);
       })
   }
@@ -69,7 +68,7 @@ export class TurmaSearchComponent implements OnInit {
     this.router.navigate(['/turmas']);
   }
 
-  onCancelSearch(){
+  onCancelSearch() {
     this.turma = null;
   }
 }

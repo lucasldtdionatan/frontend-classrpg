@@ -12,17 +12,21 @@ h1 {
     margin-top: 2%;
 }
 
-.buttonNovoNivel {
+.divButton button {
+    background-color: #000000;
+    left: 2%;
+}
+/* .buttonNovoNivel {
     position: absolute;
     background-color: #000000;
     left: 2%;
     margin-top: 10px;
-}
+} */
 
 mat-table {
     width: 95%;
     position: relative;
-    top: 60px;
+    top: 20px;
     left: 2%;
     right: 2%;
 }

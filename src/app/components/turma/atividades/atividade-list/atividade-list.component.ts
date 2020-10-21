@@ -1,3 +1,4 @@
+import { AuthenticationService } from './../../../../services/auth.service';
 import { DialogMassageComponent } from './../../../template/dialog-massage/dialog-massage.component';
 import { SnackBarService } from './../../../../services/snack-bar.service';
 import { take } from 'rxjs/operators';
@@ -19,15 +20,17 @@ export class AtividadeListComponent implements OnInit {
   displayedColumns: string[] = ['Título', 'Pontuacao', 'DataInicio', 'DataFinal', 'Action'];
   idTurma: string;
   qtd_registro: number;
-
+  isTeacher: boolean;
   constructor(
     private atividadeService: AtividadeService,
     private turmaService: TurmaService,
     private snackBarService: SnackBarService,
     private dialog: MatDialog,
+    private authenticationService: AuthenticationService
   ) { }
 
   ngOnInit(): void {
+    this.isTeacher = this.authenticationService.isTeacher();
     this.idTurma = this.turmaService.returnIdTurma();
     this.getAtividades();
 

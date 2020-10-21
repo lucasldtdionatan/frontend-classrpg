@@ -31,9 +31,7 @@ export class SidenavTurmaComponent implements OnInit {
     private authService: AuthenticationService,
     private turmaHomeService: TurmaService,
     private personagemService: PersonagemService,
-  ) { }
-
-  ngOnInit(): void {
+  ) {
     this.personagem = {
       descricao: null,
       experiencia: null,
@@ -49,35 +47,14 @@ export class SidenavTurmaComponent implements OnInit {
       },
       turma: this.turma,
       quantidade: null,
-      usuario: this.user,
+      usuario: {
+        nome: null,
+        email: null,
+        nickname: null,
+        imagem: null,
+      },
     }
 
-
-    this.resizeObservable$ = fromEvent(window, 'resize');
-    window.addEventListener('resize', (event: UIEvent) => {
-      const w = event.target as Window;
-      this.screenWidth = w.innerWidth;
-    })
-    this.isTeacher = this.authService.isTeacher();
-    this.user = this.authService.currentUserValue;
-
-    const id_turma = this.route.snapshot.paramMap.get('id')
-    this.turmaHomeService.getTurmaById(id_turma).pipe(take(1)).subscribe(
-      resp => {
-        this.turma = resp;
-
-        if (!this.isTeacher) {
-          console.log("Entrou")
-          this.personagemService.getUsuarioAndTurmaById(this.turma.id).pipe(take(1)).subscribe(
-            resp => {
-              this.personagem = resp;
-            }
-          )
-        }
-      }
-    );
-
-    this.personagemService.getQtdPersonagemByTurma(id_turma);
     this.personagemService.emitQtdPersonagemByTurma.subscribe(
       resp => {
         this.turma.quantidade = resp;
@@ -89,6 +66,34 @@ export class SidenavTurmaComponent implements OnInit {
         this.turma = resp;
       }
     )
+  }
+
+  ngOnInit(): void {
+
+    this.resizeObservable$ = fromEvent(window, 'resize');
+    window.addEventListener('resize', (event: UIEvent) => {
+      const w = event.target as Window;
+      this.screenWidth = w.innerWidth;
+    })
+
+    this.isTeacher = this.authService.isTeacher();
+
+    const id_turma = this.route.snapshot.paramMap.get('id')
+    this.turmaHomeService.getTurmaById(id_turma).pipe(take(1)).subscribe(
+      resp => {
+        this.turma = resp;
+
+        if (!this.isTeacher) {
+          this.personagemService.getUsuarioAndTurmaById(this.turma.id).pipe(take(1)).subscribe(
+            resp => {
+              this.personagem = resp;
+            }
+          )
+        }
+      }
+    );
+
+    this.personagemService.getQtdPersonagemByTurma(id_turma);
   }
 
   toggleSideBar() {

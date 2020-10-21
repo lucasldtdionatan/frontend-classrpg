@@ -2,9 +2,10 @@
     <h1 style="color: black; font-size: 2.1rem; margin-top: 2%;">Atividades</h1>
 </div>
 
-<div>
-    <button mat-raised-button matTooltip="Criar um novo nível" class="buttonNovoNivel"
-        routerLink="../criaratividade">Criar atividade</button>
+<div *ngIf="isTeacher" class="divButton">
+    <button mat-raised-button matTooltip="Criar um novo nível" routerLink="../criaratividade">
+        Criar atividade
+    </button>
 </div>
 
 <mat-table [dataSource]="dataSource" class="mat-elevation-z8" style="margin-bottom: 2%;" *ngIf="qtd_registro > 0">
@@ -32,14 +33,15 @@
     <ng-container matColumnDef="Action">
         <mat-header-cell *matHeaderCellDef></mat-header-cell>
         <mat-cell *matCellDef="let atividade">
-            <button mat-icon-button matTooltip="Editar atividade" routerLink="../editaratividade/{{ atividade.id }}">
+            <button *ngIf="isTeacher" mat-icon-button matTooltip="Editar atividade"
+                routerLink="../editaratividade/{{ atividade.id }}">
                 <i class="material-icons edit">edit</i>
             </button>
-            <button mat-icon-button matTooltip="Distribuir pontuação para os alunos"
+            <button *ngIf="isTeacher" mat-icon-button matTooltip="Distribuir pontuação para os alunos"
                 routerLink="../distribuirxp/{{ atividade.id}}">
                 <i class="material-icons edit">emoji_events</i>
             </button>
-            <button mat-icon-button (click)="onDelete(atividade.id)" matTooltip="Deletar atividade">
+            <button *ngIf="isTeacher" mat-icon-button (click)="onDelete(atividade.id)" matTooltip="Deletar atividade">
                 <i class="material-icons delete">delete</i>
             </button>
         </mat-cell>

@@ -1,9 +1,9 @@
 export class User{
-    id: number;
+    id?: number;
     nome: string;
     email: string;
     nickname: string;
-    tipoUsuario: {
+    tipoUsuario?: {
         id: number;
         tipo: string;
     }

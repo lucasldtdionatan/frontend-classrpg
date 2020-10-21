@@ -1,3 +1,4 @@
+import { AuthenticationService } from './../../../../services/auth.service';
 import { SnackBarService } from './../../../../services/snack-bar.service';
 import { DialogMassageComponent } from './../../../template/dialog-massage/dialog-massage.component';
 import { TurmaService } from './../../../turma-home/turma-home.service';
@@ -19,6 +20,7 @@ export class NivelListComponent implements OnInit {
   dataSource: MatTableDataSource<Nivel>;
   displayedColumns: string[] = ['Imagem', 'Título', 'nivel.nivel', 'Pontuação mínima-máxima', 'Action'];
 
+  isTeacher: boolean;
   qtd_registros: number;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
 
@@ -26,10 +28,13 @@ export class NivelListComponent implements OnInit {
     private nivelService: NivelService,
     private turmaService: TurmaService,
     private dialog: MatDialog,
-    private snackBarService: SnackBarService) { }
+    private snackBarService: SnackBarService,
+    private authenticationService: AuthenticationService
+  ) { }
 
   ngOnInit(): void {
     this.getNiveis();
+    this.isTeacher = this.authenticationService.isTeacher();
   }
 
   getNiveis() {
@@ -66,7 +71,7 @@ export class NivelListComponent implements OnInit {
             this.getNiveis();
           },
           error => {
-            this.snackBarService.openSnackBar('Não foi possível excluir o nível', 'X', true);
+            this.snackBarService.openSnackBar(error.error.mensagem, 'X', true);
           }
         );
       }

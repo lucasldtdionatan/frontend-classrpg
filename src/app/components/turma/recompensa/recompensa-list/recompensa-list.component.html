@@ -3,11 +3,11 @@
 </div>
 
 <!-- class="buttonNovaRecompensa" -->
-<div fxLayout="row" fxLayoutAlign="start" fxLayoutGap="5px" class="divButton">
+<div *ngIf="isTeacher" fxLayout="row" fxLayoutAlign="start" fxLayoutGap="5px" class="divButton">
     <button mat-raised-button matTooltip="Criar uma nova recompensa" routerLink="../criarrecompensa">Criar
         recompensa</button>
 
-    <button mat-raised-button (click)="openDialog()"
+    <button mat-raised-button (click)="openDialogDataRange()"
         matTooltip="Definir intervalo de datas para que os alunos possam coletar uma recompensa">Data limite</button>
 </div>
 
@@ -34,11 +34,16 @@
     <ng-container matColumnDef="action">
         <mat-header-cell *matHeaderCellDef></mat-header-cell>
         <mat-cell *matCellDef="let recompensa">
-            <button mat-icon-button matTooltip="Editar recompensa" routerLink="../editarrecompensa/{{ recompensa.id }}">
+            <button *ngIf="isTeacher" mat-icon-button matTooltip="Editar recompensa"
+                routerLink="../editarrecompensa/{{ recompensa.id }}">
                 <i class="material-icons edit">edit</i>
             </button>
-            <button mat-icon-button (click)="onDelete(recompensa.id)" matTooltip="Deletar recompensa">
+            <button *ngIf="isTeacher" mat-icon-button (click)="onDelete(recompensa.id)" matTooltip="Deletar recompensa">
                 <i class="material-icons delete">delete</i>
+            </button>
+            <button *ngIf="!isTeacher" mat-icon-button matTooltip="Colher recompensa"
+                (click)="openDialogColherRecompensa">
+                <i class="material-icons delete">emoji_events</i>
             </button>
         </mat-cell>
     </ng-container>

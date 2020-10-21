@@ -1,3 +1,4 @@
+import { AuthenticationService } from './../../../../services/auth.service';
 import { TurmaList } from './../../../turma-home/turma-home.model';
 import { DialogDataComponent } from './../../../template/dialog-data/dialog-data.component';
 import { DialogMassageComponent } from './../../../template/dialog-massage/dialog-massage.component';
@@ -27,11 +28,14 @@ export class RecompensaListComponent implements OnInit {
   id_turma: string;
   turma: TurmaList;
   qtd_registros: number;
+  isTeacher: boolean;
+
   constructor(
     private turmaService: TurmaService,
     private recompensaService: RecompensaService,
     private snackBarService: SnackBarService,
     private dialog: MatDialog,
+    private authenticationService: AuthenticationService,
   ) { }
 
   ngOnInit(): void {
@@ -41,6 +45,7 @@ export class RecompensaListComponent implements OnInit {
         this.turma = resp;
       }
     )
+    this.isTeacher = this.authenticationService.isTeacher();
     this.getRecompensas();
   }
 
@@ -77,7 +82,7 @@ export class RecompensaListComponent implements OnInit {
     });
   }
 
-  openDialog() {
+  openDialogDataRange() {
     let data_inicial = moment(this.turma.inicioRecompensa, "DD/MM/YYYY HH:mm");
     let data_final = moment(this.turma.fimRecompensa, "DD/MM/YYYY HH:mm");
 
@@ -95,5 +100,8 @@ export class RecompensaListComponent implements OnInit {
     //   console.log(result)
     //   console.log(this.dataLimiteInicio + ' ' + this.dataLimiteFim);
     // });
+  }
+  openDialogColherRecompensa(){
+      
   }
 }

@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TurmaSearchComponent } from './turma-search.component';
+import { ColherRecompensaComponent } from './colher-recompensa.component';
 
-describe('TurmaSearchComponent', () => {
-  let component: TurmaSearchComponent;
-  let fixture: ComponentFixture<TurmaSearchComponent>;
+describe('ColherRecompensaComponent', () => {
+  let component: ColherRecompensaComponent;
+  let fixture: ComponentFixture<ColherRecompensaComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TurmaSearchComponent ]
+      declarations: [ ColherRecompensaComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TurmaSearchComponent);
+    fixture = TestBed.createComponent(ColherRecompensaComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

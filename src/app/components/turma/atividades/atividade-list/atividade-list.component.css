@@ -5,6 +5,11 @@
     margin-top: 10px;
 }
 
+.divButton button {
+    background-color: #000000;
+    left: 2%;
+}
+
 .mat-table {
     background: #000000;
 }
@@ -12,7 +17,7 @@
 mat-table {
     width: 95%;
     position: relative;
-    top: 60px;
+    top: 20px;
     left: 2%;
     right: 2%;
 }
