@@ -1,1 +1,20 @@
-<p>colher-recompensa works!</p>
+<mat-dialog-content>
+    <div style="text-align: center;">
+        <img src="{{ data.recompensa.imagem }}" class="imgRecompensa">
+    </div>
+
+
+    <p><strong>Título:</strong> {{ data.recompensa.nome }}</p>
+    <p><strong>Nivel:</strong> {{ data.recompensa.nivel }}</p>
+    <p *ngIf="data.recompensa.experiencia > 0">
+        <strong matTooltip="Pontuação que essa recompensa atribui" matTooltipPosition="below">Pontuação:</strong>
+        {{ data.recompensa.experiencia }}XP</p>
+    <p><strong>Descrição:</strong></p>
+    <p style="text-align: justify; white-space:pre-wrap;">{{ data.recompensa.descricao }}</p>
+
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+    <button mat-raised-button (click)="onClose()">Fechar</button>
+    <button mat-raised-button (click)="onSubmit()">Escolher Recompensa</button>
+</mat-dialog-actions>

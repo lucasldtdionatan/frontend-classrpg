@@ -12,7 +12,7 @@ export class RecompensaService {
   }
 
   getRecompensaByTurma(id_turma: string) {
-    return this.http.get<Recompensa[]>(`${environment.apiUrl}/recompensas/turma/${id_turma}`);
+    return this.http.get<any>(`${environment.apiUrl}/recompensas/turma/${id_turma}`);
   }
 
   getById(id_recompensa: string) {

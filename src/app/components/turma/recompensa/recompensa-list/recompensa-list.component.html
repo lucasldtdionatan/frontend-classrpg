@@ -42,8 +42,8 @@
                 <i class="material-icons delete">delete</i>
             </button>
             <button *ngIf="!isTeacher" mat-icon-button matTooltip="Colher recompensa"
-                (click)="openDialogColherRecompensa">
-                <i class="material-icons delete">emoji_events</i>
+                (click)="openDialogColherRecompensa(recompensa)">
+                <i class="material-icons delete">visibility</i>
             </button>
         </mat-cell>
     </ng-container>
@@ -55,5 +55,6 @@
 <div *ngIf="qtd_registros === 0" style="color: #696969; text-align: center; position: relative; top: 10%">
     <i class="material-icons" style="font-size: 20em;">sentiment_very_dissatisfied</i>
     <br>
-    <p style="font-style: italic;">Não há recompensas cadastradas</p>
+    <p style="font-style: italic;" *ngIf="isTeacher">Não há recompensas cadastradas</p>
+    <p style="font-style: italic;" *ngIf="!isTeacher">Não há recompensas disponíveis</p>
 </div>

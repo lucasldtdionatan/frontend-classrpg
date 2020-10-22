@@ -1,3 +1,6 @@
+import { ColherRecompensaService } from './../../../../services/colher-recompensa.service';
+import { PersonagemService } from './../../../personagem/personagem.service';
+import { ColherRecompensaComponent } from './../../../template/colher-recompensa/colher-recompensa.component';
 import { AuthenticationService } from './../../../../services/auth.service';
 import { TurmaList } from './../../../turma-home/turma-home.model';
 import { DialogDataComponent } from './../../../template/dialog-data/dialog-data.component';
@@ -11,6 +14,7 @@ import { Component, OnInit } from '@angular/core';
 import { Recompensa } from '../recompensa.model';
 import { MatDialog } from '@angular/material/dialog';
 import * as moment from 'moment';
+import { Personagem } from 'src/app/components/personagem/personagem.model';
 
 @Component({
   selector: 'app-recompensa-list',
@@ -30,12 +34,15 @@ export class RecompensaListComponent implements OnInit {
   qtd_registros: number;
   isTeacher: boolean;
 
+  personagem: Personagem;
   constructor(
     private turmaService: TurmaService,
     private recompensaService: RecompensaService,
     private snackBarService: SnackBarService,
     private dialog: MatDialog,
     private authenticationService: AuthenticationService,
+    private personagemService: PersonagemService,
+    private colherRecompensaService: ColherRecompensaService,
   ) { }
 
   ngOnInit(): void {
@@ -54,7 +61,21 @@ export class RecompensaListComponent implements OnInit {
       resp => {
         this.dataSource = new MatTableDataSource(resp);
         this.qtd_registros = this.dataSource.data.length;
+
+        if (resp.status = 206) {
+          let teste = this.authenticationService.currentUserValue;
+          console.log(teste)
+          this.colherRecompensaService.getRecompensasSelecionadas(this.personagem.id).pipe(take(1)).subscribe(
+            resp => {
+              console.log("funcionou");
+            }
+          )
+
+        }
+      },
+      error => {
       }
+
     )
   }
 
@@ -88,10 +109,6 @@ export class RecompensaListComponent implements OnInit {
 
     const dialogRef = this.dialog.open(DialogDataComponent, {
       data: {
-        // data_inicio: data_inicial.format("YYYY/MM/DD"),
-        // data_fim: data_final.format("YYYY/MM/DD"),
-        // hora_inicio: data_inicial.format("HH:mm"),
-        // hora_fim: data_final.format("HH:mm")
         turma: this.turma
       }
     });
@@ -101,7 +118,13 @@ export class RecompensaListComponent implements OnInit {
     //   console.log(this.dataLimiteInicio + ' ' + this.dataLimiteFim);
     // });
   }
-  openDialogColherRecompensa(){
-      
+
+  openDialogColherRecompensa(recompensa: Recompensa) {
+    const dialogRef = this.dialog.open(ColherRecompensaComponent, {
+      width: '80%',
+      data: {
+        recompensa
+      }
+    })
   }
 }

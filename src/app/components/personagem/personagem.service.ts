@@ -61,4 +61,5 @@ export class PersonagemService {
   returnPersonagensTurma() {
     return this.personagensTurma;
   }
+
 }

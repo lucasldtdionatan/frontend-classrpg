@@ -95,6 +95,7 @@
     position: absolute;
     right: 14.5%;
     margin-top: 0.5%;
+    margin-bottom: 1%;
 }
 
 button {
@@ -120,6 +121,7 @@ button {
         position: absolute;
         right: 2%;
         margin-top: 1.5%;
+        margin-bottom: 1%;
     }
 }
 
