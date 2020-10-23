@@ -63,7 +63,6 @@ export class RecompensaListComponent implements OnInit {
       resp => {
         this.dataSource = new MatTableDataSource(resp);
         this.qtd_registros = this.dataSource.data.length;
-
         if (!this.isTeacher) {
           this.getRecompensasSelecionadas();
 
@@ -80,6 +79,7 @@ export class RecompensaListComponent implements OnInit {
     this.personagemService.getUsuarioAndTurmaById(this.id_turma).pipe(take(1)).subscribe(
       resp => {
         this.personagem = resp;
+
         this.colherRecompensaService.getRecompensasSelecionadas(this.personagem.id).pipe(take(1)).subscribe(
           resp => {
             this.dataSource2 = new MatTableDataSource(resp);

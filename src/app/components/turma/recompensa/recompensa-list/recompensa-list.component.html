@@ -14,7 +14,8 @@
 
 <div style="position: relative; top: 20px;">
 
-    <h3 style="position: relative; left: 2%;color: #000000; width: 90%;" *ngIf="!isTeacher">Recompensas obtidas:</h3>
+    <h3 style="position: relative; left: 2%;color: #000000; width: 90%;" *ngIf="!isTeacher && qtd_registros2 > 0">
+        Recompensas obtidas:</h3>
     <mat-table [dataSource]="dataSource2" class="mat-elevation-z8" style="margin-bottom: 2%;"
         *ngIf="qtd_registros2 > 0">
 
