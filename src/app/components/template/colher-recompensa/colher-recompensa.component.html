@@ -16,5 +16,5 @@
 
 <mat-dialog-actions align="end">
     <button mat-raised-button (click)="onClose()">Fechar</button>
-    <button mat-raised-button (click)="onSubmit()">Escolher Recompensa</button>
+    <button mat-raised-button (click)="onSubmit()" *ngIf="!data.isDetalhe">Escolher Recompensa</button>
 </mat-dialog-actions>

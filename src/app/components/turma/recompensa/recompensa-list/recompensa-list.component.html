@@ -11,46 +11,95 @@
         matTooltip="Definir intervalo de datas para que os alunos possam coletar uma recompensa">Data limite</button>
 </div>
 
-<mat-table [dataSource]="dataSource" class="mat-elevation-z8" style="margin-bottom: 2%;" *ngIf="qtd_registros > 0">
 
-    <ng-container matColumnDef="imagem">
-        <mat-header-cell *matHeaderCellDef>Imagem</mat-header-cell>
-        <mat-cell *matCellDef="let recompensa">
-            <img class="userImgData" src="{{ recompensa.imagem }}">
-        </mat-cell>
-    </ng-container>
+<div style="position: relative; top: 20px;">
 
-    <ng-container matColumnDef="titulo">
-        <mat-header-cell *matHeaderCellDef>Título</mat-header-cell>
-        <mat-cell *matCellDef="let recompensa">{{ recompensa.nome }}</mat-cell>
-    </ng-container>
+    <h3 style="position: relative; left: 2%;color: #000000; width: 90%;" *ngIf="!isTeacher">Recompensas obtidas:</h3>
+    <mat-table [dataSource]="dataSource2" class="mat-elevation-z8" style="margin-bottom: 2%;"
+        *ngIf="qtd_registros2 > 0">
 
-    <ng-container matColumnDef="nivel">
-        <mat-header-cell *matHeaderCellDef matTooltip="Nível para obter a recompensa" matTooltipPosition="left">Nível
-        </mat-header-cell>
-        <mat-cell *matCellDef="let recompensa">{{ recompensa.nivel }}</mat-cell>
-    </ng-container>
+        <ng-container matColumnDef="imagem">
+            <mat-header-cell *matHeaderCellDef>Imagem</mat-header-cell>
+            <mat-cell *matCellDef="let recompensa">
+                <img class="userImgData" src="{{ recompensa.recompensa.imagem }}">
+            </mat-cell>
+        </ng-container>
 
-    <ng-container matColumnDef="action">
-        <mat-header-cell *matHeaderCellDef></mat-header-cell>
-        <mat-cell *matCellDef="let recompensa">
-            <button *ngIf="isTeacher" mat-icon-button matTooltip="Editar recompensa"
-                routerLink="../editarrecompensa/{{ recompensa.id }}">
-                <i class="material-icons edit">edit</i>
-            </button>
-            <button *ngIf="isTeacher" mat-icon-button (click)="onDelete(recompensa.id)" matTooltip="Deletar recompensa">
-                <i class="material-icons delete">delete</i>
-            </button>
-            <button *ngIf="!isTeacher" mat-icon-button matTooltip="Colher recompensa"
-                (click)="openDialogColherRecompensa(recompensa)">
-                <i class="material-icons delete">visibility</i>
-            </button>
-        </mat-cell>
-    </ng-container>
+        <ng-container matColumnDef="titulo">
+            <mat-header-cell *matHeaderCellDef>Título</mat-header-cell>
+            <mat-cell *matCellDef="let recompensa">{{ recompensa.recompensa.nome }}</mat-cell>
+        </ng-container>
 
-    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
-</mat-table>
+        <ng-container matColumnDef="nivel">
+            <mat-header-cell *matHeaderCellDef matTooltip="Nível para obter a recompensa" matTooltipPosition="left">
+                Nível
+            </mat-header-cell>
+            <mat-cell *matCellDef="let recompensa">{{ recompensa.recompensa.nivel }}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="action">
+            <mat-header-cell *matHeaderCellDef></mat-header-cell>
+            <mat-cell *matCellDef="let recompensa">
+                <button *ngIf="!isTeacher" mat-icon-button matTooltip="Detalhes da recompensa"
+                    (click)="openDialogColherRecompensa(recompensa.recompensa, true)">
+                    <i class="material-icons delete">visibility</i>
+                </button>
+            </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+    </mat-table>
+</div>
+
+
+<div style="position: relative; top: 20px;">
+    <h3 style="position: relative; left: 2%;color: #000000; width: 90%;" *ngIf="!isTeacher && qtd_registros > 0">
+        Recompensas disponíveis:</h3>
+    <mat-table [dataSource]="dataSource" class="mat-elevation-z8" style="margin-bottom: 2%;" *ngIf="qtd_registros > 0">
+
+        <ng-container matColumnDef="imagem">
+            <mat-header-cell *matHeaderCellDef>Imagem</mat-header-cell>
+            <mat-cell *matCellDef="let recompensa">
+                <img class="userImgData" src="{{ recompensa.imagem }}">
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="titulo">
+            <mat-header-cell *matHeaderCellDef>Título</mat-header-cell>
+            <mat-cell *matCellDef="let recompensa">{{ recompensa.nome }}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="nivel">
+            <mat-header-cell *matHeaderCellDef matTooltip="Nível para obter a recompensa" matTooltipPosition="left">
+                Nível
+            </mat-header-cell>
+            <mat-cell *matCellDef="let recompensa">{{ recompensa.nivel }}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="action">
+            <mat-header-cell *matHeaderCellDef></mat-header-cell>
+            <mat-cell *matCellDef="let recompensa">
+                <button *ngIf="isTeacher" mat-icon-button matTooltip="Editar recompensa"
+                    routerLink="../editarrecompensa/{{ recompensa.id }}">
+                    <i class="material-icons edit">edit</i>
+                </button>
+                <button *ngIf="isTeacher" mat-icon-button (click)="onDelete(recompensa.id)"
+                    matTooltip="Deletar recompensa">
+                    <i class="material-icons delete">delete</i>
+                </button>
+                <button *ngIf="!isTeacher" mat-icon-button matTooltip="Colher recompensa"
+                    (click)="openDialogColherRecompensa(recompensa)">
+                    <i class="material-icons delete">visibility</i>
+                </button>
+            </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+    </mat-table>
+</div>
+
 
 <div *ngIf="qtd_registros === 0" style="color: #696969; text-align: center; position: relative; top: 10%">
     <i class="material-icons" style="font-size: 20em;">sentiment_very_dissatisfied</i>

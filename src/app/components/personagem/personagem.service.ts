@@ -32,12 +32,12 @@ export class PersonagemService {
     )
   }
 
-  getUsuarioAndTurmaById(id: number) {
+  getUsuarioAndTurmaById(id: any) {
     return this.http.get<any>(`${environment.apiUrl}/personagens/usuario/turma/${id}`);
   }
 
   getPersonagensByTurma(id: string) {
-    return this.http.get<Personagem[]>(`${environment.apiUrl}/personagens/turma/${id}?orderBy=id`)
+    return this.http.get<Personagem[]>(`${environment.apiUrl}/personagens/turma/${id}?orderBy=id`);
   }
   // getPersonagensByTurma(id: string) {
   //   return this.http.get<Personagem[]>(`${environment.apiUrl}/personagens/turma/${id}?orderBy=id`)

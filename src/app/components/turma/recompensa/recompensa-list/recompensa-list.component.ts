@@ -24,6 +24,7 @@ import { Personagem } from 'src/app/components/personagem/personagem.model';
 export class RecompensaListComponent implements OnInit {
 
   dataSource: MatTableDataSource<Recompensa>;
+  dataSource2: MatTableDataSource<any>;
   displayedColumns: string[] = ['imagem', 'titulo', 'nivel', 'action'];
 
   dataLimiteInicio: any;
@@ -32,6 +33,7 @@ export class RecompensaListComponent implements OnInit {
   id_turma: string;
   turma: TurmaList;
   qtd_registros: number;
+  qtd_registros2: number;
   isTeacher: boolean;
 
   personagem: Personagem;
@@ -62,20 +64,29 @@ export class RecompensaListComponent implements OnInit {
         this.dataSource = new MatTableDataSource(resp);
         this.qtd_registros = this.dataSource.data.length;
 
-        if (resp.status = 206) {
-          let teste = this.authenticationService.currentUserValue;
-          console.log(teste)
-          this.colherRecompensaService.getRecompensasSelecionadas(this.personagem.id).pipe(take(1)).subscribe(
-            resp => {
-              console.log("funcionou");
-            }
-          )
+        if (!this.isTeacher) {
+          this.getRecompensasSelecionadas();
 
+          if (resp.status === 206) {
+            this.getRecompensasSelecionadas();
+          }
         }
       },
       error => {
       }
-
+    )
+  }
+  getRecompensasSelecionadas() {
+    this.personagemService.getUsuarioAndTurmaById(this.id_turma).pipe(take(1)).subscribe(
+      resp => {
+        this.personagem = resp;
+        this.colherRecompensaService.getRecompensasSelecionadas(this.personagem.id).pipe(take(1)).subscribe(
+          resp => {
+            this.dataSource2 = new MatTableDataSource(resp);
+            this.qtd_registros2 = this.dataSource2.data.length;
+          }
+        )
+      }
     )
   }
 
@@ -119,12 +130,17 @@ export class RecompensaListComponent implements OnInit {
     // });
   }
 
-  openDialogColherRecompensa(recompensa: Recompensa) {
+  openDialogColherRecompensa(recompensa: Recompensa, isDetalhe: boolean) {
     const dialogRef = this.dialog.open(ColherRecompensaComponent, {
       width: '80%',
       data: {
-        recompensa
+        recompensa,
+        isDetalhe
       }
     })
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.getRecompensas();
+    });
   }
 }
