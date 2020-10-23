@@ -35,7 +35,7 @@
                 <span matLine>Alunos</span>
             </a>
 
-            <a mat-list-item *ngIf="!isTeacher">
+            <a mat-list-item *ngIf="!isTeacher" [routerLink]="['ranking']">
                 <span matLine>Ranking</span>
             </a>
 

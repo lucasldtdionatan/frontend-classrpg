@@ -1,0 +1,14 @@
+h1 {
+    color: #000000;
+    font-size: 2.1rem;
+    margin-top: 2%;
+}
+
+mat-table {
+    width: 95%;
+    position: relative;
+    top: 20px;
+    left: 2%;
+    right: 2%;
+    background: #000000;
+}

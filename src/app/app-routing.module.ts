@@ -1,3 +1,4 @@
+import { RankingComponent } from './components/turma/ranking/ranking/ranking.component';
 import { ConfiguracaoTurmaComponent } from './components/turma/configuracao-turma/configuracao-turma.component';
 import { RecompensaAddComponent } from './components/turma/recompensa/recompensa-add/recompensa-add.component';
 import { RecompensaListComponent } from './components/turma/recompensa/recompensa-list/recompensa-list.component';
@@ -114,6 +115,11 @@ const routes: Routes = [
         path: 'configuracaoturma',
         canActivate: [AuthGuard],
         component: ConfiguracaoTurmaComponent
+      },
+      {
+        path: 'ranking',
+        canActivate: [AuthGuard],
+        component: RankingComponent
       }
     ]
   },

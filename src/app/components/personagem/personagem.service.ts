@@ -54,6 +54,9 @@ export class PersonagemService {
     return this.http.get<PersonagemAtividade[]>(`${environment.apiUrl}/personagens/turma/${idTurma}/atividade/${idAtividade}`);
   }
 
+  getRanking(id_turma: string) {
+    return this.http.get<Personagem[]>(`${environment.apiUrl}/personagens/ranking/turma/${id_turma}`);
+  }
   deletePersonagem(id_personagem: string) {
     return this.http.delete(`${environment.apiUrl}/personagens/${id_personagem}`);
   }

@@ -1,0 +1,27 @@
+<div style="text-align: center;">
+    <h1>Ranking</h1>
+</div>
+
+<mat-table [dataSource]="dataSource" class="mat-elevation-z8" style="margin-bottom: 2%;">
+
+
+
+    <ng-container matColumnDef="nickname">
+        <mat-header-cell *matHeaderCellDef>Nickname</mat-header-cell>
+        <mat-cell *matCellDef="let personagem">{{ personagem.usuario.nickname }}</mat-cell>
+    </ng-container>
+    
+    <ng-container matColumnDef="pontuacao">
+        <mat-header-cell *matHeaderCellDef>Pontuação</mat-header-cell>
+        <mat-cell *matCellDef="let personagem">{{ personagem.experiencia }}</mat-cell>
+    </ng-container>
+    
+    <ng-container matColumnDef="nivel">
+        <mat-header-cell *matHeaderCellDef>Nível</mat-header-cell>
+        <mat-cell *matCellDef="let personagem">{{ personagem.nivel.nivel }}</mat-cell>
+    </ng-container>
+
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+</mat-table>

@@ -27,14 +27,16 @@
 
         <ng-container matColumnDef="titulo">
             <mat-header-cell *matHeaderCellDef>Título</mat-header-cell>
-            <mat-cell *matCellDef="let recompensa">{{ recompensa.recompensa.nome }}</mat-cell>
+            <mat-cell *matCellDef="let recompensa" matTooltip="{{ recompensa.recompensa.nome }}">
+                {{ recompensa.recompensa.nome }}</mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="nivel">
             <mat-header-cell *matHeaderCellDef matTooltip="Nível para obter a recompensa" matTooltipPosition="left">
                 Nível
             </mat-header-cell>
-            <mat-cell *matCellDef="let recompensa">{{ recompensa.recompensa.nivel }}</mat-cell>
+            <mat-cell *matCellDef="let recompensa" matTooltip="{{ recompensa.recompensa.nivel }}">
+                {{ recompensa.recompensa.nivel }}</mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="action">
@@ -67,14 +69,14 @@
 
         <ng-container matColumnDef="titulo">
             <mat-header-cell *matHeaderCellDef>Título</mat-header-cell>
-            <mat-cell *matCellDef="let recompensa">{{ recompensa.nome }}</mat-cell>
+            <mat-cell *matCellDef="let recompensa" matTooltip="{{ recompensa.nome }}">{{ recompensa.nome }}</mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="nivel">
             <mat-header-cell *matHeaderCellDef matTooltip="Nível para obter a recompensa" matTooltipPosition="left">
                 Nível
             </mat-header-cell>
-            <mat-cell *matCellDef="let recompensa">{{ recompensa.nivel }}</mat-cell>
+            <mat-cell *matCellDef="let recompensa" matTooltip="{{ recompensa.nivel }}">{{ recompensa.nivel }}</mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="action">
