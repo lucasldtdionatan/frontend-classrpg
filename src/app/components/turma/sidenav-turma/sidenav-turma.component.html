@@ -21,9 +21,19 @@
         <div class="information" *ngIf="!isTeacher">
             <img class="userImgData" src="{{ personagem.usuario.imagem }}" alt="" matTooltip="Imagem avatar">
 
-            <h2 matTooltip="Experiência do personagem: {{ personagem.experiencia }}xp">
+            <!-- <h2 matTooltip="Experiência do personagem: {{ personagem.experiencia }}xp">
                 {{ personagem.experiencia }} xp
-            </h2>
+            </h2> -->
+
+            <div fxLayout="row wrap" fxLayoutGap="5px" fxLayoutAlign="center">
+                <h3 matTooltip="Experiência mínima">{{ personagem.nivel.experienciaMinima }} xp</h3>
+                <mat-progress-bar color="primary" mode="determinate" value="{{ porcentagemProgress }}"
+                    style="width: 150px;" matTooltip="{{ porcentagemProgress }}%">
+                </mat-progress-bar>
+                <h3  matTooltip="Experiência máxima">{{ personagem.nivel.experienciaMaxima }} xp</h3>
+            </div>
+            <p style="margin-top: -20px;" matTooltip="Experiência do personagem">{{ personagem.experiencia }} xp</p>
+
             <h1 matTooltip="Nome do estudante: {{ personagem.usuario.nickname }}">{{ personagem.usuario.nickname }}</h1>
             <h3 matTooltip="Classe do personagem: {{ personagem.nivel.nome }}"> {{ personagem.nivel.nome }}</h3>
             <!-- <h3 matTooltip="Nome da turma: {{ turma.titulo }}">{{ turma.titulo }}</h3> -->

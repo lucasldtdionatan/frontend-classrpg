@@ -19,6 +19,7 @@ export class SidenavTurmaComponent implements OnInit {
   screenWidth: number = screen.width;
   sidenavOpen = true;
 
+  porcentagemProgress: number;
   isTeacher: boolean = false;
 
   user: User;
@@ -87,6 +88,7 @@ export class SidenavTurmaComponent implements OnInit {
           this.personagemService.getUsuarioAndTurmaById(this.turma.id).pipe(take(1)).subscribe(
             resp => {
               this.personagem = resp;
+              this.porcentagemProgress = (this.personagem.experiencia / (this.personagem.nivel.experienciaMaxima - this.personagem.nivel.experienciaMinima) * 100);
             }
           )
         }

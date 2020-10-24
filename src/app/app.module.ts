@@ -29,6 +29,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator'
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 
 import { AuthenticationService } from './services/auth.service';
@@ -120,7 +121,7 @@ import { RankingComponent } from './components/turma/ranking/ranking/ranking.com
     MatPaginatorModule,
     MatDatepickerModule,
     MatNativeDateModule,
-
+    MatProgressBarModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true },
