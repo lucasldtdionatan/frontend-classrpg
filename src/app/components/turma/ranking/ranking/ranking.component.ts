@@ -25,7 +25,6 @@ export class RankingComponent implements OnInit {
     this.personagemService.getRanking(id_turma).pipe(take(1)).subscribe(
       resp => {
         this.dataSource = new MatTableDataSource(resp);
-        console.log(resp);
       }
     )
   }
