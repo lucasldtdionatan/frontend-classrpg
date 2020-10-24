@@ -6,6 +6,11 @@
 
 
 
+    <ng-container matColumnDef="posicao">
+        <mat-header-cell *matHeaderCellDef>Posição</mat-header-cell>
+        <mat-cell *matCellDef="let personagem">{{ personagem.posicao }}°</mat-cell>
+    </ng-container>
+
     <ng-container matColumnDef="nickname">
         <mat-header-cell *matHeaderCellDef>Nickname</mat-header-cell>
         <mat-cell *matCellDef="let personagem">{{ personagem.usuario.nickname }}</mat-cell>

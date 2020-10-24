@@ -13,7 +13,7 @@ import { Personagem } from 'src/app/components/personagem/personagem.model';
 export class RankingComponent implements OnInit {
 
   dataSource: MatTableDataSource<Personagem>;
-  displayedColumns: string[] = ['nickname', 'pontuacao', 'nivel'];
+  displayedColumns: string[] = ['posicao', 'nickname', 'pontuacao', 'nivel'];
 
   constructor(
     private personagemService: PersonagemService,
@@ -25,6 +25,7 @@ export class RankingComponent implements OnInit {
     this.personagemService.getRanking(id_turma).pipe(take(1)).subscribe(
       resp => {
         this.dataSource = new MatTableDataSource(resp);
+        console.log(resp);
       }
     )
   }
