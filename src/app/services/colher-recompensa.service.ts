@@ -17,4 +17,8 @@ export class ColherRecompensaService {
   getRecompensasSelecionadas(id_personagem: number) {
     return this.http.get<Recompensa[]>(`${environment.apiUrl}/recompensas/colher/personagem/${id_personagem}`);
   }
+
+  getRecompensasByPersonagem(id_personagem) {
+    return this.http.get<Recompensa[]>(`${environment.apiUrl}/recompensas/colher/personagem/${id_personagem}`);
+  }
 }

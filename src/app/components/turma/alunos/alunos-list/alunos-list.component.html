@@ -33,6 +33,9 @@
     <ng-container matColumnDef="action">
         <mat-header-cell *matHeaderCellDef></mat-header-cell>
         <mat-cell *matCellDef="let user">
+            <button mat-icon-button (click)="openDetailsPersonagem(user)" matTooltip="Deletar atividade">
+                <i class="material-icons">visibility</i>
+            </button>
             <button mat-icon-button (click)="onDelete(user.id)" matTooltip="Deletar atividade">
                 <i class="material-icons">delete</i>
             </button>

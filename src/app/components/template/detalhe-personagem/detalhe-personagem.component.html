@@ -1,0 +1,42 @@
+<div fxLayoutAlign="end">
+    <button mat-icon-button mat-dialog-close>X</button>
+</div>
+<h1 mat-dialog-title style="text-align: center;">Detalhes do aluno</h1>
+
+<mat-dialog-content>
+    <div style="text-align: center;">
+        <img src="{{ data.personagem.usuario.imagem }}" class="imgPersonagem">
+    </div>
+    <p><strong>Nome do aluno:</strong> {{ data.personagem.usuario.nome }}</p>
+    <p><strong>E-mail:</strong> {{ data.personagem.usuario.email }}</p>
+    <p><strong>Nickname:</strong> {{ data.personagem.usuario.nickname }}</p>
+    <div fxLayout="row wrap">
+        <p fxFlex="40"><strong>Nível:</strong> {{ data.personagem.nivel.nivel }}</p>
+        <p fxFlex><strong>Pontuação(XP):</strong> {{ data.personagem.experiencia }}</p>
+    </div>
+
+    <br>
+    <p>Recompensas do aluno:</p>
+    <mat-table [dataSource]="dataSource" class="mat-elevation-z8" style="margin-bottom: 2%;" *ngIf="qtd_registros > 0">
+
+        <ng-container matColumnDef="imagem">
+            <mat-header-cell *matHeaderCellDef>Pontuação</mat-header-cell>
+            <mat-cell *matCellDef="let recompensa" matTooltip="{{ recompensa.recompensa.experiencia }}">
+                {{ recompensa.recompensa.experiencia }} XP</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="titulo">
+            <mat-header-cell *matHeaderCellDef>Título</mat-header-cell>
+            <mat-cell *matCellDef="let recompensa" matTooltip="{{ recompensa.recompensa.nome }}">
+                {{ recompensa.recompensa.nome }}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="nivel">
+            <mat-header-cell *matHeaderCellDef>Nível</mat-header-cell>
+            <mat-cell *matCellDef="let recompensa">{{ recompensa.recompensa.nivel }}</mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+    </mat-table>
+</mat-dialog-content>

@@ -1,3 +1,4 @@
+import { DetalhePersonagemComponent } from './../../../template/detalhe-personagem/detalhe-personagem.component';
 import { DialogMassageComponent } from './../../../template/dialog-massage/dialog-massage.component';
 import { SnackBarService } from './../../../../services/snack-bar.service';
 import { take } from 'rxjs/operators';
@@ -70,6 +71,13 @@ export class AlunosListComponent implements OnInit, AfterViewInit {
         this.dataSource.sort = this.sort;
       }
     )
+  }
+
+  openDetailsPersonagem(personagem: Personagem) {
+    const dialogRef = this.dialog.open(DetalhePersonagemComponent, {
+      width: '85%',
+      data: { personagem: personagem }
+    });
   }
 
   onDelete(id_personagem: string) {

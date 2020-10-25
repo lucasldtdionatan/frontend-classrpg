@@ -62,6 +62,7 @@ import { DialogDataComponent } from './components/template/dialog-data/dialog-da
 import { ConfiguracaoTurmaComponent } from './components/turma/configuracao-turma/configuracao-turma.component';
 import { ColherRecompensaComponent } from './components/template/colher-recompensa/colher-recompensa.component';
 import { RankingComponent } from './components/turma/ranking/ranking/ranking.component';
+import { DetalhePersonagemComponent } from './components/template/detalhe-personagem/detalhe-personagem.component';
 
 
 
@@ -89,7 +90,8 @@ import { RankingComponent } from './components/turma/ranking/ranking/ranking.com
     DialogDataComponent,
     ConfiguracaoTurmaComponent,
     ColherRecompensaComponent,
-    RankingComponent
+    RankingComponent,
+    DetalhePersonagemComponent
   ],
 
   imports: [
