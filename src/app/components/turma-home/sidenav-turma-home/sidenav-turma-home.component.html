@@ -8,9 +8,13 @@
         <i class="material-icons">more_vert</i>
     </button>
     <mat-menu #menu="matMenu">
-        <button mat-menu-item>
+        <button mat-menu-item [routerLink]="['configuracaousuario']">
             <mat-icon>settings</mat-icon>
             <span>Configurações do usuário</span>
+        </button>
+        <button mat-menu-item [routerLink]="['alterarsenha']">
+            <mat-icon>vpn_key</mat-icon>
+            <span>Alterar senha</span>
         </button>
         <button mat-menu-item (click)="onLogout()">
             <mat-icon>exit_to_app</mat-icon>

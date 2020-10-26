@@ -1,5 +1,5 @@
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
 
 
@@ -12,7 +12,7 @@ import { Turma } from './../../turma-home.model';
 @Component({
   selector: 'app-turma-add',
   templateUrl: './turma-add.component.html',
-  styleUrls: ['./turma-add.component.css']
+  styleUrls: ['./turma-add.component.css'],
 })
 export class TurmaAddComponent implements OnInit {
 

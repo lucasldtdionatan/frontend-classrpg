@@ -30,31 +30,19 @@
     color: #808080;
 }
 
-/* input disabled*/
-
-::ng-deep .mat-form-field-appearance-outline.mat-form-field-disabled .mat-form-field-outline {
-    color: #000000
-}
-
-::ng-deep .mat-input-element:disabled, .mat-form-field-type-mat-native-select.mat-form-field-disabled .mat-form-field-infix::after {
-    color: #000000
-}
-
-::ng-deep .mat-form-field-appearance-outline.mat-form-field-disabled .mat-form-field-label {
-    color: #000000;
-}
-
-/*Progress spinner */
+/* progress spinner */
 
 ::ng-deep .mat-progress-spinner circle, .mat-spinner circle {
     stroke: rgb(255, 255, 255, .3);
 }
 
-/*button styles*/
+/* if disabled button form */
 
 ::ng-deep .mat-raised-button.mat-button-disabled.mat-button-disabled {
     background-color: #000000;
 }
+
+/*=======================================================================================*/
 
 button {
     background-color: #000000;
@@ -66,43 +54,24 @@ h1 {
     margin-top: 2%;
 }
 
-.inputStyle {
-    width: 70%;
-}
-
-.inputNomeNickname {
-    width: 35%;
+mat-form-field {
+    width: 50%;
 }
 
 .buttonSubmitCancel {
     position: absolute;
-    right: 15%;
-    margin-top: 1.5%;
+    margin-bottom: 2%;
+    right: 25%;
 }
 
-/*Image styles*/
-
-.imagePreviewBox {
-    border: 1px solid #000000;
-    border-radius: 4px;
-    width: 230px;
-    height: 230px;
+@media screen and (max-width: 700px) {
+    mat-form-field {
+        width: 90%;
+    }
+    .buttonSubmitCancel {
+        position: absolute;
+        margin-top: 8%;
+        margin-bottom: 2%;
+        right: 5%;
+    }
 }
-
-.imagePreview {
-    max-width: 230px;
-    max-height: 230px;
-    width: auto;
-    height: auto;
-}
-
-.imagePreviewBox:hover {
-    box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.8);
-}
-
-.buttonImageSelect {
-    margin-left: 5px;
-    background-color: #000000;
-}
-
-/*====================================================*/

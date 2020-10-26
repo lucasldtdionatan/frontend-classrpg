@@ -6,6 +6,7 @@ import { AuthenticationService } from '../../../services/auth.service';
 import { TurmaService } from '../turma-home.service';
 
 import { User } from '../../../models/user.model';
+import { MatDialog } from '@angular/material/dialog';
 
 
 @Component({
@@ -28,7 +29,8 @@ export class SidenavTurmaHomeComponent implements OnInit {
   constructor(
     private router: Router,
     private authenticationService: AuthenticationService,
-    private turmaService: TurmaService
+    private turmaService: TurmaService,
+    private dialog: MatDialog,
   ) {
   }
 
@@ -42,16 +44,27 @@ export class SidenavTurmaHomeComponent implements OnInit {
       this.screenWidth = w.innerWidth;
     })
 
+
     this.user = this.authenticationService.currentUserValue;
     if (this.user.tipoUsuario.id === 2) { //check if is teacher
       this.isTeacher = true;
     }
+
+    this.authenticationService.emitUsuario.subscribe(
+      resp => {
+
+        this.user = resp.source._value;
+      }
+    )
 
     this.turmaService.emitQtdTurmas.subscribe(
       resp => {
         this.qtdTurmas = resp;
       }
     )
+  }
+
+  openDialogPassword() {
   }
 
   toggleSideBar() {

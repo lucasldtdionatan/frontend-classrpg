@@ -64,6 +64,7 @@ import { ColherRecompensaComponent } from './components/template/colher-recompen
 import { RankingComponent } from './components/turma/ranking/ranking/ranking.component';
 import { DetalhePersonagemComponent } from './components/template/detalhe-personagem/detalhe-personagem.component';
 import { ConfiguracaoUsuarioComponent } from './components/configuracao-usuario/configuracao-usuario.component';
+import { AlterarSenhaComponent } from './components/alterar-senha/alterar-senha.component';
 
 
 
@@ -94,6 +95,7 @@ import { ConfiguracaoUsuarioComponent } from './components/configuracao-usuario/
     RankingComponent,
     DetalhePersonagemComponent,
     ConfiguracaoUsuarioComponent,
+    AlterarSenhaComponent,
   ],
 
   imports: [

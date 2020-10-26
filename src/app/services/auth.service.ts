@@ -1,7 +1,7 @@
 import { SnackBarService } from './snack-bar.service';
 import { Interceptor, InterceptorSkipHeader } from './../interceptors/interceptor.service';
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { map, tap, take } from 'rxjs/operators';
 
@@ -15,9 +15,12 @@ import { Router } from '@angular/router';
 })
 export class AuthenticationService {
 
+
   private currentUserSubject: BehaviorSubject<User>;
   private currentUser: Observable<User>;
   private token: BehaviorSubject<any>;
+
+  emitUsuario = new EventEmitter<any>();
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
@@ -62,6 +65,25 @@ export class AuthenticationService {
 
     return this.http.post<any>(`${environment.apiUrl}/usuarios/registrar`, user);
 
+  }
+
+  update(user: User) {
+    return this.http.put(`${environment.apiUrl}/usuarios/${user.id}`, user);
+  }
+
+  updatePassword(password: any) {
+    return this.http.put(`${environment.apiUrl}/usuarios/alterarsenha`, password);
+  }
+
+
+  getUsuario(id_usuario: number) {
+    this.http.get<User>(`${environment.apiUrl}/usuarios/${id_usuario}`, { observe: 'response' }).pipe(take(1)).subscribe(
+      resp => {
+        this.currentUserSubject.next(resp.body);
+        localStorage.setItem('currentUser', JSON.stringify(resp.body));
+        this.emitUsuario.emit(this.currentUser);
+      }
+    )
   }
 
   logout() {
