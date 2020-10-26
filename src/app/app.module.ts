@@ -30,7 +30,7 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator'
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
-
+import { MatMenuModule } from '@angular/material/menu';
 
 import { AuthenticationService } from './services/auth.service';
 import { Interceptor } from './interceptors/interceptor.service';
@@ -63,6 +63,7 @@ import { ConfiguracaoTurmaComponent } from './components/turma/configuracao-turm
 import { ColherRecompensaComponent } from './components/template/colher-recompensa/colher-recompensa.component';
 import { RankingComponent } from './components/turma/ranking/ranking/ranking.component';
 import { DetalhePersonagemComponent } from './components/template/detalhe-personagem/detalhe-personagem.component';
+import { ConfiguracaoUsuarioComponent } from './components/configuracao-usuario/configuracao-usuario.component';
 
 
 
@@ -91,7 +92,8 @@ import { DetalhePersonagemComponent } from './components/template/detalhe-person
     ConfiguracaoTurmaComponent,
     ColherRecompensaComponent,
     RankingComponent,
-    DetalhePersonagemComponent
+    DetalhePersonagemComponent,
+    ConfiguracaoUsuarioComponent,
   ],
 
   imports: [
@@ -123,7 +125,8 @@ import { DetalhePersonagemComponent } from './components/template/detalhe-person
     MatPaginatorModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatMenuModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true },

@@ -1,0 +1,46 @@
+<div style="text-align: center;">
+    <h1>Configuração de usuário</h1>
+</div>
+
+<form style="text-align: center; margin-top: 2%;">
+    <div fxLayout="row wrap" fxLayoutAlign="center center">
+        <div class="imagePreviewBox" fxFlexOrder="1">
+            <img class="imagePreview" [src]="imgURL" *ngIf="imgURL">
+        </div>
+        <input #file style="display: none;" id="inputFile" type="file" accept="image/*"
+            (change)="imagePreview(file.files)">
+        <label for="inputFile" class="mat-raised-button buttonImageSelect" fxFlexOrder="2">Selecionar imagem</label>
+    </div>
+
+    <div fxLayout="row wrap" fxLayoutGap="5px" fxLayoutAlign="center" style="margin-top: 1.5%;">
+        <mat-form-field appearance="outline" class="inputNomeNickname">
+            <mat-label>Nome completo</mat-label>
+            <input matInput type="text" autocomplete="off">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="inputNomeNickname">
+            <mat-label>Nickname</mat-label>
+            <input matInput type="text" autocomplete="off">
+        </mat-form-field>
+    </div>
+
+    <mat-form-field appearance="outline" class="inputStyle">
+        <mat-label>E-mail</mat-label>
+        <input matInput type="text" autocomplete="off">
+    </mat-form-field>
+
+    <div fxLayout="row wrap" fxLayoutGap="5px" fxLayoutAlign="center">
+
+        <mat-form-field appearance="outline" class="inputNomeNickname">
+            <mat-label>Senha</mat-label>
+            <input matInput type="password" autocomplete="off">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="inputNomeNickname">
+            <mat-label>Confirmar senha</mat-label>
+            <input matInput type="password" autocomplete="off">
+        </mat-form-field>
+    </div>
+
+
+</form>

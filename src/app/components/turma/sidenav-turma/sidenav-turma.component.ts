@@ -32,6 +32,7 @@ export class SidenavTurmaComponent implements OnInit {
     private authService: AuthenticationService,
     private turmaHomeService: TurmaService,
     private personagemService: PersonagemService,
+    private authenticationService: AuthenticationService
   ) {
     this.personagem = {
       descricao: null,
@@ -104,6 +105,10 @@ export class SidenavTurmaComponent implements OnInit {
 
   onBack() {
     this.router.navigate(['turmas']);
+  }
+
+  onLogout() {
+    this.authenticationService.logout();
   }
 
 }

@@ -3,6 +3,20 @@
         <mat-icon>menu</mat-icon>
     </button>
     <span>ClassRPG</span>
+
+    <button mat-icon-button [matMenuTriggerFor]="menu" style="position: absolute; right: 0;">
+        <i class="material-icons">more_vert</i>
+    </button>
+    <mat-menu #menu="matMenu">
+        <button mat-menu-item>
+            <mat-icon>settings</mat-icon>
+            <span>Configurações do usuário</span>
+        </button>
+        <button mat-menu-item (click)="onLogout()">
+            <mat-icon>exit_to_app</mat-icon>
+            <span>Sair</span>
+        </button>
+    </mat-menu>
 </mat-toolbar>
 
 <mat-drawer-container hasBackdrop="false">

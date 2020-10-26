@@ -1,3 +1,4 @@
+import { ConfiguracaoUsuarioComponent } from './components/configuracao-usuario/configuracao-usuario.component';
 import { RankingComponent } from './components/turma/ranking/ranking/ranking.component';
 import { ConfiguracaoTurmaComponent } from './components/turma/configuracao-turma/configuracao-turma.component';
 import { RecompensaAddComponent } from './components/turma/recompensa/recompensa-add/recompensa-add.component';
@@ -45,6 +46,11 @@ const routes: Routes = [
         path: 'buscarturma',
         canActivate: [AuthGuard],
         component: TurmaSearchComponent
+      },
+      {
+        path: 'configuracaousuario',
+        canActivate: [AuthGuard],
+        component: ConfiguracaoUsuarioComponent,
       },
       { path: '', redirectTo: '/turmas', pathMatch: 'full' },
     ]
@@ -120,9 +126,15 @@ const routes: Routes = [
         path: 'ranking',
         canActivate: [AuthGuard],
         component: RankingComponent
-      }
+      },
+      {
+        path: 'configuracaousuario',
+        canActivate: [AuthGuard],
+        component: ConfiguracaoUsuarioComponent,
+      },
     ]
   },
+
   {
     path: 'login',
     component: LoginComponent
