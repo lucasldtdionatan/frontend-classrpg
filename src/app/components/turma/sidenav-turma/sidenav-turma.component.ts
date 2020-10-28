@@ -89,7 +89,7 @@ export class SidenavTurmaComponent implements OnInit {
           this.personagemService.getUsuarioAndTurmaById(this.turma.id).pipe(take(1)).subscribe(
             resp => {
               this.personagem = resp;
-              this.porcentagemProgress = (this.personagem.experiencia - this.personagem.nivel.experienciaMinima / (this.personagem.nivel.experienciaMaxima - this.personagem.nivel.experienciaMinima)) * 100;
+              this.porcentagemProgress = (this.personagem.experiencia - this.personagem.nivel.experienciaMinima / (this.personagem.nivel.experienciaMaxima - this.personagem.nivel.experienciaMinima) * 100);
             }
           )
         }
