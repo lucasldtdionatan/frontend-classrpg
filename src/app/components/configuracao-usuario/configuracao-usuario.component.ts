@@ -39,9 +39,7 @@ export class ConfiguracaoUsuarioComponent implements OnInit {
   ngOnInit(): void {
     this.user = this.authenticationService.currentUserValue;
 
-
-
-    console.log(this.user);
+    // console.log(this.user);
 
     this.formUsuario.patchValue({
       nome: this.user.nome,

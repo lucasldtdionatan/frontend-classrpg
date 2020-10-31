@@ -44,6 +44,12 @@
             <button *ngIf="isTeacher" mat-icon-button (click)="onDelete(atividade.id)" matTooltip="Deletar atividade">
                 <i class="material-icons delete">delete</i>
             </button>
+
+            <!-- student -->
+            <button mat-icon-button *ngIf="!isTeacher" (click)="openDetails(atividade)"
+                matTooltip="Detalhes da atividade">
+                <i class="material-icons">visibility</i>
+            </button>
         </mat-cell>
     </ng-container>
 

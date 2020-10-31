@@ -1,3 +1,4 @@
+import { DetalheAtividadeComponent } from './../../../template/detalhe-atividade/detalhe-atividade.component';
 import { AuthenticationService } from './../../../../services/auth.service';
 import { DialogMassageComponent } from './../../../template/dialog-massage/dialog-massage.component';
 import { SnackBarService } from './../../../../services/snack-bar.service';
@@ -46,6 +47,16 @@ export class AtividadeListComponent implements OnInit {
       }
     )
   }
+
+  openDetails(atividade: Atividade){
+    console.log(atividade);
+
+    const dialogRef = this.dialog.open(DetalheAtividadeComponent, {
+      width: '85%',
+      data: { atividade: atividade }
+    });
+  } 
+
   onDelete(id: string) {
     let confirmationDelete: boolean;
 

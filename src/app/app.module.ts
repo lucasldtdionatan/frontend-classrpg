@@ -65,6 +65,7 @@ import { RankingComponent } from './components/turma/ranking/ranking/ranking.com
 import { DetalhePersonagemComponent } from './components/template/detalhe-personagem/detalhe-personagem.component';
 import { ConfiguracaoUsuarioComponent } from './components/configuracao-usuario/configuracao-usuario.component';
 import { AlterarSenhaComponent } from './components/alterar-senha/alterar-senha.component';
+import { DetalheAtividadeComponent } from './components/template/detalhe-atividade/detalhe-atividade.component';
 
 
 
@@ -96,6 +97,7 @@ import { AlterarSenhaComponent } from './components/alterar-senha/alterar-senha.
     DetalhePersonagemComponent,
     ConfiguracaoUsuarioComponent,
     AlterarSenhaComponent,
+    DetalheAtividadeComponent,
   ],
 
   imports: [

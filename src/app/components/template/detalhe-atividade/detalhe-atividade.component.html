@@ -1,0 +1,12 @@
+<mat-dialog-content>
+    <h2 style="text-align: center;" matTooltip="Título da atividade">{{ data.atividade.titulo }}</h2>
+    <p><strong matTooltip="Pontuação da atividade">Pontuação:</strong> {{ data.atividade.experiencia }}</p>
+    <p><strong matTooltip="Data de início da atividade">Data inícial:</strong> {{ data.atividade.inicioAtividade }}hrs
+    </p>
+    <p><strong matTooltip="Data final da atividade">Data final:</strong> {{ data.atividade.fimAtividade }}hrs</p>
+    <p style="text-align: justify; white-space:pre-wrap;"><strong>Descrição:</strong> {{ data.atividade.descricao }}</p>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+    <button mat-raised-button [mat-dialog-close]="true">Fechar</button>
+</mat-dialog-actions>
