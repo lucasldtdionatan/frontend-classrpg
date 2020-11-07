@@ -1,3 +1,4 @@
+import { PasswordComponent } from './password/password.component';
 import { Validators, FormControl, FormGroup, FormGroupDirective, NgForm, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ErrorStateMatcher } from '@angular/material/core';
@@ -8,6 +9,7 @@ import { AuthenticationService } from '../../services/auth.service';
 import { SnackBarService } from '../../services/snack-bar.service'
 
 import { registerUser } from '../../models/user.model';
+import { MatDialog } from '@angular/material/dialog';
 
 export class ErrorPasswordMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -45,7 +47,8 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private authenticationService: AuthenticationService,
     private snackBarService: SnackBarService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private dialog: MatDialog,
   ) {
     //Object form register
     this.registerForm = this.formBuilder.group({
@@ -115,6 +118,12 @@ export class LoginComponent implements OnInit {
     let confirmPass = group.controls.confirmarSenha.value;
 
     return pass === confirmPass ? null : { notSame: true }
+  }
+
+  forgetPassword(){
+    const dialogRef = this.dialog.open(PasswordComponent, {
+      data: {  }
+    });
   }
 
 }

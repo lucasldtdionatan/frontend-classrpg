@@ -92,6 +92,7 @@
     text-decoration: none;
     color: black;
     font-size: medium;
+    cursor: pointer;
 }
 
 .imgLogo {
@@ -147,6 +148,7 @@
         font-size: medium;
         float: left;
         margin-left: 1%;
+        cursor: pointer;
     }
 }
 
@@ -188,6 +190,7 @@
         font-size: medium;
         float: left;
         margin-left: 1%;
+        cursor: pointer;
     }
     .imgLogo {
         position: fixed;
@@ -236,6 +239,7 @@
         font-size: medium;
         float: left;
         margin-left: 1%;
+        cursor: pointer;
     }
     .imgLogo {
         position: fixed;

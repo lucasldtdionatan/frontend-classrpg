@@ -8,7 +8,7 @@ import { Injectable } from '@angular/core';
 })
 export class RecompensaService {
 
-  constructor(private http: HttpClient,) {
+  constructor(private http: HttpClient) {
   }
 
   getRecompensaByTurma(id_turma: string) {

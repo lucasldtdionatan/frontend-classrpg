@@ -4,11 +4,7 @@
 
 export const environment = {
   production: false,
-  // apiUrl: 'http://192.168.88.224:8080/api'
-  // apiUrl: 'http://192.168.0.18:8080/api'
-  // apiUrl: 'http://192.168.88.54:8080/api'
-  apiUrl: 'http://192.168.88.232:8080/api'
-  // apiUrl: 'http://54.207.220.123:8080/api'
+  apiUrl: 'http://192.168.0.15:8080/api'
 };
 
 /*

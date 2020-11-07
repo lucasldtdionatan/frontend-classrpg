@@ -1,3 +1,4 @@
+import { AlterpasswordComponent } from './components/login/alterpassword/alterpassword.component';
 import { AlterarSenhaComponent } from './components/alterar-senha/alterar-senha.component';
 import { ConfiguracaoUsuarioComponent } from './components/configuracao-usuario/configuracao-usuario.component';
 import { RankingComponent } from './components/turma/ranking/ranking/ranking.component';
@@ -150,6 +151,10 @@ const routes: Routes = [
     path: 'login',
     component: LoginComponent
   },
+  {
+    path: 'password',
+    component: AlterpasswordComponent
+  }
 ];
 
 @NgModule({

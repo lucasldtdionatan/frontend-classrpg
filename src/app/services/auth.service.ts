@@ -72,7 +72,7 @@ export class AuthenticationService {
   }
 
   updatePassword(password: any) {
-    return this.http.put(`${environment.apiUrl}/usuarios/alterarsenha`, password);
+    return this.http.post(`${environment.apiUrl}/usuarios/alterarsenha`, password);
   }
 
 

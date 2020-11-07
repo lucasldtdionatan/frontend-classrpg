@@ -24,7 +24,7 @@
                     </mat-error>
                 </mat-form-field>
 
-                <a href="http://www.google.com" class="forgetpassword">Esqueci minha senha</a>
+                <a (click)="forgetPassword()" class="forgetpassword">Esqueci minha senha</a>
                 <button class="buttonEntrar" mat-raised-button [disabled]="!loginForm.valid || isLoginLoading">
                     <div style="position: absolute;">
                         <mat-spinner *ngIf="isLoginLoading" diameter="29" style="bottom: 0;"></mat-spinner>

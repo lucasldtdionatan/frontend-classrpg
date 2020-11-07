@@ -66,6 +66,8 @@ import { DetalhePersonagemComponent } from './components/template/detalhe-person
 import { ConfiguracaoUsuarioComponent } from './components/configuracao-usuario/configuracao-usuario.component';
 import { AlterarSenhaComponent } from './components/alterar-senha/alterar-senha.component';
 import { DetalheAtividadeComponent } from './components/template/detalhe-atividade/detalhe-atividade.component';
+import { PasswordComponent } from './components/login/password/password.component';
+import { AlterpasswordComponent } from './components/login/alterpassword/alterpassword.component';
 
 
 
@@ -98,6 +100,8 @@ import { DetalheAtividadeComponent } from './components/template/detalhe-ativida
     ConfiguracaoUsuarioComponent,
     AlterarSenhaComponent,
     DetalheAtividadeComponent,
+    PasswordComponent,
+    AlterpasswordComponent,
   ],
 
   imports: [
